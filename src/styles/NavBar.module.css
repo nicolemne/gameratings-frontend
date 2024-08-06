@@ -1,0 +1,62 @@
+.NavBar {
+  background-color: #36454f;
+  padding: 1.4rem 0 1.4rem 0;
+}
+
+/* NavLink text */
+
+.NavLink {
+  color: #ffffff !important;
+  font-size: 1rem;
+  padding-top: 12px;
+}
+
+/* NavBar Icons */
+
+.BtnNewPost {
+  font-size: 1rem;
+  margin-bottom: 3px;
+  margin-right: 5px;
+}
+
+.BtnLike {
+  font-size: 1rem;
+  margin-bottom: 3px;
+  margin-right: 5px;
+}
+
+.BtnMyGames {
+  font-size: 1rem;
+  margin-bottom: 3px;
+  margin-right: 5px;
+}
+
+/* Search Icon */
+
+.SearchIcon {
+  font-size: 1.1rem;
+}
+
+.BtnSearch {
+  border-color: #ffa750;
+  border-width: 1.6px;
+  border-radius: 90px;
+}
+
+.BtnSearch:hover i {
+  color: #ffa750;
+  border-color: #ffa750;
+}
+
+.BtnSearch:hover {
+  background-color: #ffffff;
+}
+
+/* Home Icon */
+
+.HomeIcon {
+  font-size: 1.4rem;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+}
