@@ -1,9 +1,12 @@
 import './App.css';
+import NavBar from './components/NavBar';
 
 function App() {
   return (
     <div className="App">
-      <h1>Django PP5 Frontend!</h1>
+      <div className='NavBar'>
+        <NavBar/>
+      </div>
     </div>
   );
 }
