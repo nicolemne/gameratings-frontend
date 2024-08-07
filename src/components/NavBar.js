@@ -7,7 +7,8 @@ import {
   FormControl,
   Button,
 } from "react-bootstrap";
-import logo from "../assets/logo_gg1.png";
+import logoMain from "../assets/logo_main.png";
+import logoSmall from "../assets/logo_small.png";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
 
@@ -21,27 +22,35 @@ const NavBar = () => {
       variant="dark"
     >
       <Container>
-        <NavLink to="/" className={`${styles.NavLink} ${styles.Logo}`}>
+        <NavLink to="/" className={`${styles.NavLink} ${styles.LogoMain}`}>
           <Navbar.Brand>
-            <img src={logo} alt="logo" height="70px" />
+            <img src={logoMain} alt="logo" height="70px" />
           </Navbar.Brand>
         </NavLink>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <div className={styles.NavBackground}>
-            <Form className={`d-flex ${styles.NavSearchForm}`}>
-              <FormControl
-                type="text"
-                placeholder="Search"
-                size="sm"
-                className={styles.NavSearchInput}
+            <div className={styles.SearchContainer}>
+              <img
+                src={logoSmall}
+                alt="logo"
+                height="40px"
+                className={styles.LogoSmall}
               />
-              <Button variant="link" className={styles.BtnSearch} size="sm">
-                <i
-                  className={`fa-solid fa-magnifying-glass ${styles.NavSearchIcon}`}
-                ></i>
-              </Button>
-            </Form>
+              <Form className={`d-flex ${styles.NavSearchForm}`}>
+                <FormControl
+                  type="text"
+                  placeholder="Search"
+                  size="sm"
+                  className={styles.NavSearchInput}
+                />
+                <Button variant="link" className={styles.BtnSearch} size="sm">
+                  <i
+                    className={`fa-solid fa-magnifying-glass ${styles.NavSearchIcon}`}
+                  ></i>
+                </Button>
+              </Form>
+            </div>
             <Nav>
               <NavLink
                 exact
