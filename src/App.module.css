@@ -1,6 +1,6 @@
 .App {
   font-family: "Roboto", sans-serif;
-  background-color: #f8f8f8;
+  background-color: #000000;
   min-height: 100vh;
 }
 
@@ -18,12 +18,12 @@ a:hover {
 }
 
 a:hover i {
-  color: #ffa750;
+  color: #8a4af3;
   transition: color ease-in-out 0.3s;
 }
 
 i {
-  color: #ffffff;
+  color: #ffa750;
   font-size: 1.4rem;
   padding: 2px;
   vertical-align: middle;
