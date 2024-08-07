@@ -1,7 +1,12 @@
 .App {
   font-family: "Roboto", sans-serif;
   background-color: #000000;
+  color: #ffffff;
   min-height: 100vh;
+}
+
+.Main {
+  padding-top: 220px;
 }
 
 * {

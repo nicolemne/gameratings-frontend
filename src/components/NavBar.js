@@ -9,6 +9,7 @@ import {
 } from "react-bootstrap";
 import logo from "../assets/logo_gg1.png";
 import styles from "../styles/NavBar.module.css";
+import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
   return (
@@ -20,9 +21,11 @@ const NavBar = () => {
       variant="dark"
     >
       <Container>
-        <Navbar.Brand>
-          <img src={logo} alt="logo" height="70px" />
-        </Navbar.Brand>
+        <NavLink to="/" className={`${styles.NavLink} ${styles.Logo}`}>
+          <Navbar.Brand>
+            <img src={logo} alt="logo" height="70px" />
+          </Navbar.Brand>
+        </NavLink>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <div className={styles.NavBackground}>
@@ -39,26 +42,48 @@ const NavBar = () => {
                 ></i>
               </Button>
             </Form>
-            <Nav className="ml-auto text-right">
-              <Nav.Link className={styles.BtnHome}>
+            <Nav>
+              <NavLink
+                exact
+                to="/"
+                className={styles.BtnHome}
+                activeClassName={styles.Active}
+              >
                 <i className={`fa-solid fa-house ${styles.NavHomeIcon}`}></i>
-              </Nav.Link>
-              <Nav.Link className={styles.NavLink}>
-                <i className={`fa-solid fa-plus ${styles.NavPostIcon}`}></i>
+              </NavLink>
+              <NavLink
+                to="/newpost"
+                className={styles.NavLink}
+                activeClassName={styles.Active}
+              >
+                <i className={`fa-solid fa-plus ${styles.NavIcons}`}></i>
                 New Post
-              </Nav.Link>
-              <Nav.Link className={styles.NavLink}>
-                <i className={`fa-solid fa-heart ${styles.NavLikeIcon}`}></i>
+              </NavLink>
+              <NavLink
+                to="/likedposts"
+                className={styles.NavLink}
+                activeClassName={styles.Active}
+              >
+                <i className={`fa-solid fa-heart ${styles.NavIcons}`}></i>
                 Liked Posts
-              </Nav.Link>
-              <Nav.Link className={styles.NavLink}>
-                <i
-                  className={`fa-solid fa-gamepad ${styles.NavMyGamesIcon}`}
-                ></i>
+              </NavLink>
+              <NavLink
+                to="/mygames"
+                className={styles.NavLink}
+                activeClassName={styles.Active}
+              >
+                <i className={`fa-solid fa-gamepad ${styles.NavIcons}`}></i>
                 My Games
-              </Nav.Link>
-              <Nav.Link className={styles.NavLink}>Profile</Nav.Link>
-              <Nav.Link>
+              </NavLink>
+              <NavLink
+                to="/profile"
+                className={styles.NavLink}
+                activeClassName={styles.Active}
+              >
+                <i className={`fa-solid fa-user ${styles.NavIcons}`}></i>
+                Profile
+              </NavLink>
+              <NavLink to="/signup" className={styles.NavLink}>
                 <Button
                   className={styles.BtnSignUp}
                   variant="primary"
@@ -66,8 +91,8 @@ const NavBar = () => {
                 >
                   Sign Up
                 </Button>
-              </Nav.Link>
-              <Nav.Link>
+              </NavLink>
+              <NavLink to="/login" className={styles.NavLink}>
                 <Button
                   className={styles.BtnLoginOut}
                   variant="outline-dark"
@@ -75,8 +100,8 @@ const NavBar = () => {
                 >
                   Log In
                 </Button>
-              </Nav.Link>
-              <Nav.Link>
+              </NavLink>
+              <NavLink to="/logout" className={styles.NavLink}>
                 <Button
                   className={styles.BtnLoginOut}
                   variant="outline-dark"
@@ -84,7 +109,7 @@ const NavBar = () => {
                 >
                   Log Out
                 </Button>
-              </Nav.Link>
+              </NavLink>
             </Nav>
           </div>
         </Navbar.Collapse>

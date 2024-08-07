@@ -12,14 +12,21 @@
   color: #ffffff !important;
   font-size: 1rem;
   font-weight: 500;
-  padding-top: 12px;
+  display: flex;
+  align-items: center;
+  padding: 0 17px;
+  white-space: nowrap;
+}
+
+.Active i {
+  color: #8a4af3;
 }
 
 .NavBackground {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px 0 20px;
+  padding-left: 20px;
   background-color: rgba(0, 0, 0, 0.6);
   border-radius: 10px;
   width: 100%;
@@ -28,15 +35,14 @@
 /* NavBar icons */
 
 .NavHomeIcon {
+  margin-left: 2rem;
   font-size: 1.7rem;
 }
 
-.NavPostIcon,
-.NavLikeIcon,
-.NavMyGamesIcon {
+.NavIcons {
   font-size: 1rem;
   margin-bottom: 3px;
-  margin-right: 5px;
+  margin: 0 5px 0 5px;
 }
 
 /* Search button, icon and input form */
@@ -45,7 +51,7 @@
   display: flex;
   align-items: center;
   max-width: 15rem;
-  width: 100%;
+  width: 15rem;
   height: 5rem;
 }
 
@@ -106,16 +112,26 @@
   color: #000000;
 }
 
+.BtnSignUp:focus {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+
 /* Media queries */
 
-/* 1200px */
-@media (max-width: 1200px) {
+/* 1480px */
+@media (max-width: 1480px) {
   .NavBackground {
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 10px;
   }
 
   .NavHomeIcon {
     font-size: 1.7rem;
+    margin-left: 0;
   }
 
   .NavLink {
@@ -123,9 +139,77 @@
   }
 }
 
-/* 1000px */
-@media (max-width: 1000px) {
-  .NavSearchForm {
-    width: 300px;
+/* 1200px */
+@media (max-width: 1200px) {
+  .NavBackground {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .BtnHome {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .Logo {
+    display: none;
+  }
+}
+
+/* 1200px */
+@media (max-width: 1200px) {
+  .NavBackground {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .BtnHome {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .Logo {
+    display: none;
+  }
+}
+
+/* 992px */
+@media (max-width: 992px) {
+  .navbar-collapse {
+    flex-direction: column;
+  }
+
+  .NavBackground {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .NavLink {
+    padding: 10px 0;
+    text-align: center;
+    width: 100%;
+  }
+}
+
+/* 767px */
+@media (max-width: 767px) {
+  .NavBar {
+    padding: 20px !important;
+  }
+
+  .Logo {
+    display: contents;
+  }
+
+  .navbar-expand-md > .container,
+  .navbar-expand-md > .container-fluid {
+    padding-right: 0;
+    padding-left: 0;
   }
 }
