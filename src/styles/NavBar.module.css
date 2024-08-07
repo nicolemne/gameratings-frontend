@@ -60,7 +60,7 @@
 
 .BtnSearch {
   background-color: #ffffff;
-  border: 1.6px solid #ffffff;
+  border: 1.6px solid #000000;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
@@ -89,8 +89,8 @@
 }
 
 .BtnLoginOut:hover {
-  background-color: #ffa750;
-  color: #000000;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #ffa750;
 }
 
 .BtnSignUp {
@@ -104,4 +104,28 @@
 .BtnSignUp:hover {
   background-color: #ffffff;
   color: #000000;
+}
+
+/* Media queries */
+
+/* 1200px */
+@media (max-width: 1200px) {
+  .NavBackground {
+    display: block;
+  }
+
+  .NavHomeIcon {
+    font-size: 1.7rem;
+  }
+
+  .NavLink {
+    font-size: 0.9rem;
+  }
+}
+
+/* 1000px */
+@media (max-width: 1000px) {
+  .NavSearchForm {
+    width: 300px;
+  }
 }
