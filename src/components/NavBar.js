@@ -12,7 +12,13 @@ import styles from "../styles/NavBar.module.css";
 
 const NavBar = () => {
   return (
-    <Navbar className={styles.NavBar} expand="md" fixed="top">
+    <Navbar
+      className={styles.NavBar}
+      expand="md"
+      fixed="top"
+      bg="transparent"
+      variant="dark"
+    >
       <Container>
         <Navbar.Brand>
           <img src={logo} alt="logo" height="70px" />
