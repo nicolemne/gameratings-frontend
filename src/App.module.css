@@ -10,16 +10,16 @@
 }
 
 .Content {
-  background-color: #ffffff;
+  background-color: #000000;
   padding: 10px;
-  border-radius: 2px;
-  border: 1px solid #dadadf;
+  border-radius: 3px;
+  border: 3px solid #ffffff;
 }
 
 .FillerImage {
-  object-fit: cover;
   height: 100%;
-  width: 100%;
+  width: 15rem;
+  margin-bottom: 20px;
 }
 
 .Image {

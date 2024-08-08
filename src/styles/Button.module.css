@@ -1,46 +1,64 @@
-.Row {
-    height: calc(100vh - 81px);
-  }
-  .Input {
-    background: #ffffff;
-    border: 1px solid #f0f1f9;
-    box-sizing: border-box;
-    border-radius: 2px;
-    color: #7177a1;
-    text-align: center;
-    padding: 10px;
-  }
-  
-  .Header {
-    font-style: normal;
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 19px;
-    text-align: center;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: #2142b2;
+.Button {
+    font-size: 0.9rem;
+    font-weight: 500;
+    align-self: center;
+    border-radius: 100px;
+    border-color: transparent;
+    padding: 4px 10px;
+    margin-left: 2px;
+    margin-right: 2px;
+    min-width: 75px;
   }
   
-  .Link {
-    text-decoration: none;
-    text-align: center;
-    display: block;
-    margin: auto;
+  .Button:hover {
+    opacity: 0.8;
+    border-color: transparent;
+    cursor: pointer;
   }
   
-  .Link span {
-    color: #ff9254;
+  .Button:hover:active {
+    background-color: #8a4af3 !important;
   }
   
-  .Container {
-    padding: 30px 10px;
+  .Button:active {
+    background-color: #8a4af3 !important;
   }
   
-  .SignInCol {
-    height: 320px;
+  .Button:focus {
+    background-color: #8a4af3;
   }
   
-  .SignUpCol {
-    height: 375px;
+  .Wide {
+    padding: 10px 50px;
+    width: 100%;
+  }
+  
+  .Blue,
+  .BlueOutline:hover,
+  .Bright:hover {
+    background-color: #ffa750;
+    color: #ffffff;
+  }
+  
+  .BlueOutline,
+  .Blue:hover {
+    background-color: #ffffff;
+    color: #8a4af3;
+  }
+  
+  .Black,
+  .BlackOutline:hover {
+    background-color: #242a3d;
+    color: aliceblue;
+  }
+  
+  .Black:hover,
+  .BlackOutline {
+    background-color: aliceblue;
+    color: #242a3d;
+  }
+  
+  .Bright {
+    background-color: #8a4af3;
+    color: #ffffff;
   }
