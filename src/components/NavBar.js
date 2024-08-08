@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import {
   Navbar,
   Container,
@@ -11,11 +11,10 @@ import logoMain from "../assets/logo_main.png";
 import logoSmall from "../assets/logo_small.png";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
-import { CurrentUserContext } from "../App";
+import { useCurrentUser } from "../contexts/CurrentUserContext";
 
 const NavBar = () => {
-  const currentUser = useContext(CurrentUserContext);
-  console.log(currentUser)
+  const currentUser = useCurrentUser();
 
   const loggedInIcons = <>{currentUser?.username}</>;
   const loggedOutIcons = (
