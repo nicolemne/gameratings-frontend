@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Navbar,
   Container,
@@ -11,8 +11,28 @@ import logoMain from "../assets/logo_main.png";
 import logoSmall from "../assets/logo_small.png";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
+import { CurrentUserContext } from "../App";
 
 const NavBar = () => {
+  const currentUser = useContext(CurrentUserContext);
+  console.log(currentUser)
+
+  const loggedInIcons = <>{currentUser?.username}</>;
+  const loggedOutIcons = (
+    <>
+      <NavLink to="/signup" className={styles.NavLink}>
+        <Button className={styles.BtnSignUp} variant="primary" size="sm">
+          Sign Up
+        </Button>
+      </NavLink>
+      <NavLink to="/login" className={styles.NavLink}>
+        <Button className={styles.BtnLoginOut} variant="outline-dark" size="sm">
+          Log In
+        </Button>
+      </NavLink>
+    </>
+  );
+
   return (
     <Navbar
       className={styles.NavBar}
@@ -92,24 +112,6 @@ const NavBar = () => {
                 <i className={`fa-solid fa-user ${styles.NavIcons}`}></i>
                 Profile
               </NavLink>
-              <NavLink to="/signup" className={styles.NavLink}>
-                <Button
-                  className={styles.BtnSignUp}
-                  variant="primary"
-                  size="sm"
-                >
-                  Sign Up
-                </Button>
-              </NavLink>
-              <NavLink to="/login" className={styles.NavLink}>
-                <Button
-                  className={styles.BtnLoginOut}
-                  variant="outline-dark"
-                  size="sm"
-                >
-                  Log In
-                </Button>
-              </NavLink>
               <NavLink to="/logout" className={styles.NavLink}>
                 <Button
                   className={styles.BtnLoginOut}
@@ -119,6 +121,7 @@ const NavBar = () => {
                   Log Out
                 </Button>
               </NavLink>
+              {currentUser ? loggedInIcons : loggedOutIcons}
             </Nav>
           </div>
         </Navbar.Collapse>

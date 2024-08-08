@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
@@ -15,8 +15,10 @@ import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 
 import axios from "axios";
+import { SetCurrentUserContext } from "../../App";
 
 function SignInForm() {
+  const setCurrentUser = useContext(SetCurrentUserContext);
   const [signInData, setSignInData] = useState({
     username: "",
     password: "",
@@ -26,21 +28,23 @@ function SignInForm() {
   const [errors, setErrors] = useState({});
   const history = useHistory();
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const { data } = await axios.post("/dj-rest-auth/login/", signInData);
+      console.log("Response data:", data);
+      setCurrentUser(data.user);
+      history.push("/");
+    } catch (err) {
+      setErrors(err.response?.data);
+    }
+  };
+
   const handleChange = (event) => {
     setSignInData({
       ...signInData,
       [event.target.name]: event.target.value,
     });
-  };
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      await axios.post("/dj-rest-auth/login/", signInData);
-      history.push("/");
-    } catch (err) {
-      setErrors(err.response?.data);
-    }
   };
 
   return (
@@ -101,7 +105,6 @@ function SignInForm() {
                 {message}
               </Alert>
             ))}
-            
           </Form>
         </Container>
         <Container className={`mt-3 ${appStyles.Content}`}>
