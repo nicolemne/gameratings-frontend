@@ -11,11 +11,24 @@ import logoMain from "../assets/logo_main.png";
 import logoSmall from "../assets/logo_small.png";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
-import { useCurrentUser } from "../contexts/CurrentUserContext";
+import {
+  useCurrentUser,
+  useSetCurrentUser,
+} from "../contexts/CurrentUserContext";
 import Avatar from "./Avatar";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
+  const setCurrentUser = useSetCurrentUser;
+
+  const handleSignOut = async () => {
+    try {
+      await axios.post("dj-rest-auth/logout/");
+      setCurrentUser(null);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const newPostIcon = (
     <NavLink
@@ -65,7 +78,7 @@ const NavBar = () => {
         Profile
       </NavLink>
       {/* logout */}
-      <NavLink to="/" className={styles.NavLink} onClick={() => {}}>
+      <NavLink to="/" className={styles.NavLink} onClick={handleSignOut}>
         <Button className={styles.BtnLoginOut} variant="outline-dark" size="sm">
           Log Out
         </Button>
