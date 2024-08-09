@@ -14,7 +14,12 @@ function App() {
         <Container className={styles.Main}>
           <Switch>
             <Route exact path="/" render={() => <h1>Home Page</h1>} />
-            <Route exact path="/newpost" render={() => <h1>New Post</h1>} />
+            <Route
+              exact
+              path="/newpost/create"
+              render={() => <h1>New Post</h1>}
+            />
+            <Route exact path="/feed" render={() => <h1>Feed</h1>} />
             <Route
               exact
               path="/likedposts"
@@ -24,7 +29,6 @@ function App() {
             <Route exact path="/profile" render={() => <h1>Profile</h1>} />
             <Route exact path="/signup" render={() => <SignUpForm />} />
             <Route exact path="/login" render={() => <SignInForm />} />
-            <Route exact path="/logout" render={() => <h1>Log Out</h1>} />
             <Route render={() => <h1>404 page not found</h1>} />
           </Switch>
         </Container>

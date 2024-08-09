@@ -12,11 +12,66 @@ import logoSmall from "../assets/logo_small.png";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
 import { useCurrentUser } from "../contexts/CurrentUserContext";
+import Avatar from "./Avatar";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
 
-  const loggedInIcons = <>{currentUser?.username}</>;
+  const newPostIcon = (
+    <NavLink
+      to="/newpost/create"
+      className={styles.NavLink}
+      activeClassName={styles.Active}
+    >
+      <i className={`fa-solid fa-plus ${styles.NavIcons}`}></i>
+      New Post
+    </NavLink>
+  );
+  const loggedInIcons = (
+    <>
+      {/* feed */}
+      <NavLink
+        to="/feed"
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+      >
+        <i className={`fa-solid fa-gamepad ${styles.NavIcons}`}></i>
+        Feed
+      </NavLink>
+      {/* liked posts */}
+      <NavLink
+        to="/likedposts"
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+      >
+        <i className={`fa-regular fa-heart ${styles.NavIcons}`}></i>
+        Liked Posts
+      </NavLink>
+      {/* my games */}
+      <NavLink
+        to="/mygames"
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+      >
+        <i className={`fa-regular fa-bookmark ${styles.NavIcons}`}></i>
+        My Games
+      </NavLink>
+      {/* profile */}
+      <NavLink
+        to={`/profiles/${currentUser?.profile_id}`}
+        className={styles.NavLink}
+      >
+        <Avatar src={currentUser?.profile_image} text="Profile" height={40} />
+        Profile
+      </NavLink>
+      {/* logout */}
+      <NavLink to="/" className={styles.NavLink} onClick={() => {}}>
+        <Button className={styles.BtnLoginOut} variant="outline-dark" size="sm">
+          Log Out
+        </Button>
+      </NavLink>
+    </>
+  );
   const loggedOutIcons = (
     <>
       <NavLink to="/signup" className={styles.NavLink}>
@@ -71,55 +126,19 @@ const NavBar = () => {
               </Form>
             </div>
             <Nav>
+              {/* discover */}
               <NavLink
                 exact
                 to="/"
-                className={styles.BtnHome}
+                className={`${styles.NavLink} ${styles.BtnDiscover}`}
                 activeClassName={styles.Active}
               >
-                <i className={`fa-solid fa-house ${styles.NavHomeIcon}`}></i>
+                <i
+                  className={`fa-regular fa-compass ${styles.NavDiscoverIcon}`}
+                ></i>
+                Discover
               </NavLink>
-              <NavLink
-                to="/newpost"
-                className={styles.NavLink}
-                activeClassName={styles.Active}
-              >
-                <i className={`fa-solid fa-plus ${styles.NavIcons}`}></i>
-                New Post
-              </NavLink>
-              <NavLink
-                to="/likedposts"
-                className={styles.NavLink}
-                activeClassName={styles.Active}
-              >
-                <i className={`fa-solid fa-heart ${styles.NavIcons}`}></i>
-                Liked Posts
-              </NavLink>
-              <NavLink
-                to="/mygames"
-                className={styles.NavLink}
-                activeClassName={styles.Active}
-              >
-                <i className={`fa-solid fa-gamepad ${styles.NavIcons}`}></i>
-                My Games
-              </NavLink>
-              <NavLink
-                to="/profile"
-                className={styles.NavLink}
-                activeClassName={styles.Active}
-              >
-                <i className={`fa-solid fa-user ${styles.NavIcons}`}></i>
-                Profile
-              </NavLink>
-              <NavLink to="/logout" className={styles.NavLink}>
-                <Button
-                  className={styles.BtnLoginOut}
-                  variant="outline-dark"
-                  size="sm"
-                >
-                  Log Out
-                </Button>
-              </NavLink>
+              {currentUser && newPostIcon}
               {currentUser ? loggedInIcons : loggedOutIcons}
             </Nav>
           </div>

@@ -19,7 +19,7 @@
 }
 
 .Active i {
-  color: #8a4af3;
+  color: #64B9FF;
 }
 
 .NavBackground {
@@ -34,8 +34,9 @@
 
 /* NavBar icons */
 
-.NavHomeIcon {
+.NavDiscoverIcon {
   margin-left: 2rem;
+  margin-right: 5px;
   font-size: 1.7rem;
 }
 
@@ -146,7 +147,7 @@
     padding-bottom: 10px;
   }
 
-  .NavHomeIcon {
+  .NavDiscoverIcon {
     font-size: 1.7rem;
     margin-left: 0;
   }
@@ -164,7 +165,7 @@
     align-items: center;
   }
 
-  .BtnHome {
+  .BtnDiscover {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -188,7 +189,7 @@
     align-items: center;
   }
 
-  .BtnHome {
+  .BtnDiscover {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -214,7 +215,7 @@
     width: 100%;
   }
 
-  .BtnHome {
+  .BtnDiscover {
     padding-top: 5px;
   }
 }
@@ -237,8 +238,7 @@
     padding-right: 10px;
   }
 
-  .BtnHome {
-    margin-left: 1.5rem;
+  .BtnDiscover {
     margin-bottom: 5px;
   }
 
