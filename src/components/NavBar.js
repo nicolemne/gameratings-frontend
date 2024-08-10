@@ -36,7 +36,7 @@ const NavBar = () => {
 
   const newPostIcon = (
     <NavLink
-      to="/newpost/create"
+      to="/posts/create"
       className={styles.NavLink}
       activeClassName={styles.Active}
     >
@@ -153,7 +153,6 @@ const NavBar = () => {
                 exact
                 to="/"
                 className={`${styles.NavLink} ${styles.BtnDiscover}`}
-                activeClassName={styles.Active}
               >
                 <i
                   className={`fa-regular fa-compass ${styles.NavDiscoverIcon}`}

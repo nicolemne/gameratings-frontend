@@ -22,8 +22,8 @@
   color: #ffa750 !important;
 }
 
-.Active i {
-  color: #64B9FF;
+.Active {
+  color: #ffa750 !important;
 }
 
 .NavBackground {
@@ -49,7 +49,7 @@
 }
 
 .NavIcons {
-  font-size: 1rem;
+  font-size: 1.2rem;
   margin-bottom: 3px;
   margin: 0 5px 0 5px;
 }

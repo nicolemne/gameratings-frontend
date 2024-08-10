@@ -33,15 +33,15 @@
     width: 100%;
   }
   
-  .Blue,
-  .BlueOutline:hover,
+  .Purple,
+  .PurpleOutline:hover,
   .Bright:hover {
-    background-color: #ffa750;
+    background-color: #8a4af3;
     color: #ffffff;
   }
   
-  .BlueOutline,
-  .Blue:hover {
+  .PurpleOutline,
+  .Purple:hover {
     background-color: #ffffff;
     color: #8a4af3;
   }

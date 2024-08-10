@@ -56,6 +56,9 @@ i {
   font-size: 1.4rem;
   padding: 2px;
   vertical-align: middle;
+  background: linear-gradient(70deg, #8a4af3, #ffa750);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
 }
 
 i:hover {

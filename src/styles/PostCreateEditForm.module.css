@@ -1,0 +1,35 @@
+.Container {
+  min-height: 343px;
+}
+
+/* Upload image */
+
+.UploadImage i {
+  margin-top: 20px;
+  font-size: 7rem;
+  background: linear-gradient(70deg, #8a4af3, #ffa750);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+.UploadText {
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.UploadText:hover {
+  color: #ffa750;
+}
+
+/* Change image text */
+
+.ChangeImageText {
+  font-size: 18px;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+.ChangeImageText:hover {
+  color: #ffa750;
+}
