@@ -21,7 +21,7 @@ import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
-  const setCurrentUser = useSetCurrentUser;
+  const setCurrentUser = useSetCurrentUser();
 
   const { expanded, setExpanded, ref } = useClickOutsideToggle();
 
@@ -78,8 +78,8 @@ const NavBar = () => {
         to={`/profiles/${currentUser?.profile_id}`}
         className={styles.NavLink}
       >
-        <Avatar src={currentUser?.profile_image} text="Profile" height={40} />
-        Profile
+        <Avatar src={currentUser?.profile_image} height={40} />
+        <span className={styles.ProfileName}>{currentUser?.username}</span>
       </NavLink>
       {/* logout */}
       <NavLink to="/" className={styles.NavLink} onClick={handleSignOut}>

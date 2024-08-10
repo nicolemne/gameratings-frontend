@@ -18,6 +18,10 @@
   white-space: nowrap;
 }
 
+.NavLink:hover {
+  color: #ffa750 !important;
+}
+
 .Active i {
   color: #64B9FF;
 }
@@ -26,16 +30,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: 20px;
   background-color: rgba(0, 0, 0, 0.6);
   border-radius: 10px;
   width: 100%;
 }
 
+.ProfileName {
+  display: flex;
+  align-items: center;
+}
+
 /* NavBar icons */
 
 .NavDiscoverIcon {
-  margin-left: 2rem;
+  margin-left: 5px;
   margin-right: 5px;
   font-size: 1.7rem;
 }
@@ -64,6 +72,7 @@
   max-width: 15rem;
   width: 15rem;
   height: 5rem;
+  padding-left: 25px;
 }
 
 .NavSearchInput {
@@ -179,6 +188,10 @@
     display: block;
     margin-right: 5px;
   }
+
+  .NavSearchForm {
+    padding-left: 0px;
+  }
 }
 
 /* 1200px */
@@ -207,6 +220,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+    padding: 10px;
   }
 
   .NavLink {
