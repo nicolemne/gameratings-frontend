@@ -6,6 +6,7 @@ import "./api/axiosDefaults";
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
 import PostCreateForm from "./pages/posts/PostCreateForm";
+import { AllGamesProvider } from "./contexts/AllGamesContext";
 
 function App() {
   return (
@@ -18,7 +19,11 @@ function App() {
             <Route
               exact
               path="/posts/create"
-              render={() => <PostCreateForm />}
+              render={() => (
+                <AllGamesProvider>
+                  <PostCreateForm />
+                </AllGamesProvider>
+              )}
             />
             <Route exact path="/feed" render={() => <h1>Feed</h1>} />
             <Route

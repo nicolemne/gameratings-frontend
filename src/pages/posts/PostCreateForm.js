@@ -16,7 +16,11 @@ import { Image } from "react-bootstrap";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { axiosReq } from "../../api/axiosDefaults";
 
+import { useAllGames } from "../../contexts/AllGamesContext";
+
 function PostCreateForm() {
+  const games = useAllGames();
+
   const [errors, setErrors] = useState({});
 
   const [postData, setPostData] = useState({
@@ -112,11 +116,12 @@ function PostCreateForm() {
         <Dropdown.Toggle variant="success" id="dropdown-basic">
           Select Game
         </Dropdown.Toggle>
-
         <Dropdown.Menu>
-          <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-          <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-          <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+          {games.map((game) => (
+            <Dropdown.Item key={game.id} href="#">
+              {game.title}
+            </Dropdown.Item>
+          ))}
         </Dropdown.Menu>
       </Dropdown>
     </div>
