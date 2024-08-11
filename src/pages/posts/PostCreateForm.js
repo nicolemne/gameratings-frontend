@@ -70,10 +70,52 @@ function PostCreateForm() {
   };
 
   const textFields = (
-    <div className={`${styles.GameInfoBox} text-center`}>
+    <div className={`${styles.GamePostBox} text-center`}>
       <h5 className="text-center">Post</h5>
+      <Form.Group className="text-center">
+        {image ? (
+          <>
+            <figure>
+              <Image className={appStyles.Image} src={image} rounded />
+            </figure>
+            <div>
+              <Form.Label
+                className={`${btnStyles.Button} ${btnStyles.Blue} ${styles.ChangeImageText} btn`}
+                htmlFor="image-upload"
+              >
+                Change image
+              </Form.Label>
+            </div>
+          </>
+        ) : (
+          <Form.Label
+            className="d-flex justify-content-center"
+            htmlFor="image-upload"
+          >
+            <span className={styles.UploadImage}>
+              <i className="fa-regular fa-image"></i>
+              <span className={styles.UploadText}>
+                <Asset message="Click to upload image" />
+              </span>
+              <hr className={styles.CustomHrPost} />
+            </span>
+          </Form.Label>
+        )}
+        <Form.File
+          id="image-upload"
+          accept="image/*"
+          ref={imageInput}
+          onChange={handleChangeImage}
+        />
+      </Form.Group>
+      {errors?.image?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+
       <Form.Group>
-        <Form.Label>Title</Form.Label>
+        <Form.Label className={styles.PostLabel}>Title</Form.Label>
         <Form.Control
           type="text"
           name="title"
@@ -87,7 +129,7 @@ function PostCreateForm() {
         </Alert>
       ))}
       <Form.Group>
-        <Form.Label>Content</Form.Label>
+        <Form.Label className={styles.PostLabel}>Content</Form.Label>
         <Form.Control
           as="textarea"
           rows={6}
@@ -119,7 +161,7 @@ function PostCreateForm() {
         </Dropdown.Toggle>
         <Dropdown.Menu>
           {games.map((game) => (
-            <Dropdown.Item key={game.id}>{game.title}</Dropdown.Item>
+            <Dropdown.Item key={game.id}>{game.title} ({game.platform.name})</Dropdown.Item>
           ))}
         </Dropdown.Menu>
       </Dropdown>
@@ -127,7 +169,7 @@ function PostCreateForm() {
   );
 
   const gameInfo = (
-    <div className={styles.GameInfoBox}>
+    <div className={styles.GamePostBox}>
       <h5 className="text-center">Game</h5>
       <div className={styles.GameInfoText}>
         <strong>Game:</strong> Name
@@ -150,67 +192,22 @@ function PostCreateForm() {
       <div className={styles.GameInfoText}>
         <strong>Average User Rating:</strong> 4.5
       </div>
+      <hr className={styles.CustomHrGame} />
     </div>
   );
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Row className="d-flex justify-content-between flex-nowrap">
-        <Col className="py-2 p-0 p-md-2" xs={12} md={4} lg={4}>
-          <Container
-            className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
-          >
-            <Form.Group className="text-center">
-              {image ? (
-                <>
-                  <figure>
-                    <Image className={appStyles.Image} src={image} rounded />
-                  </figure>
-                  <div>
-                    <Form.Label
-                      className={`${btnStyles.Button} ${btnStyles.Blue} ${styles.ChangeImageText} btn`}
-                      htmlFor="image-upload"
-                    >
-                      Change image
-                    </Form.Label>
-                  </div>
-                </>
-              ) : (
-                <Form.Label
-                  className="d-flex justify-content-center"
-                  htmlFor="image-upload"
-                >
-                  <span className={styles.UploadImage}>
-                    <i className="fa-regular fa-image"></i>
-                    <span className={styles.UploadText}>
-                      <Asset message="Click to upload image" />
-                    </span>
-                  </span>
-                </Form.Label>
-              )}
-
-              <Form.File
-                id="image-upload"
-                accept="image/*"
-                ref={imageInput}
-                onChange={handleChangeImage}
-              />
-            </Form.Group>
-            {errors?.image?.map((message, idx) => (
-              <Alert variant="warning" key={idx}>
-                {message}
-              </Alert>
-            ))}
-            <div className="d-md-none">{textFields}</div>
-          </Container>
-        </Col>
-        <Col xs={12} md={6} lg={6} className="d-none d-md-block p-0 p-md-2">
-          <Container className={appStyles.Content}>{textFields}</Container>
-        </Col>
-        <Col xs={12} md={6} lg={6} className="d-none d-md-block p-0 p-md-2">
-          <Container className={appStyles.Content}>
+      <Row className="d-flex justify-content-between">
+        <Col xs={12} md={5} lg={5} className="p-0 p-md-2">
+          <Container className={`${appStyles.Content} ${styles.GamePostBox}`}>
             {gameInfo}
             {gameDropdown}
+          </Container>
+        </Col>
+        <Col xs={12} md={7} lg={7} className="p-0 p-md-2">
+          <Container className={`${appStyles.Content} ${styles.GamePostBox}`}>
+            {textFields}
           </Container>
         </Col>
       </Row>

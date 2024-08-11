@@ -14,12 +14,13 @@
 
 .UploadText {
   font-family: "Roboto", sans-serif;
-  font-size: 18px;
+  font-size: 15px;
+  font-weight: 300;
   color: #ffffff;
 }
 
 .UploadText:hover {
-  color: #ffa750;
+  color: #64b5f8;
 }
 
 /* Change image text */
@@ -34,9 +35,9 @@
   color: #ffa750;
 }
 
-/* Image, Post and Game container */
+/* Post and Game container */
 
-.GameInfoBox {
+.GamePostBox {
   margin-bottom: 20px;
 }
 
@@ -47,7 +48,7 @@
   font-weight: 300;
 }
 
-.GameInfoBox h5 {
+.GamePostBox h5 {
   font-family: "Pixelify Sans", sans !important;
   font-size: 30px;
   text-transform: uppercase;
@@ -58,7 +59,46 @@
 .GameInfoText strong {
   font-weight: 400;
   text-transform: uppercase;
+  color: #64b5f8;
+}
+
+.PostLabel {
+  font-size: 17px;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  color: #ffa750;
+}
+
+.CustomHrPost {
+  border: none;
+  height: 2px; 
+  width: 20rem;
   background: linear-gradient(70deg, #8a4af3, #ffa750);
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
+  margin-top: 10px; 
+}
+
+.CustomHrGame {
+  border: none;
+  height: 2px; 
+  width: 12rem;
+  background: linear-gradient(70deg, #6d0c0f, #64b5f8);
+  margin-top: 10px; 
+}
+
+/* Media queries */
+
+/* 767px */
+@media (max-width: 767px) {
+  .GamePostBox {
+    margin-bottom: 10px;
+  }
+
+  .Container {
+    padding-bottom: 10px;
+  }
+
+  .row {
+    flex-direction: column !important;
+  }
 }

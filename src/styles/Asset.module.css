@@ -3,5 +3,5 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 120px;
+    padding: 0 !important;
   }
