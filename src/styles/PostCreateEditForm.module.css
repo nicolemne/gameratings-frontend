@@ -33,3 +33,32 @@
 .ChangeImageText:hover {
   color: #ffa750;
 }
+
+/* Image, Post and Game container */
+
+.GameInfoBox {
+  margin-bottom: 20px;
+}
+
+.GameInfoText {
+  color: #ffffff;
+  font-size: 17px;
+  margin-bottom: 3px;
+  font-weight: 300;
+}
+
+.GameInfoBox h5 {
+  font-family: "Pixelify Sans", sans !important;
+  font-size: 30px;
+  text-transform: uppercase;
+  margin-bottom: 0.7rem;
+  color: #ffa750;
+}
+
+.GameInfoText strong {
+  font-weight: 400;
+  text-transform: uppercase;
+  background: linear-gradient(70deg, #8a4af3, #ffa750);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}

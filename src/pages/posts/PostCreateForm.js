@@ -70,7 +70,8 @@ function PostCreateForm() {
   };
 
   const textFields = (
-    <div className="text-center">
+    <div className={`${styles.GameInfoBox} text-center`}>
+      <h5 className="text-center">Post</h5>
       <Form.Group>
         <Form.Label>Title</Form.Label>
         <Form.Control
@@ -118,19 +119,44 @@ function PostCreateForm() {
         </Dropdown.Toggle>
         <Dropdown.Menu>
           {games.map((game) => (
-            <Dropdown.Item key={game.id} href="#">
-              {game.title}
-            </Dropdown.Item>
+            <Dropdown.Item key={game.id}>{game.title}</Dropdown.Item>
           ))}
         </Dropdown.Menu>
       </Dropdown>
     </div>
   );
 
+  const gameInfo = (
+    <div className={styles.GameInfoBox}>
+      <h5 className="text-center">Game</h5>
+      <div className={styles.GameInfoText}>
+        <strong>Game:</strong> Name
+      </div>
+      <div className={styles.GameInfoText}>
+        <strong>Developer:</strong> Developer
+      </div>
+      <div className={styles.GameInfoText}>
+        <strong>Genre:</strong> Genre
+      </div>
+      <div className={styles.GameInfoText}>
+        <strong>Platform:</strong> Platform
+      </div>
+      <div className={styles.GameInfoText}>
+        <strong>Release Year:</strong> 2022
+      </div>
+      <div className={styles.GameInfoText}>
+        <strong>Multiplayer:</strong> Yes
+      </div>
+      <div className={styles.GameInfoText}>
+        <strong>Average User Rating:</strong> 4.5
+      </div>
+    </div>
+  );
+
   return (
     <Form onSubmit={handleSubmit}>
-      <Row>
-        <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
+      <Row className="d-flex justify-content-between flex-nowrap">
+        <Col className="py-2 p-0 p-md-2" xs={12} md={4} lg={4}>
           <Container
             className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
           >
@@ -178,11 +204,14 @@ function PostCreateForm() {
             <div className="d-md-none">{textFields}</div>
           </Container>
         </Col>
-        <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
+        <Col xs={12} md={6} lg={6} className="d-none d-md-block p-0 p-md-2">
           <Container className={appStyles.Content}>{textFields}</Container>
         </Col>
-        <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
-          <Container className={appStyles.Content}>{gameDropdown}</Container>
+        <Col xs={12} md={6} lg={6} className="d-none d-md-block p-0 p-md-2">
+          <Container className={appStyles.Content}>
+            {gameInfo}
+            {gameDropdown}
+          </Container>
         </Col>
       </Row>
     </Form>
