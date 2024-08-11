@@ -161,7 +161,9 @@ function PostCreateForm() {
         </Dropdown.Toggle>
         <Dropdown.Menu>
           {games.map((game) => (
-            <Dropdown.Item key={game.id}>{game.title} ({game.platform.name})</Dropdown.Item>
+            <Dropdown.Item key={game.id}>
+              {game.title} ({game.platform.name})
+            </Dropdown.Item>
           ))}
         </Dropdown.Menu>
       </Dropdown>
@@ -171,6 +173,9 @@ function PostCreateForm() {
   const gameInfo = (
     <div className={styles.GamePostBox}>
       <h5 className="text-center">Game</h5>
+      <div className={styles.GameImageBox}>
+        <img src="" alt="Game Image" className={styles.GameImage} />
+      </div>
       <div className={styles.GameInfoText}>
         <strong>Game:</strong> Name
       </div>
@@ -192,7 +197,6 @@ function PostCreateForm() {
       <div className={styles.GameInfoText}>
         <strong>Average User Rating:</strong> 4.5
       </div>
-      <hr className={styles.CustomHrGame} />
     </div>
   );
 
