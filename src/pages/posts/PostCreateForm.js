@@ -146,7 +146,7 @@ function PostCreateForm() {
       ))}
 
       <Button
-        className={`${btnStyles.Button} ${btnStyles.Purple}`}
+        className={btnStyles.CreateBtn}
         type="submit"
       >
         Create
@@ -157,7 +157,11 @@ function PostCreateForm() {
   const gameDropdown = (
     <div className="text-center">
       <Dropdown>
-        <Dropdown.Toggle variant="success" id="dropdown-basic">
+        <Dropdown.Toggle
+          variant="success"
+          id="dropdown-basic"
+          className={btnStyles.SelectGameBtn}
+        >
           Select Game
         </Dropdown.Toggle>
         <Dropdown.Menu>
@@ -169,10 +173,7 @@ function PostCreateForm() {
               {game.title} ({game.platform.name})
             </Dropdown.Item>
           ))}
-          <Button
-            className={`${btnStyles.Button} ${btnStyles.Purple}`}
-            type="submit"
-          >
+          <Button className={btnStyles.AddGameBtn} type="submit">
             Add Game
           </Button>
         </Dropdown.Menu>

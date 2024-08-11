@@ -1,5 +1,7 @@
+/* General button styling */
+
 .Button {
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: 500;
     align-self: center;
     border-radius: 100px;
@@ -63,7 +65,7 @@
     color: #ffffff;
   }
 
-  /* Navbar buttons */
+  /* Navbar.js */
 
   /* Search */
 
@@ -120,6 +122,65 @@
   background-color: #000000;
   color: #ffffff;
 }
+
+/* PostCreateForm.js */
+
+.AddGameBtn {
+  background-color: #8a4af3;
+  border: none;
+  font-size: 15px;
+  display: block;
+  text-align: center;
+  margin: 10px auto;
+  width: 80%; 
+}
+
+.AddGameBtn:hover {
+  background: #ffa750;
+  color: #ffffff;
+}
+
+.SelectGameBtn {
+  font-size: 15px;
+  font-weight: 500;
+  background-color: #8a4af3;
+  color: #ffffff;
+  border: none;
+  border-radius: 30px;
+  width: 8rem; 
+  margin-bottom: 20px;
+}
+
+.SelectGameBtn:hover {
+  background-color: #ffffff;
+  color: #8a4af3;
+}
+
+.SelectGameBtn:active {
+  background-color: #ffffff;
+  color: #8a4af3;
+}
+
+.CreateBtn {
+  font-size: 15px;
+  font-weight: 500;
+  background-color: #8a4af3;
+  color: #ffffff;
+  border: none;
+  border-radius: 30px;
+  width: 6rem; 
+}
+
+.CreateBtn:hover {
+  background-color: #ffffff;
+  color: #8a4af3;
+}
+
+.CreateBtn:focus {
+  background-color: #8a4af3;
+  color: #ffffff;
+}
+
 
 /* Media queries */
 
