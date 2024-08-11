@@ -62,3 +62,72 @@
     background-color: #8a4af3;
     color: #ffffff;
   }
+
+  /* Navbar buttons */
+
+  /* Search */
+
+  .BtnSearch {
+    background-color: #1e1e1e;
+    border: 1px solid #ffffff;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  
+  .BtnSearch:hover {
+    background-color: #fafdff;
+  }
+  
+  .BtnSearch i {
+    color: #000000;
+  }
+  
+  .BtnSearch:hover i {
+    color: #ffa750;
+    border-color: #ffa750;
+  }
+  
+
+  /* Authentication buttons */
+
+.BtnLoginOut {
+  font-family: "Roboto", sans-serif !important;
+  font-weight: 500;
+  font-size: 0.9rem;
+  border: none;
+  color: #ffffff;
+}
+
+.BtnLoginOut:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #ffa750;
+}
+
+.BtnSignUp {
+  font-family: "Roboto", sans-serif !important;
+  font-weight: 500;
+  font-size: 0.9rem;
+  border: none;
+  background-color: #8a4af3;
+}
+
+.BtnSignUp:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.BtnSignUp:focus {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/* Media queries */
+
+/* 767px */
+@media (max-width: 767px) {
+
+  .BtnSignUp {
+    margin-top: 5px;
+  }
+
+}

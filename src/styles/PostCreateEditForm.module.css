@@ -98,6 +98,13 @@
   max-height: 100%;
 }
 
+/* Search inside Dropdown */
+
+.DropdownSearch {
+  width: 90%;
+  margin: 10px;
+}
+
 /* Media queries */
 
 /* 767px */

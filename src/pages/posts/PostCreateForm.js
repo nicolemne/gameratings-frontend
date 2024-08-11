@@ -7,6 +7,7 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 import Dropdown from "react-bootstrap/Dropdown";
+import { FormControl } from "react-bootstrap";
 
 import styles from "../../styles/PostCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
@@ -160,11 +161,20 @@ function PostCreateForm() {
           Select Game
         </Dropdown.Toggle>
         <Dropdown.Menu>
+          <Form className={`d-flex ${styles.DropdownSearch}`}>
+            <FormControl type="text" placeholder="Search" size="sm" />
+          </Form>
           {games.map((game) => (
             <Dropdown.Item key={game.id}>
               {game.title} ({game.platform.name})
             </Dropdown.Item>
           ))}
+          <Button
+            className={`${btnStyles.Button} ${btnStyles.Purple}`}
+            type="submit"
+          >
+            Add Game
+          </Button>
         </Dropdown.Menu>
       </Dropdown>
     </div>
@@ -174,7 +184,7 @@ function PostCreateForm() {
     <div className={styles.GamePostBox}>
       <h5 className="text-center">Game</h5>
       <div className={styles.GameImageBox}>
-        <img src="" alt="Game Image" className={styles.GameImage} />
+        <img src="" alt="Game Cover" className={styles.GameImage} />
       </div>
       <div className={styles.GameInfoText}>
         <strong>Game:</strong> Name

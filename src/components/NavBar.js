@@ -10,6 +10,8 @@ import {
 import logoMain from "../assets/logo_main.png";
 import logoSmall from "../assets/logo_small.png";
 import styles from "../styles/NavBar.module.css";
+import btnStyles from "../styles/Button.module.css";
+
 import { NavLink } from "react-router-dom";
 import {
   useCurrentUser,
@@ -83,7 +85,7 @@ const NavBar = () => {
       </NavLink>
       {/* logout */}
       <NavLink to="/" className={styles.NavLink} onClick={handleSignOut}>
-        <Button className={styles.BtnLoginOut} variant="outline-dark" size="sm">
+        <Button className={btnStyles.BtnLoginOut} variant="outline-dark" size="sm">
           Log Out
         </Button>
       </NavLink>
@@ -92,12 +94,12 @@ const NavBar = () => {
   const loggedOutIcons = (
     <>
       <NavLink to="/signup" className={styles.NavLink}>
-        <Button className={styles.BtnSignUp} variant="primary" size="sm">
+        <Button className={btnStyles.BtnSignUp} variant="primary" size="sm">
           Sign Up
         </Button>
       </NavLink>
       <NavLink to="/login" className={styles.NavLink}>
-        <Button className={styles.BtnLoginOut} variant="outline-dark" size="sm">
+        <Button className={btnStyles.BtnLoginOut} variant="outline-dark" size="sm">
           Log In
         </Button>
       </NavLink>
@@ -140,7 +142,7 @@ const NavBar = () => {
                   size="sm"
                   className={styles.NavSearchInput}
                 />
-                <Button variant="link" className={styles.BtnSearch} size="sm">
+                <Button variant="link" className={btnStyles.BtnSearch} size="sm">
                   <i
                     className={`fa-solid fa-magnifying-glass ${styles.NavSearchIcon}`}
                   ></i>
@@ -152,10 +154,10 @@ const NavBar = () => {
               <NavLink
                 exact
                 to="/"
-                className={`${styles.NavLink} ${styles.BtnDiscover}`}
+                className={`${styles.NavLink}`}
               >
                 <i
-                  className={`fa-regular fa-compass ${styles.NavDiscoverIcon}`}
+                  className={`fa-regular fa-compass ${styles.DiscoverIcon}`}
                 ></i>
                 Discover
               </NavLink>
