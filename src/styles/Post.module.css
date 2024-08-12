@@ -1,0 +1,47 @@
+.Post {
+  font-family: "Roboto", sans-serif;
+  background-color: #ffffff;
+  border: 1px solid #dadadf;
+  border-radius: 2px;
+  margin-bottom: 16px;
+  text-align: center;
+  color: #000000;
+}
+
+.Post a {
+  font-weight: 500;
+  color: #000000;
+  text-decoration: none;
+}
+
+.Post a:hover {
+  color: #2142b2;
+}
+
+.Post figure,
+h5 {
+  margin: 0 0;
+}
+
+.Heart {
+  color: #f85032;
+  font-size: 1.5rem;
+}
+
+.Heart:hover {
+  color: #2142b2;
+}
+
+.HeartOutline:hover {
+  color: #f85032;
+}
+
+.CommentIcon {
+  color: #4a4a4a;
+  margin-left: 10px;
+  transition: color 0.3s ease;
+}
+
+.CommentIcon:hover {
+  color: #1d3557;
+}
