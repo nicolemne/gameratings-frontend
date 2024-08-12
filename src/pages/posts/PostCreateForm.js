@@ -159,6 +159,21 @@ function PostCreateForm() {
           {message}
         </Alert>
       ))}
+      
+      <Form.Group className="text-center">
+        <Form.Label className={styles.PostLabel}>Star Rating</Form.Label>
+        <div>
+          {[1, 2, 3, 4, 5].map((value) => (
+            <Form.Check
+              inline
+              type="radio"
+              name="star_rating"
+              label={value}
+              className={styles.Star}
+            />
+          ))}
+        </div>
+      </Form.Group>
 
       <Button className={btnStyles.CreateBtn} type="submit">
         Create

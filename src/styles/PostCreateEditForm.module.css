@@ -1,6 +1,6 @@
 /* Import SharedBoxStyles for reusability */
 
-@import '../styles/SharedBoxStyles.module.css';
+@import "../styles/SharedBoxStyles.module.css";
 
 /* Upload image section */
 
@@ -57,6 +57,19 @@
   width: 90%;
   margin: 10px;
 }
+
+/* Star Rating */
+
+.StarRating {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.Star {
+  margin: 0 5px;
+}
+
 
 /* Media queries */
 
