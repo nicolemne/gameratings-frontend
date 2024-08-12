@@ -5,7 +5,10 @@ import { Route, Switch } from "react-router-dom";
 import "./api/axiosDefaults";
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
+
 import PostCreateForm from "./pages/posts/PostCreateForm";
+import PostPage from "./pages/posts/PostPage";
+
 import { AllGamesProvider } from "./contexts/AllGamesContext";
 
 function App() {
@@ -25,6 +28,7 @@ function App() {
                 </AllGamesProvider>
               )}
             />
+            <Route exact path="/posts/:id" render={() => <PostPage />} />
             <Route exact path="/feed" render={() => <h1>Feed</h1>} />
             <Route
               exact
