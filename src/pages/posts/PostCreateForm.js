@@ -17,13 +17,14 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { axiosReq } from "../../api/axiosDefaults";
 
 import { useAllGames } from "../../contexts/AllGamesContext";
+import { useSelectGame } from "../../hooks/useSelectedGame";
 
 function PostCreateForm() {
   const games = useAllGames();
 
-  const [errors, setErrors] = useState({});
+  const { selectedGame, handleSelectGame } = useSelectGame(games);
 
-  const [selectedGame, setSelectedGame] = useState(null);
+  const [errors, setErrors] = useState({});
 
   const [postData, setPostData] = useState({
     title: "",
@@ -34,11 +35,6 @@ function PostCreateForm() {
 
   const imageInput = useRef(null);
   const history = useHistory();
-
-  const handleSelectGame = (gameId) => {
-    const game = games.find((g) => g.id === gameId);
-    setSelectedGame(game);
-  };
 
   const handleChange = (event) => {
     setPostData({
