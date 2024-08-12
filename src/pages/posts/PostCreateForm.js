@@ -57,6 +57,14 @@ function PostCreateForm() {
     event.preventDefault();
     const formData = new FormData();
 
+    if (!selectedGame) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        game: ["Please select a game."],
+      }));
+      return;
+    }
+
     formData.append("title", title);
     formData.append("content", content);
     formData.append("image", imageInput.current.files[0]);
@@ -180,6 +188,11 @@ function PostCreateForm() {
           </Button>
         </Dropdown.Menu>
       </Dropdown>
+      {errors?.game?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
     </div>
   );
 
