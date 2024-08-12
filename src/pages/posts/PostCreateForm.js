@@ -11,7 +11,11 @@ import Dropdown from "react-bootstrap/Dropdown";
 import styles from "../../styles/PostCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
+import sharedStyles from "../../styles/SharedBoxStyles.module.css";
+
 import Asset from "../../components/Asset";
+import GameInfo from "../../components/GameInfo";
+
 import { Image } from "react-bootstrap";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { axiosReq } from "../../api/axiosDefaults";
@@ -82,7 +86,7 @@ function PostCreateForm() {
   };
 
   const textFields = (
-    <div className={`${styles.GamePostBox} text-center`}>
+    <div className={`${sharedStyles.Box} text-center`}>
       <h5 className="text-center">Post</h5>
       <Form.Group className="text-center">
         {image ? (
@@ -196,52 +200,17 @@ function PostCreateForm() {
     </div>
   );
 
-  const gameInfo = (
-    <div className={styles.GamePostBox}>
-      <h5 className="text-center">Game</h5>
-      <div className={styles.GameImageBox}>
-        <img
-          src={selectedGame?.image}
-          alt="Game Cover"
-          className={styles.GameImage}
-        />
-      </div>
-      <div className={styles.GameInfoText}>
-        <strong>Game:</strong> {selectedGame?.title || ""}
-      </div>
-      <div className={styles.GameInfoText}>
-        <strong>Platform</strong> {selectedGame?.platform?.name || ""}
-      </div>
-      <div className={styles.GameInfoText}>
-        <strong>Developer:</strong> {selectedGame?.game_developer || ""}
-      </div>
-      <div className={styles.GameInfoText}>
-        <strong>Genre:</strong> {selectedGame?.genre?.name || ""}
-      </div>
-      <div className={styles.GameInfoText}>
-        <strong>Release Year:</strong> {selectedGame?.release_year || ""}
-      </div>
-      <div className={styles.GameInfoText}>
-        <strong>Multiplayer:</strong> {selectedGame?.multiplayer ? "Yes" : "No"}
-      </div>
-      <div className={styles.GameInfoText}>
-        <strong>Average User Rating:</strong>
-        {selectedGame?.average_star_rating || "N/A"}
-      </div>
-    </div>
-  );
-
   return (
     <Form onSubmit={handleSubmit}>
       <Row className="d-flex justify-content-between">
         <Col xs={12} md={5} lg={5} className="p-0 p-md-2">
-          <Container className={`${appStyles.Content} ${styles.GamePostBox}`}>
-            {gameInfo}
+          <Container className={`${appStyles.Content} ${sharedStyles.Box}`}>
+            <GameInfo game={selectedGame} />
             {gameDropdown}
           </Container>
         </Col>
         <Col xs={12} md={7} lg={7} className="p-0 p-md-2">
-          <Container className={`${appStyles.Content} ${styles.GamePostBox}`}>
+          <Container className={`${appStyles.Content} ${sharedStyles.Box}`}>
             {textFields}
           </Container>
         </Col>
