@@ -144,7 +144,7 @@ function PostCreateForm() {
       ))}
 
       <div className={styles.GameInfoContainer}>
-        <GameInfo game={selectedGame} />
+        {selectedGame && <GameInfo game={selectedGame} />}
       </div>
 
       <div className="text-center">
@@ -172,6 +172,7 @@ function PostCreateForm() {
             </Button>
           </Dropdown.Menu>
         </Dropdown>
+        <hr className={styles.CustomHrPost} />
         {errors?.game?.map((message, idx) => (
           <Alert variant="warning" key={idx}>
             {message}
@@ -235,9 +236,7 @@ function PostCreateForm() {
   );
 
   return (
-    <Container
-      className="justify-content-center"
-    >
+    <Container className="justify-content-center">
       <Form onSubmit={handleSubmit}>
         <Row className="d-flex justify-content-center">
           <Col xs={12} md={8} lg={8} className="p-0 p-md-2">
