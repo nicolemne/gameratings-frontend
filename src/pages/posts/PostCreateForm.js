@@ -34,11 +34,19 @@ function PostCreateForm() {
     title: "",
     content: "",
     image: "",
+    star_rating: 0,
   });
-  const { title, content, image } = postData;
+  const { title, content, image, star_rating } = postData;
 
   const imageInput = useRef(null);
   const history = useHistory();
+
+  const handleStarRatingChange = (event) => {
+    setPostData({
+      ...postData,
+      [event.target.name]: parseInt(event.target.value),
+    });
+  };
 
   const handleChange = (event) => {
     setPostData({
@@ -73,6 +81,7 @@ function PostCreateForm() {
     formData.append("content", content);
     formData.append("image", imageInput.current.files[0]);
     formData.append("game_id", selectedGame.id);
+    formData.append("star_rating", star_rating);
 
     try {
       const { data } = await axiosReq.post("/posts/", formData);
@@ -159,7 +168,7 @@ function PostCreateForm() {
           {message}
         </Alert>
       ))}
-      
+
       <Form.Group className="text-center">
         <Form.Label className={styles.PostLabel}>Star Rating</Form.Label>
         <div>
@@ -170,6 +179,10 @@ function PostCreateForm() {
               name="star_rating"
               label={value}
               className={styles.Star}
+              key={`star_${value}`}
+              value={value}
+              checked={postData.star_rating === value}
+              onChange={handleStarRatingChange}
             />
           ))}
         </div>
