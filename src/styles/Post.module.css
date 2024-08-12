@@ -32,12 +32,17 @@ h5 {
   color: #2142b2;
 }
 
+.HeartOutline {
+  color: #ea6550;
+  font-size: 1.5rem;
+}
+
 .HeartOutline:hover {
-  color: #f85032;
+  color: #ca5947;
 }
 
 .CommentIcon {
-  color: #4a4a4a;
+  color: #8a4af3;
   margin-left: 10px;
   transition: color 0.3s ease;
 }

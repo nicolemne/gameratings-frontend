@@ -46,12 +46,18 @@
   margin-left: 5px;
   margin-right: 5px;
   font-size: 1.7rem;
+  background: linear-gradient(70deg, #8a4af3, #ffa750);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
 }
 
 .NavIcons {
   font-size: 1.2rem;
   margin-bottom: 3px;
   margin: 0 5px 0 5px;
+  background: linear-gradient(70deg, #8a4af3, #ffa750);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
 }
 
 /* Logo styling */
@@ -82,6 +88,9 @@
 
 .NavSearchIcon {
   font-size: 1.1rem;
+  background: linear-gradient(70deg, #8a4af3, #ffa750);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
 }
 
 /* Search container */
@@ -90,7 +99,6 @@
   display: flex;
   align-items: center;
 }
-
 
 /* Media queries */
 
