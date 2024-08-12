@@ -23,30 +23,44 @@ h5 {
   margin: 0 0;
 }
 
+/* Like & Comment text */
+
+.LikeCommentText {
+  font-family: "Pixelify Sans", sans;
+  font-size: 1.2rem;
+}
+
+/* Like & Comment icons */
+
 .Heart {
   color: #f85032;
   font-size: 1.5rem;
+  margin-right: 1px;
 }
 
 .Heart:hover {
-  color: #2142b2;
+  color: #8a4af3;
 }
 
 .HeartOutline {
-  color: #ea6550;
+  color: #f85032;
   font-size: 1.5rem;
+  margin-right: 1px;
 }
 
 .HeartOutline:hover {
-  color: #ca5947;
+  color: #f85032;
 }
 
 .CommentIcon {
   color: #8a4af3;
   margin-left: 10px;
-  transition: color 0.3s ease;
+  margin-right: 1px;
 }
 
-.CommentIcon:hover {
-  color: #1d3557;
+/* Image */
+
+.PostImage {
+  border: 8px solid black;
+  border-radius: 4px;
 }
