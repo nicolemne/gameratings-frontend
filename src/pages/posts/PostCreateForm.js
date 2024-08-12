@@ -81,6 +81,14 @@ function PostCreateForm() {
       return;
     }
 
+    if (!star_rating) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        star_rating: ["Please select a rating."],
+      }));
+      return;
+    }
+
     formData.append("title", title);
     formData.append("content", content);
     formData.append("image", imageInput.current.files[0]);
@@ -211,7 +219,7 @@ function PostCreateForm() {
       ))}
 
       <Form.Group className="text-center">
-        <Form.Label className={styles.PostLabel}>Star Rating</Form.Label>
+        <Form.Label className={styles.PostLabel}>Rating</Form.Label>
         <div>
           {[1, 2, 3, 4, 5].map((value) => (
             <Form.Check
@@ -228,6 +236,11 @@ function PostCreateForm() {
           ))}
         </div>
       </Form.Group>
+      {errors?.star_rating?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
       <Button className={btnStyles.CreateBtn} type="submit">
         Create
