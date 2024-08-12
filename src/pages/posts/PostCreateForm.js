@@ -7,7 +7,6 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 import Dropdown from "react-bootstrap/Dropdown";
-import { FormControl } from "react-bootstrap";
 
 import styles from "../../styles/PostCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
@@ -24,6 +23,8 @@ function PostCreateForm() {
 
   const [errors, setErrors] = useState({});
 
+  const [selectedGame, setSelectedGame] = useState(null);
+
   const [postData, setPostData] = useState({
     title: "",
     content: "",
@@ -33,6 +34,11 @@ function PostCreateForm() {
 
   const imageInput = useRef(null);
   const history = useHistory();
+
+  const handleSelectGame = (gameId) => {
+    const game = games.find((g) => g.id === gameId);
+    setSelectedGame(game);
+  };
 
   const handleChange = (event) => {
     setPostData({
@@ -145,10 +151,7 @@ function PostCreateForm() {
         </Alert>
       ))}
 
-      <Button
-        className={btnStyles.CreateBtn}
-        type="submit"
-      >
+      <Button className={btnStyles.CreateBtn} type="submit">
         Create
       </Button>
     </div>
@@ -156,7 +159,7 @@ function PostCreateForm() {
 
   const gameDropdown = (
     <div className="text-center">
-      <Dropdown>
+      <Dropdown onSelect={(eventKey) => handleSelectGame(Number(eventKey))}>
         <Dropdown.Toggle
           variant="success"
           id="dropdown-basic"
@@ -165,11 +168,13 @@ function PostCreateForm() {
           Select Game
         </Dropdown.Toggle>
         <Dropdown.Menu>
-          <Form className={`d-flex ${styles.DropdownSearch}`}>
-            <FormControl type="text" placeholder="Search" size="sm" />
-          </Form>
+          <input
+            type="text"
+            placeholder="Search"
+            className={`${styles.DropdownSearch}`}
+          />
           {games.map((game) => (
-            <Dropdown.Item key={game.id}>
+            <Dropdown.Item key={game.id} eventKey={game.id}>
               {game.title} ({game.platform.name})
             </Dropdown.Item>
           ))}
@@ -185,28 +190,33 @@ function PostCreateForm() {
     <div className={styles.GamePostBox}>
       <h5 className="text-center">Game</h5>
       <div className={styles.GameImageBox}>
-        <img src="" alt="Game Cover" className={styles.GameImage} />
+        <img
+          src={selectedGame?.image}
+          alt="Game Cover"
+          className={styles.GameImage}
+        />
       </div>
       <div className={styles.GameInfoText}>
-        <strong>Game:</strong> Name
+        <strong>Game:</strong> {selectedGame?.title || ""}
       </div>
       <div className={styles.GameInfoText}>
-        <strong>Developer:</strong> Developer
+        <strong>Platform</strong> {selectedGame?.platform?.name || ""}
       </div>
       <div className={styles.GameInfoText}>
-        <strong>Genre:</strong> Genre
+        <strong>Developer:</strong> {selectedGame?.game_developer || ""}
       </div>
       <div className={styles.GameInfoText}>
-        <strong>Platform:</strong> Platform
+        <strong>Genre:</strong> {selectedGame?.genre?.name || ""}
       </div>
       <div className={styles.GameInfoText}>
-        <strong>Release Year:</strong> 2022
+        <strong>Release Year:</strong> {selectedGame?.release_year || ""}
       </div>
       <div className={styles.GameInfoText}>
-        <strong>Multiplayer:</strong> Yes
+        <strong>Multiplayer:</strong> {selectedGame?.multiplayer ? "Yes" : "No"}
       </div>
       <div className={styles.GameInfoText}>
-        <strong>Average User Rating:</strong> 4.5
+        <strong>Average User Rating:</strong>
+        {selectedGame?.average_star_rating || "N/A"}
       </div>
     </div>
   );
