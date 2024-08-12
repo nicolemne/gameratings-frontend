@@ -26,7 +26,11 @@ import { useSelectGame } from "../../hooks/useSelectedGame";
 function PostCreateForm() {
   const games = useAllGames();
 
-  const { selectedGame, handleSelectGame } = useSelectGame(games);
+  const sortedGames = games.sort((a, b) => {
+    return a.title.localeCompare(b.title);
+  });
+
+  const { selectedGame, handleSelectGame } = useSelectGame(sortedGames);
 
   const [errors, setErrors] = useState({});
 
