@@ -143,6 +143,42 @@ function PostCreateForm() {
         </Alert>
       ))}
 
+      <div className={styles.GameInfoContainer}>
+        <GameInfo game={selectedGame} />
+      </div>
+
+      <div className="text-center">
+        <Dropdown onSelect={(eventKey) => handleSelectGame(Number(eventKey))}>
+          <Dropdown.Toggle
+            variant="success"
+            id="dropdown-basic"
+            className={btnStyles.SelectGameBtn}
+          >
+            Select Game
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            <input
+              type="text"
+              placeholder="Search"
+              className={`${styles.DropdownSearch}`}
+            />
+            {games.map((game) => (
+              <Dropdown.Item key={game.id} eventKey={game.id}>
+                {game.title} ({game.platform.name})
+              </Dropdown.Item>
+            ))}
+            <Button className={btnStyles.AddGameBtn} type="submit">
+              Add Game
+            </Button>
+          </Dropdown.Menu>
+        </Dropdown>
+        {errors?.game?.map((message, idx) => (
+          <Alert variant="warning" key={idx}>
+            {message}
+          </Alert>
+        ))}
+      </div>
+
       <Form.Group>
         <Form.Label className={styles.PostLabel}>Title</Form.Label>
         <Form.Control
@@ -198,56 +234,20 @@ function PostCreateForm() {
     </div>
   );
 
-  const gameDropdown = (
-    <div className="text-center">
-      <Dropdown onSelect={(eventKey) => handleSelectGame(Number(eventKey))}>
-        <Dropdown.Toggle
-          variant="success"
-          id="dropdown-basic"
-          className={btnStyles.SelectGameBtn}
-        >
-          Select Game
-        </Dropdown.Toggle>
-        <Dropdown.Menu>
-          <input
-            type="text"
-            placeholder="Search"
-            className={`${styles.DropdownSearch}`}
-          />
-          {games.map((game) => (
-            <Dropdown.Item key={game.id} eventKey={game.id}>
-              {game.title} ({game.platform.name})
-            </Dropdown.Item>
-          ))}
-          <Button className={btnStyles.AddGameBtn} type="submit">
-            Add Game
-          </Button>
-        </Dropdown.Menu>
-      </Dropdown>
-      {errors?.game?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>
-          {message}
-        </Alert>
-      ))}
-    </div>
-  );
-
   return (
-    <Form onSubmit={handleSubmit}>
-      <Row className="d-flex justify-content-between">
-        <Col xs={12} md={5} lg={5} className="p-0 p-md-2">
-          <Container className={`${appStyles.Content} ${sharedStyles.Box}`}>
-            <GameInfo game={selectedGame} />
-            {gameDropdown}
-          </Container>
-        </Col>
-        <Col xs={12} md={7} lg={7} className="p-0 p-md-2">
-          <Container className={`${appStyles.Content} ${sharedStyles.Box}`}>
-            {textFields}
-          </Container>
-        </Col>
-      </Row>
-    </Form>
+    <Container
+      className="justify-content-center"
+    >
+      <Form onSubmit={handleSubmit}>
+        <Row className="d-flex justify-content-center">
+          <Col xs={12} md={8} lg={8} className="p-0 p-md-2">
+            <Container className={`${appStyles.Content} ${sharedStyles.Box}`}>
+              {textFields}
+            </Container>
+          </Col>
+        </Row>
+      </Form>
+    </Container>
   );
 }
 

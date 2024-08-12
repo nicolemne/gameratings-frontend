@@ -2,6 +2,14 @@
 
 @import "../styles/SharedBoxStyles.module.css";
 
+/* GameInfoContainer */
+
+.GameInfoContainer {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
 /* Upload image section */
 
 .UploadImage i {
@@ -69,7 +77,6 @@
 .Star {
   margin: 0 5px;
 }
-
 
 /* Media queries */
 

@@ -33,8 +33,7 @@
 
 .InfoContainer {
   display: grid;
-  grid-template-columns: 1fr 1fr 150px;
-  grid-template-rows: repeat(3, auto);
+  justify-content: space-between;
   gap: 8px;
   align-items: start;
 }
@@ -64,39 +63,4 @@
   object-fit: cover;
   width: 100%;
   height: 100%;
-}
-
-/* Media queries */
-
-/* 992px */
-@media (max-width: 992px) {
-  .InfoContainer {
-    grid-template-columns: 1fr 1fr 120px;
-    grid-template-rows: repeat(3, auto);
-  }
-
-  .ImageBox {
-    grid-column: 3 / 4;
-    grid-row: 1 / span 3;
-    height: 60px;
-  }
-
-  .RatingBox {
-    grid-column: 3 / 4;
-    grid-row: 3 / 4;
-  }
-}
-
-/* 767px */
-@media (max-width: 767px) {
-  .InfoContainer {
-    grid-template-columns: 1fr 1fr 120px;
-    grid-template-rows: repeat(3, auto);
-  }
-
-  .ImageBox {
-    grid-column: 3 / 4;
-    grid-row: 1 / span 3;
-    height: 120px;
-  }
 }
