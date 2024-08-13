@@ -10,15 +10,46 @@ import PostCreateForm from "./pages/posts/PostCreateForm";
 import PostPage from "./pages/posts/PostPage";
 
 import { AllGamesProvider } from "./contexts/AllGamesContext";
+import PostsPage from "./pages/posts/PostsPage";
+import { useCurrentUser } from "./contexts/CurrentUserContext";
 
 function App() {
+  const currentUser = useCurrentUser();
+  const profile_id = currentUser?.profile_id || "";
+
   return (
     <div className={styles.App}>
       <div className="NavBar">
         <NavBar />
         <Container className={styles.Main}>
           <Switch>
-            <Route exact path="/" render={() => <h1>Home Page</h1>} />
+            <Route
+              exact
+              path="/"
+              render={() => (
+                <PostsPage message="No results found. Adjust the search keyword." />
+              )}
+            />
+            <Route
+              exact
+              path="/feed"
+              render={() => (
+                <PostsPage
+                  message="No results found. Adjust the search keyword or follow a user."
+                  filter={`owner__followed__owner__profile=${profile_id}&`}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/liked"
+              render={() => (
+                <PostsPage
+                  message="No results found. Adjust the search keyword or like a post."
+                  filter={`likes__owner__profile=${profile_id}&ordering=-likes__created_at&`}
+                />
+              )}
+            />
             <Route
               exact
               path="/posts/create"
@@ -29,12 +60,6 @@ function App() {
               )}
             />
             <Route exact path="/posts/:id" render={() => <PostPage />} />
-            <Route exact path="/feed" render={() => <h1>Feed</h1>} />
-            <Route
-              exact
-              path="/likedposts"
-              render={() => <h1>Liked Posts</h1>}
-            />
             <Route exact path="/mygames" render={() => <h1>My Games</h1>} />
             <Route exact path="/profile" render={() => <h1>Profile</h1>} />
             <Route exact path="/signup" render={() => <SignUpForm />} />
