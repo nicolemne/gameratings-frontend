@@ -1,18 +1,37 @@
 .SearchBar input {
-    border-radius: 20px;
-    color: #242a3d;
-    padding-left: 40px;
-    margin-bottom: 16px;
-  }
-  
-  .SearchIcon {
-    position: absolute;
-    font-size: 1.2rem;
-    padding: 9px;
-    padding-left: 15px;
-  }
-  
-  .SearchIcon:hover {
-    cursor: default;
-    color: #cfced3;
-  }
+  border-radius: 20px;
+  color: #242a3d;
+  padding-left: 40px;
+  margin-bottom: 16px;
+}
+
+.SearchIcon {
+  position: absolute;
+  font-size: 1.2rem;
+  padding: 9px;
+  padding-left: 15px;
+}
+
+.SearchIcon:hover {
+  cursor: default;
+  color: #cfced3;
+}
+
+/* NoResults Contianer */
+
+.NoResultsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* NoResultsIcon */
+
+.NoResultsIcon {
+  font-size: 5rem;
+  margin-bottom: 18px;
+  background: linear-gradient(70deg, #8a4af3, #ffa750);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
