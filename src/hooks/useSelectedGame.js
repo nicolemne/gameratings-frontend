@@ -1,5 +1,9 @@
 import { useState } from "react";
 
+// Provides functionality to select a game from a list of games.
+// The hook returns the selected game object and its game fields,
+// along with a function to select a game based on its ID.
+
 export const useSelectGame = (games = []) => {
   const [selectedGame, setSelectedGame] = useState(null);
 

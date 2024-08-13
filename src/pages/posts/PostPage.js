@@ -9,19 +9,23 @@ import appStyles from "../../App.module.css";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { axiosReq } from "../../api/axiosDefaults";
 import Post from "./Post";
+import GameInfo from "../../components/GameInfo";
 
 function PostPage() {
   const { id } = useParams();
   const [post, setPost] = useState({ results: [] });
+  const [game, setGame] = useState(null);
 
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: post }] = await Promise.all([
-          axiosReq.get(`/posts/${id}`),
-        ]);
+        // Fetch the post details
+        const { data: post } = await axiosReq.get(`/posts/${id}`);
         setPost({ results: [post] });
-        console.log(post);
+
+        // Fetch the game details based on the game_id from the post
+        const { data: game } = await axiosReq.get(`/games/${post.game_id}`);
+        setGame(game);
       } catch (err) {
         console.log(err);
       }
@@ -34,6 +38,7 @@ function PostPage() {
       <Col className="py-2 p-0 p-lg-2" lg={8}>
         <p>Popular profiles for mobile</p>
         <Post {...post.results[0]} setPosts={setPost} />
+        {game && <GameInfo game={game} />}
         <Container className={appStyles.Content}>Comments</Container>
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">

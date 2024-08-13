@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../../styles/Post.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { Card, Media } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
@@ -80,28 +80,17 @@ const Post = (props) => {
         {content && <Card.Text>{content}</Card.Text>}
         <div className={styles.PostBar}>
           {like_id ? (
-            <span
-              onClick={() => {
-                handleUnlike();
-              }}
-            >
+            <span onClick={handleUnlike}>
               <i className={`fas fa-heart ${styles.Heart}`} />
             </span>
           ) : currentUser ? (
-            <span
-              onClick={() => {
-                handleLike();
-              }}
-            >
+            <span onClick={handleLike}>
               <i className={`far fa-heart ${styles.HeartOutline}`} />
             </span>
           ) : (
-            <OverlayTrigger
-              placement="top"
-              overlay={<Tooltip>Log In to like</Tooltip>}
-            >
+            <span>
               <i className="far fa-heart" />
-            </OverlayTrigger>
+            </span>
           )}
           <span className={styles.LikeCommentText}>{likes_count}</span>
           <Link to={`/posts/${id}`}>
