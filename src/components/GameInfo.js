@@ -4,11 +4,8 @@ import styles from "../styles/SharedBoxStyles.module.css";
 const GameInfo = ({ game }) => {
   return (
     <div className={styles.Box}>
-      <h5 className="text-center">Game</h5>
+      <h5 className="text-center">{game?.title || ""}</h5>
       <div className={styles.InfoContainer}>
-        <div className={styles.InfoText}>
-          <strong>Game</strong> {game?.title || ""}
-        </div>
         <div className={styles.InfoText}>
           <strong>Platform</strong> {game?.platform?.name || ""}
         </div>
@@ -24,11 +21,11 @@ const GameInfo = ({ game }) => {
         <div className={styles.InfoText}>
           <strong>Multiplayer</strong> {game?.multiplayer ? "Yes" : "No"}
         </div>
+        <div className={styles.InfoText}>
+          <strong>Rating</strong> {game?.average_star_rating || "N/A"}
+        </div>
         <div className={styles.ImageBox}>
           <img src={game?.image} alt="Game Cover" className={styles.Image} />
-        </div>
-        <div className={styles.RatingBox}>
-          <strong>Rating</strong> {game?.average_star_rating || "N/A"}
         </div>
       </div>
     </div>

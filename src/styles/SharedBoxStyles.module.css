@@ -4,8 +4,7 @@
 
 /* Text styling */
 
-.InfoText,
-.RatingBox {
+.InfoText {
   color: #ffffff;
   font-size: 13px;
   margin-bottom: 3px;
@@ -20,8 +19,7 @@
   color: #ffa750;
 }
 
-.InfoText strong,
-.RatingBox strong {
+.InfoText strong {
   display: block;
   font-size: 14px;
   font-weight: 400;
@@ -36,12 +34,6 @@
   justify-content: space-between;
   gap: 8px;
   align-items: start;
-}
-
-.RatingBox {
-  grid-column: 3 / 4;
-  grid-row: 3 / 4;
-  text-align: center;
 }
 
 /* Game image */
