@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
 
 import Avatar from "../../components/Avatar";
+import GameInfo from "../../components/GameInfo";
 
 const Post = (props) => {
   const {
@@ -20,6 +21,16 @@ const Post = (props) => {
     content,
     image,
     updated_at,
+    star_rating,
+    game_id,
+    game_title,
+    game_genre,
+    game_developer,
+    game_release_year,
+    game_platform,
+    game_multiplayer,
+    game_image,
+    game_average_star_rating,
     postPage,
     setPosts,
   } = props;
@@ -30,32 +41,32 @@ const Post = (props) => {
   const handleLike = async () => {
     try {
       const { data } = await axiosRes.post("/likes/", { post: id });
-      setPosts((prevPosts) => ({
-        ...prevPosts,
-        results: prevPosts.results.map((post) => {
+      setPosts((prevPost) => ({
+        ...prevPost,
+        results: prevPost.results.map((post) => {
           return post.id === id
             ? { ...post, likes_count: post.likes_count + 1, like_id: data.id }
             : post;
         }),
       }));
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
 
   const handleUnlike = async () => {
     try {
       await axiosRes.delete(`/likes/${like_id}/`);
-      setPosts((prevPosts) => ({
-        ...prevPosts,
-        results: prevPosts.results.map((post) => {
+      setPosts((prevPost) => ({
+        ...prevPost,
+        results: prevPost.results.map((post) => {
           return post.id === id
             ? { ...post, likes_count: post.likes_count - 1, like_id: null }
             : post;
         }),
       }));
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
 
@@ -76,24 +87,29 @@ const Post = (props) => {
       <Link to={`/posts/${id}`}>
         <Card.Img src={image} alt={title} className={styles.PostImage} />
       </Link>
+      <GameInfo
+        game={{
+          id: game_id,
+          title: game_title,
+          genre: { name: game_genre },
+          developer: game_developer,
+          release_year: game_release_year,
+          platform: { name: game_platform },
+          multiplayer: game_multiplayer,
+          image: game_image,
+          average_star_rating: game_average_star_rating,
+        }}
+      />
       <Card.Body>
         {title && <Card.Title className="text-center">{title}</Card.Title>}
         {content && <Card.Text>{content}</Card.Text>}
         <div className={styles.PostBar}>
           {like_id ? (
-            <span
-              onClick={() => {
-                handleUnlike();
-              }}
-            >
+            <span onClick={handleUnlike}>
               <i className={`fas fa-heart ${styles.Heart}`} />
             </span>
           ) : currentUser ? (
-            <span
-              onClick={() => {
-                handleLike();
-              }}
-            >
+            <span onClick={handleLike}>
               <i className={`far fa-heart ${styles.HeartOutline}`} />
             </span>
           ) : (
@@ -109,6 +125,8 @@ const Post = (props) => {
             <i className={`far fa-comments ${styles.CommentIcon}`} />
           </Link>
           <span className={styles.LikeCommentText}>{comments_count}</span>
+          <i className={`fa-solid fa-star ${styles.StarIcon}`} />
+          <span className={styles.LikeCommentText}>{star_rating}</span>
         </div>
       </Card.Body>
     </Card>

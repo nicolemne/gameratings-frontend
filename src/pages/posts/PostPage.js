@@ -10,29 +10,27 @@ import GameInfo from "../../components/GameInfo";
 
 function PostPage() {
   const { id } = useParams();
-  const [post, setPost] = useState(null);
+  const [post, setPost] = useState({ results: [] });
 
   useEffect(() => {
     const handleMount = async () => {
       try {
         const { data: post } = await axiosReq.get(`/posts/${id}`);
-        setPost(post);
+        setPost({ results: [post] });
+        console.log(post);
       } catch (err) {
         console.log(err);
       }
     };
+
     handleMount();
   }, [id]);
 
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
-        <p>Popular profiles for mobile</p>
-        {post && (
-          <>
-            <Post {...post} setPosts={setPost} />
-            <GameInfo game={post} />
-          </>
+        {post.results.length > 0 && (
+          <Post {...post.results[0]} setPosts={setPost} />
         )}
         <Container className={appStyles.Content}>Comments</Container>
       </Col>

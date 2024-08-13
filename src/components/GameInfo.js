@@ -24,7 +24,7 @@ const GameInfo = ({ game }) => {
           <strong>Multiplayer</strong> {game?.game_multiplayer ? "Yes" : "No"}
         </div>
         <div className={styles.InfoText}>
-          <strong>Rating</strong> {game?.game_average_star_rating || game?.average_star_rating || "N/A"}
+          <strong>Avg Rating</strong> {game?.game_average_star_rating || game?.average_star_rating || "N/A"}
         </div>
         <div className={styles.ImageBox}>
           <img src={game?.game_image || game?.image} alt="Game Cover" className={styles.Image} />

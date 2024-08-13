@@ -26,8 +26,9 @@ h5 {
 /* Like & Comment text */
 
 .LikeCommentText {
-  font-family: "Pixelify Sans", sans;
-  font-size: 1.2rem;
+  font-family: "Roboto", sans;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 /* Like & Comment icons */
@@ -58,9 +59,15 @@ h5 {
   margin-right: 1px;
 }
 
+.StarIcon {
+  color: #ffa750;
+  margin-left: 10px;
+  margin-right: 1px;
+}
+
 /* Image */
 
 .PostImage {
   border: 8px solid black;
-  border-radius: 4px;
+  border-radius: 5px 5px 0 0;
 }

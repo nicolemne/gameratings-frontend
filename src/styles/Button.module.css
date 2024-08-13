@@ -148,7 +148,8 @@
   border: none;
   border-radius: 30px;
   width: 8rem; 
-  margin-bottom: 22px;
+  margin-top: 1%;
+  margin-bottom: 15px;
 }
 
 .SelectGameBtn:hover {
