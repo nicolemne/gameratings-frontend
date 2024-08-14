@@ -25,15 +25,11 @@ import { useSelectGame } from "../../hooks/useSelectedGame";
 
 function PostCreateForm() {
   const games = useAllGames();
-
   const sortedGames = games.sort((a, b) => {
     return a.title.localeCompare(b.title);
   });
-
   const { selectedGame, handleSelectGame } = useSelectGame(sortedGames);
-
   const [errors, setErrors] = useState({});
-
   const [postData, setPostData] = useState({
     title: "",
     content: "",
@@ -41,11 +37,11 @@ function PostCreateForm() {
     star_rating: 0,
   });
   const { title, content, image, star_rating } = postData;
-
   const imageInput = useRef(null);
   const history = useHistory();
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const handleStarRatingChange = (event) => {
+  const handleStarRating = (event) => {
     setPostData({
       ...postData,
       [event.target.name]: parseInt(event.target.value),
@@ -105,6 +101,14 @@ function PostCreateForm() {
       }
     }
   };
+
+  const handleSearch = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const filteredGames = games.filter((game) =>
+    game.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   const textFields = (
     <div className={`${sharedStyles.Box} text-center`}>
@@ -169,8 +173,9 @@ function PostCreateForm() {
               type="text"
               placeholder="Search"
               className={`${styles.DropdownSearch}`}
+              onChange={handleSearch}
             />
-            {games.map((game) => (
+            {filteredGames.map((game) => (
               <Dropdown.Item key={game.id} eventKey={game.id}>
                 {game.title} ({game.platform.name})
               </Dropdown.Item>
@@ -231,7 +236,7 @@ function PostCreateForm() {
               key={`star_${value}`}
               value={value}
               checked={postData.star_rating === value}
-              onChange={handleStarRatingChange}
+              onChange={handleStarRating}
             />
           ))}
         </div>
