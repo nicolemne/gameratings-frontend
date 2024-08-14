@@ -15,6 +15,7 @@ import sharedStyles from "../../styles/SharedBoxStyles.module.css";
 
 import Asset from "../../components/Asset";
 import GameInfo from "../../components/GameInfo";
+import AddGameModal from "../../components/AddGame";
 
 import { Image } from "react-bootstrap";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
@@ -25,6 +26,7 @@ import { useSelectGame } from "../../hooks/useSelectedGame";
 
 function PostCreateForm() {
   const games = useAllGames();
+
   const sortedGames = games.sort((a, b) => {
     return a.title.localeCompare(b.title);
   });
@@ -39,7 +41,9 @@ function PostCreateForm() {
   const { title, content, image, star_rating } = postData;
   const imageInput = useRef(null);
   const history = useHistory();
+
   const [searchQuery, setSearchQuery] = useState("");
+  const [modalShow, setModalShow] = useState(false);
 
   const handleStarRating = (event) => {
     setPostData({
@@ -180,7 +184,11 @@ function PostCreateForm() {
                 {game.title} ({game.platform.name})
               </Dropdown.Item>
             ))}
-            <Button className={btnStyles.AddGameBtn} type="submit">
+            <Button
+              className={btnStyles.AddGameBtn}
+              type="submit"
+              onClick={() => setModalShow(true)}
+            >
               Add Game
             </Button>
           </Dropdown.Menu>
@@ -250,6 +258,7 @@ function PostCreateForm() {
       <Button className={btnStyles.CreateBtn} type="submit">
         Create
       </Button>
+      <AddGameModal show={modalShow} onHide={() => setModalShow(false)} />
     </div>
   );
 
