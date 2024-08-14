@@ -1,16 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 
 import btnStyles from "../styles/Button.module.css";
+import { axiosReq } from "../api/axiosDefaults";
 
 function AddGameModal({ show, onHide }) {
   const [gameData, setGameData] = useState({
     title: "",
+    developer: "",
+    release_year: "",
+    genre: "",
+    platform: "",
   });
   const [errors, setErrors] = useState({});
+  
+  const [genres, setGenres] = useState([]);
+  const [platforms, setPlatforms] = useState([]);
 
   const handleChange = (event) => {
     setGameData({
@@ -18,6 +26,31 @@ function AddGameModal({ show, onHide }) {
       [event.target.name]: event.target.value,
     });
   };
+
+  useEffect(() => {
+    if (show) {
+      const fetchGenres = async () => {
+        try {
+          const { data } = await axiosReq.get("/genres/");
+          setGenres(data.results);
+        } catch (err) {
+          console.log(err);
+        }
+      };
+
+      const fetchPlatforms = async () => {
+        try {
+          const { data } = await axiosReq.get("/platforms/");
+          setPlatforms(data.results);
+        } catch (err) {
+          console.log(err);
+        }
+      };
+
+      fetchGenres();
+      fetchPlatforms();
+    }
+  }, [show]);
 
   return (
     <Modal
@@ -80,6 +113,49 @@ function AddGameModal({ show, onHide }) {
             </Alert>
           ))}
 
+          <Form.Group controlId="formGameGenre">
+            <Form.Label>Genre</Form.Label>
+            <Form.Control
+              as="select"
+              name="genre"
+              value={gameData.genre}
+              onChange={handleChange}
+            >
+              <option value="">Select a genre</option>
+              {genres.map((genre) => (
+                <option key={genre.id} value={genre.id}>
+                  {genre.name}
+                </option>
+              ))}
+            </Form.Control>
+          </Form.Group>
+          {errors.genre?.map((message, idx) => (
+            <Alert variant="warning" key={idx}>
+              {message}
+            </Alert>
+          ))}
+
+          <Form.Group controlId="formGamePlatform">
+            <Form.Label>Platform</Form.Label>
+            <Form.Control
+              as="select"
+              name="platform"
+              value={gameData.platform}
+              onChange={handleChange}
+            >
+              <option value="">Select a platform</option>
+              {platforms.map((platform) => (
+                <option key={platform.id} value={platform.id}>
+                  {platform.name}
+                </option>
+              ))}
+            </Form.Control>
+          </Form.Group>
+          {errors.platform?.map((message, idx) => (
+            <Alert variant="warning" key={idx}>
+              {message}
+            </Alert>
+          ))}
         </Form>
       </Modal.Body>
       <Modal.Footer>
