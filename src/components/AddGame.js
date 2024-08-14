@@ -16,6 +16,7 @@ function AddGameModal({ show, onHide }) {
     release_year: "",
     genre: "",
     platform: "",
+    multiplayer: false,
   });
   const [errors, setErrors] = useState({});
 
@@ -23,9 +24,10 @@ function AddGameModal({ show, onHide }) {
   const [platforms, setPlatforms] = useState([]);
 
   const handleChange = (event) => {
+    const { name, value, type, checked } = event.target;
     setGameData({
       ...gameData,
-      [event.target.name]: event.target.value,
+      [name]: type === "checkbox" ? checked : value,
     });
   };
 
@@ -182,6 +184,16 @@ function AddGameModal({ show, onHide }) {
               {message}
             </Alert>
           ))}
+
+          <Form.Group controlId="formGameMultiplayer">
+            <Form.Check
+              type="checkbox"
+              label="Multiplayer"
+              name="multiplayer"
+              checked={gameData.multiplayer}
+              onChange={handleChange}
+            />
+          </Form.Group>
         </Form>
       </Modal.Body>
       <Modal.Footer>
