@@ -33,11 +33,15 @@
   background-color: rgba(0, 0, 0, 0.6);
   border-radius: 10px;
   width: 100%;
+  padding: 20px;
 }
 
 .ProfileName {
   display: flex;
   align-items: center;
+  background: linear-gradient(70deg, #ff4d4d, #ffa750);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
 }
 
 /* NavBar icons */
@@ -70,36 +74,6 @@
   display: none;
 }
 
-/* Search icon and input form */
-
-.NavSearchForm {
-  display: flex;
-  align-items: center;
-  max-width: 15rem;
-  width: 15rem;
-  height: 5rem;
-  padding-left: 25px;
-}
-
-.NavSearchInput {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-.NavSearchIcon {
-  font-size: 1.1rem;
-  background: linear-gradient(70deg, #8a4af3, #ffa750);
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
-}
-
-/* Search container */
-
-.SearchContainer {
-  display: flex;
-  align-items: center;
-}
-
 /* Media queries */
 
 /* 1480px */
@@ -108,7 +82,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding-bottom: 10px;
+    padding: 20px;
   }
 
   .NavLink {
@@ -131,10 +105,6 @@
   .LogoSmall {
     display: block;
     margin-right: 5px;
-  }
-
-  .NavSearchForm {
-    padding-left: 0px;
   }
 }
 

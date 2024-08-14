@@ -3,8 +3,6 @@ import {
   Navbar,
   Container,
   Nav,
-  Form,
-  FormControl,
   Button,
 } from "react-bootstrap";
 import logoMain from "../assets/logo_main.png";
@@ -135,19 +133,6 @@ const NavBar = () => {
                 height="40px"
                 className={styles.LogoSmall}
               />
-              <Form className={`d-flex ${styles.NavSearchForm}`}>
-                <FormControl
-                  type="text"
-                  placeholder="Search"
-                  size="sm"
-                  className={styles.NavSearchInput}
-                />
-                <Button variant="link" className={btnStyles.BtnSearch} size="sm">
-                  <i
-                    className={`fa-solid fa-magnifying-glass ${styles.NavSearchIcon}`}
-                  ></i>
-                </Button>
-              </Form>
             </div>
             <Nav>
               {/* discover */}

@@ -10,6 +10,9 @@
   font-size: 1.2rem;
   padding: 9px;
   padding-left: 15px;
+  background: linear-gradient(70deg, #8a4af3, #ffa750);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
 }
 
 .SearchIcon:hover {
