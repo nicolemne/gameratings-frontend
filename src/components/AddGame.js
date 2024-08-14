@@ -3,6 +3,8 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
 
 import btnStyles from "../styles/Button.module.css";
 import { axiosReq } from "../api/axiosDefaults";
@@ -16,7 +18,7 @@ function AddGameModal({ show, onHide }) {
     platform: "",
   });
   const [errors, setErrors] = useState({});
-  
+
   const [genres, setGenres] = useState([]);
   const [platforms, setPlatforms] = useState([]);
 
@@ -51,6 +53,14 @@ function AddGameModal({ show, onHide }) {
       fetchPlatforms();
     }
   }, [show]);
+
+  const handleSelectGenre = (genreId) => {
+    setGameData({ ...gameData, genre: genreId });
+  };
+
+  const handleSelectPlatform = (platformId) => {
+    setGameData({ ...gameData, platform: platformId });
+  };
 
   return (
     <Modal
@@ -115,19 +125,26 @@ function AddGameModal({ show, onHide }) {
 
           <Form.Group controlId="formGameGenre">
             <Form.Label>Genre</Form.Label>
-            <Form.Control
-              as="select"
-              name="genre"
-              value={gameData.genre}
-              onChange={handleChange}
+            <DropdownButton
+              id="dropdown-genre"
+              title={
+                gameData.genre
+                  ? genres.find((genre) => genre.id === gameData.genre).name
+                  : "Select a genre"
+              }
+              variant="secondary"
             >
-              <option value="">Select a genre</option>
-              {genres.map((genre) => (
-                <option key={genre.id} value={genre.id}>
-                  {genre.name}
-                </option>
-              ))}
-            </Form.Control>
+              <div style={{ maxHeight: "150px", overflowY: "auto" }}>
+                {genres.map((genre) => (
+                  <Dropdown.Item
+                    key={genre.id}
+                    onClick={() => handleSelectGenre(genre.id)}
+                  >
+                    {genre.name}
+                  </Dropdown.Item>
+                ))}
+              </div>
+            </DropdownButton>
           </Form.Group>
           {errors.genre?.map((message, idx) => (
             <Alert variant="warning" key={idx}>
@@ -137,19 +154,28 @@ function AddGameModal({ show, onHide }) {
 
           <Form.Group controlId="formGamePlatform">
             <Form.Label>Platform</Form.Label>
-            <Form.Control
-              as="select"
-              name="platform"
-              value={gameData.platform}
-              onChange={handleChange}
+            <DropdownButton
+              id="dropdown-platform"
+              title={
+                gameData.platform
+                  ? platforms.find(
+                      (platform) => platform.id === gameData.platform
+                    ).name
+                  : "Select a platform"
+              }
+              variant="secondary"
             >
-              <option value="">Select a platform</option>
-              {platforms.map((platform) => (
-                <option key={platform.id} value={platform.id}>
-                  {platform.name}
-                </option>
-              ))}
-            </Form.Control>
+              <div style={{ maxHeight: "150px", overflowY: "auto" }}>
+                {platforms.map((platform) => (
+                  <Dropdown.Item
+                    key={platform.id}
+                    onClick={() => handleSelectPlatform(platform.id)}
+                  >
+                    {platform.name}
+                  </Dropdown.Item>
+                ))}
+              </div>
+            </DropdownButton>
           </Form.Group>
           {errors.platform?.map((message, idx) => (
             <Alert variant="warning" key={idx}>
