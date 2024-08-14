@@ -7,6 +7,7 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
 
 import styles from "../../styles/PostCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
@@ -164,35 +165,37 @@ function PostCreateForm() {
       </div>
 
       <div className="text-center">
-        <Dropdown onSelect={(eventKey) => handleSelectGame(Number(eventKey))}>
-          <Dropdown.Toggle
-            variant="success"
-            id="dropdown-basic"
-            className={btnStyles.SelectGameBtn}
-          >
-            Select Game
-          </Dropdown.Toggle>
-          <Dropdown.Menu>
-            <input
-              type="text"
-              placeholder="Search"
-              className={`${styles.DropdownSearch}`}
-              onChange={handleSearch}
-            />
+        <DropdownButton
+          id="dropdown-basic-button"
+          variant="info"
+          title="Select Game"
+        >
+          <Form.Control
+            type="text"
+            placeholder="Search"
+            value={searchQuery}
+            onChange={handleSearch}
+            className={`${styles.DropdownSearch}`}
+          />
+          <div style={{ maxHeight: "150px", overflowY: "auto" }}>
             {filteredGames.map((game) => (
-              <Dropdown.Item key={game.id} eventKey={game.id}>
+              <Dropdown.Item
+                key={game.id}
+                onClick={() => handleSelectGame(game.id)}
+              >
                 {game.title} ({game.platform.name})
               </Dropdown.Item>
             ))}
-            <Button
-              className={btnStyles.AddGameBtn}
-              type="submit"
-              onClick={() => setModalShow(true)}
-            >
-              Add Game
-            </Button>
-          </Dropdown.Menu>
-        </Dropdown>
+          </div>
+          <Dropdown.Divider />
+          <Button
+            className={btnStyles.AddGameBtn}
+            type="button"
+            onClick={() => setModalShow(true)}
+          >
+            Add Game
+          </Button>
+        </DropdownButton>
         <hr className={styles.CustomHrPost} />
         {errors?.game?.map((message, idx) => (
           <Alert variant="warning" key={idx}>

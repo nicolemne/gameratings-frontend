@@ -140,28 +140,6 @@
   color: #ffffff;
 }
 
-.SelectGameBtn {
-  font-size: 15px;
-  font-weight: 500;
-  background-color: #8a4af3;
-  color: #ffffff;
-  border: none;
-  border-radius: 30px;
-  width: 8rem; 
-  margin-top: 1%;
-  margin-bottom: 15px;
-}
-
-.SelectGameBtn:hover {
-  background-color: #ffffff;
-  color: #8a4af3;
-}
-
-.SelectGameBtn:active {
-  background-color: #ffffff;
-  color: #8a4af3;
-}
-
 .CreateBtn {
   font-size: 15px;
   font-weight: 500;
