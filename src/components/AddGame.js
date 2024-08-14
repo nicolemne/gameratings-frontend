@@ -64,6 +64,27 @@ function AddGameModal({ show, onHide }) {
     setGameData({ ...gameData, platform: platformId });
   };
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData();
+
+    formData.append("title", gameData.title);
+    formData.append("game_developer", gameData.developer);
+    formData.append("release_year", gameData.release_year);
+    formData.append("genre_id", gameData.genre);
+    formData.append("platform_id", gameData.platform);
+    formData.append("multiplayer", gameData.multiplayer);
+
+    try {
+      await axiosReq.post("/games/", formData);
+      onHide();
+    } catch (err) {
+      if (err.response?.status !== 401) {
+        setErrors(err.response?.data);
+      }
+    }
+  };
+
   return (
     <Modal
       show={show}
@@ -76,7 +97,7 @@ function AddGameModal({ show, onHide }) {
         <Modal.Title id="contained-modal-title-vcenter">New Game</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <Form.Group controlId="formGameTitle">
             <Form.Label>Game Title</Form.Label>
             <Form.Control
@@ -194,13 +215,13 @@ function AddGameModal({ show, onHide }) {
               onChange={handleChange}
             />
           </Form.Group>
+          <Modal.Footer>
+            <Button type="submit" className={btnStyles.AddGameBtn}>
+              Add Game
+            </Button>
+          </Modal.Footer>
         </Form>
       </Modal.Body>
-      <Modal.Footer>
-        <Button type="submit" className={btnStyles.AddGameBtn}>
-          Add Game
-        </Button>
-      </Modal.Footer>
     </Modal>
   );
 }
