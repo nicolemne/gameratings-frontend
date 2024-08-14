@@ -1,0 +1,61 @@
+/* Image */
+
+.Image {
+  max-height: 15rem;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.UploadImage i {
+  margin-top: 10px;
+  font-size: 7rem;
+  margin-left: 10px;
+  background: linear-gradient(70deg, #8a4af3, #ffa750);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+.UploadText {
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  color: #ffffff;
+}
+
+.UploadText:hover {
+  color: #ffa750;
+}
+
+/* Modal  */
+
+.LabelStyle {
+  font-family: "Pixelify Sans", sans;
+  font-size: 20px;
+  color: #ffa750;
+  text-transform: uppercase;
+}
+
+.ModalTitle {
+  font-family: "Pixelify Sans", sans;
+  font-size: 40px;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.ModalBody {
+  background-color: #181435;
+}
+
+.ModalTitleContainer {
+  background: linear-gradient(70deg, #8a4af3, #ffa750);
+}
+
+/* Input fields  */
+
+.InputStyle {
+  width: 300px;
+}
+
+.InputStyleYear {
+  width: 138px;
+}

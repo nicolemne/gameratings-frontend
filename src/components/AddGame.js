@@ -6,9 +6,11 @@ import Alert from "react-bootstrap/Alert";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 
+import styles from "../styles/AddGame.module.css";
 import btnStyles from "../styles/Button.module.css";
-import { axiosReq } from "../api/axiosDefaults";
+import Asset from "../components/Asset";
 
+import { axiosReq } from "../api/axiosDefaults";
 import { Image } from "react-bootstrap";
 
 function AddGameModal({ show, onHide }) {
@@ -37,12 +39,12 @@ function AddGameModal({ show, onHide }) {
 
   const handleChangeGameImage = (event) => {
     if (event.target.files.length) {
-        URL.revokeObjectURL(gameData.gameImage);
-        setGameData((prevGameData) => ({
-            ...prevGameData,
-            gameImage: URL.createObjectURL(event.target.files[0]),
-        }));
-        imageInput.current = event.target.files[0];
+      URL.revokeObjectURL(gameData.gameImage);
+      setGameData((prevGameData) => ({
+        ...prevGameData,
+        gameImage: URL.createObjectURL(event.target.files[0]),
+      }));
+      imageInput.current = event.target.files[0];
     }
   };
 
@@ -109,19 +111,25 @@ function AddGameModal({ show, onHide }) {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">New Game</Modal.Title>
+      <Modal.Header closeButton className={styles.ModalTitleContainer}>
+        <Modal.Title
+          id="contained-modal-title-vcenter"
+          className={styles.ModalTitle}
+        >
+          New Game
+        </Modal.Title>
       </Modal.Header>
-      <Modal.Body>
+      <Modal.Body className={styles.ModalBody}>
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="formGameTitle">
-            <Form.Label>Game Title</Form.Label>
+            <Form.Label className={styles.LabelStyle}>Game Title</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Enter Game title"
+              placeholder="Title"
               name="title"
               value={gameData.title}
               onChange={handleChange}
+              className={styles.InputStyle}
             />
           </Form.Group>
           {errors.title?.map((message, idx) => (
@@ -131,13 +139,16 @@ function AddGameModal({ show, onHide }) {
           ))}
 
           <Form.Group controlId="formGameDeveloper">
-            <Form.Label>Game Developer</Form.Label>
+            <Form.Label className={styles.LabelStyle}>
+              Game Developer
+            </Form.Label>
             <Form.Control
               type="text"
-              placeholder="Enter Developer"
+              placeholder="Developer"
               name="developer"
               value={gameData.developer}
               onChange={handleChange}
+              className={styles.InputStyle}
             />
           </Form.Group>
           {errors.developer?.map((message, idx) => (
@@ -147,13 +158,14 @@ function AddGameModal({ show, onHide }) {
           ))}
 
           <Form.Group controlId="formGameReleaseYear">
-            <Form.Label>Release Year</Form.Label>
+            <Form.Label className={styles.LabelStyle}>Release Year</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Enter Release Year"
+              placeholder="Year"
               name="release_year"
               value={gameData.release_year}
               onChange={handleChange}
+              className={styles.InputStyleYear}
             />
           </Form.Group>
           {errors.release_year?.map((message, idx) => (
@@ -163,7 +175,7 @@ function AddGameModal({ show, onHide }) {
           ))}
 
           <Form.Group controlId="formGameGenre">
-            <Form.Label>Genre</Form.Label>
+            <Form.Label className={styles.LabelStyle}>Genre</Form.Label>
             <DropdownButton
               id="dropdown-genre"
               title={
@@ -171,7 +183,7 @@ function AddGameModal({ show, onHide }) {
                   ? genres.find((genre) => genre.id === gameData.genre).name
                   : "Select a genre"
               }
-              variant="secondary"
+              variant="info"
             >
               <div style={{ maxHeight: "150px", overflowY: "auto" }}>
                 {genres.map((genre) => (
@@ -192,7 +204,7 @@ function AddGameModal({ show, onHide }) {
           ))}
 
           <Form.Group controlId="formGamePlatform">
-            <Form.Label>Platform</Form.Label>
+            <Form.Label className={styles.LabelStyle}>Platform</Form.Label>
             <DropdownButton
               id="dropdown-platform"
               title={
@@ -202,7 +214,7 @@ function AddGameModal({ show, onHide }) {
                     ).name
                   : "Select a platform"
               }
-              variant="secondary"
+              variant="info"
             >
               <div style={{ maxHeight: "150px", overflowY: "auto" }}>
                 {platforms.map((platform) => (
@@ -228,6 +240,7 @@ function AddGameModal({ show, onHide }) {
               label="Multiplayer"
               name="multiplayer"
               checked={gameData.multiplayer}
+              className={styles.LabelStyle}
               onChange={handleChange}
             />
           </Form.Group>
@@ -241,15 +254,29 @@ function AddGameModal({ show, onHide }) {
             {gameData.gameImage ? (
               <>
                 <figure>
-                  <Image src={gameData.image} rounded />
+                  <Image
+                    className={styles.Image}
+                    src={gameData.gameImage}
+                    rounded
+                  />
                 </figure>
                 <div>
-                  <Form.Label htmlFor="game-image-upload">Change image</Form.Label>
+                  <Form.Label
+                    className={`${styles.UploadText} btn`}
+                    htmlFor="game-image-upload"
+                  >
+                    Change image
+                  </Form.Label>
                 </div>
               </>
             ) : (
               <Form.Label htmlFor="game-image-upload">
-                Click to upload image
+                <span className={styles.UploadImage}>
+                  <i className="fa-regular fa-image"></i>
+                  <span className={styles.UploadText}>
+                    <Asset message="Click to upload image" />
+                  </span>
+                </span>
               </Form.Label>
             )}
             <Form.File
