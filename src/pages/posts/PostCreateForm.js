@@ -63,10 +63,11 @@ function PostCreateForm() {
   const handleChangeImage = (event) => {
     if (event.target.files.length) {
       URL.revokeObjectURL(image);
-      setPostData({
-        ...postData,
+      setPostData((prevPostData) => ({
+        ...prevPostData,
         image: URL.createObjectURL(event.target.files[0]),
-      });
+      }));
+      imageInput.current = event.target.files[0];
     }
   };
 
@@ -261,7 +262,6 @@ function PostCreateForm() {
       <Button className={btnStyles.CreateBtn} type="submit">
         Create
       </Button>
-      <AddGameModal show={modalShow} onHide={() => setModalShow(false)} />
     </div>
   );
 
@@ -276,6 +276,7 @@ function PostCreateForm() {
           </Col>
         </Row>
       </Form>
+      <AddGameModal show={modalShow} onHide={() => setModalShow(false)} />
     </Container>
   );
 }

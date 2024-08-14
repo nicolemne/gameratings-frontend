@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -9,6 +9,8 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import btnStyles from "../styles/Button.module.css";
 import { axiosReq } from "../api/axiosDefaults";
 
+import { Image } from "react-bootstrap";
+
 function AddGameModal({ show, onHide }) {
   const [gameData, setGameData] = useState({
     title: "",
@@ -17,11 +19,13 @@ function AddGameModal({ show, onHide }) {
     genre: "",
     platform: "",
     multiplayer: false,
+    gameImage: "",
   });
   const [errors, setErrors] = useState({});
 
   const [genres, setGenres] = useState([]);
   const [platforms, setPlatforms] = useState([]);
+  const imageInput = useRef(null);
 
   const handleChange = (event) => {
     const { name, value, type, checked } = event.target;
@@ -29,6 +33,17 @@ function AddGameModal({ show, onHide }) {
       ...gameData,
       [name]: type === "checkbox" ? checked : value,
     });
+  };
+
+  const handleChangeGameImage = (event) => {
+    if (event.target.files.length) {
+        URL.revokeObjectURL(gameData.gameImage);
+        setGameData((prevGameData) => ({
+            ...prevGameData,
+            gameImage: URL.createObjectURL(event.target.files[0]),
+        }));
+        imageInput.current = event.target.files[0];
+    }
   };
 
   useEffect(() => {
@@ -74,6 +89,7 @@ function AddGameModal({ show, onHide }) {
     formData.append("genre_id", gameData.genre);
     formData.append("platform_id", gameData.platform);
     formData.append("multiplayer", gameData.multiplayer);
+    formData.append("image", imageInput.current);
 
     try {
       await axiosReq.post("/games/", formData);
@@ -215,6 +231,40 @@ function AddGameModal({ show, onHide }) {
               onChange={handleChange}
             />
           </Form.Group>
+          {errors.multiplayer?.map((message, idx) => (
+            <Alert variant="warning" key={idx}>
+              {message}
+            </Alert>
+          ))}
+
+          <Form.Group>
+            {gameData.gameImage ? (
+              <>
+                <figure>
+                  <Image src={gameData.image} rounded />
+                </figure>
+                <div>
+                  <Form.Label htmlFor="game-image-upload">Change image</Form.Label>
+                </div>
+              </>
+            ) : (
+              <Form.Label htmlFor="game-image-upload">
+                Click to upload image
+              </Form.Label>
+            )}
+            <Form.File
+              id="game-image-upload"
+              accept="image/*"
+              ref={imageInput}
+              onChange={handleChangeGameImage}
+            />
+            {errors?.image?.map((message, idx) => (
+              <Alert variant="warning" key={idx}>
+                {message}
+              </Alert>
+            ))}
+          </Form.Group>
+
           <Modal.Footer>
             <Button type="submit" className={btnStyles.AddGameBtn}>
               Add Game
