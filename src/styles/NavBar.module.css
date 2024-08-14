@@ -39,7 +39,7 @@
 .ProfileName {
   display: flex;
   align-items: center;
-  background: linear-gradient(70deg, #ff4d4d, #ffa750);
+  background: linear-gradient(70deg, #1094f8, #ffffff);
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
 }
