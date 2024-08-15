@@ -12,6 +12,7 @@ import PostPage from "./pages/posts/PostPage";
 import { AllGamesProvider } from "./contexts/AllGamesContext";
 import PostsPage from "./pages/posts/PostsPage";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
+import PostEditForm from "./pages/posts/PostEditForm";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -56,6 +57,15 @@ function App() {
               render={() => (
                 <AllGamesProvider>
                   <PostCreateForm />
+                </AllGamesProvider>
+              )}
+            />
+            <Route
+              exact
+              path="/posts/:id/edit"
+              render={() => (
+                <AllGamesProvider>
+                  <PostEditForm />
                 </AllGamesProvider>
               )}
             />
