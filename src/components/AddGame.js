@@ -12,7 +12,7 @@ import btnStyles from "../styles/Button.module.css";
 import Asset from "../components/Asset";
 
 import useSearch from "../hooks/useSearch";
-import { useSetAllGames } from "../contexts/AllGamesContext";
+import { useAllGames, useSetAllGames } from "../contexts/AllGamesContext";
 
 import { axiosReq } from "../api/axiosDefaults";
 
@@ -36,6 +36,7 @@ function AddGameModal({ show, onHide }) {
 
   const imageInput = useRef(null);
   const setGames = useSetAllGames();
+  const games = useAllGames();
 
   const handleChange = (event) => {
     const { name, value, type, checked } = event.target;
@@ -93,11 +94,25 @@ function AddGameModal({ show, onHide }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const formData = new FormData(); 
+    const formData = new FormData();
+    const formattedYear = `${gameData.release_year}-01-01`;
+
+    const duplicateGame = games.find(
+      (game) =>
+        game.title.toLowerCase() === gameData.title.toLowerCase() &&
+        game.platform.id === parseInt(gameData.platform)
+    );
+
+    if (duplicateGame) {
+      setErrors({
+        title: ["A game with this title and platform already exists."],
+      });
+      return;
+    }
 
     formData.append("title", gameData.title);
     formData.append("game_developer", gameData.developer);
-    formData.append("release_year", gameData.release_year);
+    formData.append("release_year", formattedYear);
     formData.append("genre_id", gameData.genre);
     formData.append("platform_id", gameData.platform);
     formData.append("multiplayer", gameData.multiplayer);
