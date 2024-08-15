@@ -5,8 +5,10 @@ import { axiosReq } from "../api/axiosDefaults";
 // games in the database can be displayed in a list or dropdown
 
 export const AllGamesContext = createContext();
+export const SetAllGamesContext = createContext();
 
 export const useAllGames = () => useContext(AllGamesContext);
+export const useSetAllGames = () => useContext(SetAllGamesContext);
 
 export const AllGamesProvider = ({ children }) => {
   const [games, setGames] = useState([]);
@@ -26,7 +28,9 @@ export const AllGamesProvider = ({ children }) => {
 
   return (
     <AllGamesContext.Provider value={games}>
-      {children}
+      <SetAllGamesContext.Provider value={setGames}>
+        {children}
+      </SetAllGamesContext.Provider>
     </AllGamesContext.Provider>
   );
 };

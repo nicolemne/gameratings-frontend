@@ -9,7 +9,7 @@ import SignInForm from "./pages/auth/SignInForm";
 import PostCreateForm from "./pages/posts/PostCreateForm";
 import PostPage from "./pages/posts/PostPage";
 
-import { AllGamesProvider } from "./contexts/AllGamesContext";
+// import { AllGamesProvider } from "./contexts/AllGamesContext";
 import PostsPage from "./pages/posts/PostsPage";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 import PostEditForm from "./pages/posts/PostEditForm";
@@ -54,20 +54,12 @@ function App() {
             <Route
               exact
               path="/posts/create"
-              render={() => (
-                <AllGamesProvider>
-                  <PostCreateForm />
-                </AllGamesProvider>
-              )}
+              render={() => <PostCreateForm />}
             />
             <Route
               exact
               path="/posts/:id/edit"
-              render={() => (
-                <AllGamesProvider>
-                  <PostEditForm />
-                </AllGamesProvider>
-              )}
+              render={() => <PostEditForm />}
             />
             <Route exact path="/posts/:id" render={() => <PostPage />} />
             <Route exact path="/mygames" render={() => <h1>My Games</h1>} />

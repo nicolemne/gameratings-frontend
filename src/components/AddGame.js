@@ -12,6 +12,7 @@ import btnStyles from "../styles/Button.module.css";
 import Asset from "../components/Asset";
 
 import useSearch from "../hooks/useSearch";
+import { useSetAllGames } from "../contexts/AllGamesContext";
 
 import { axiosReq } from "../api/axiosDefaults";
 
@@ -34,6 +35,7 @@ function AddGameModal({ show, onHide }) {
   const platformDropdown = useSearch();
 
   const imageInput = useRef(null);
+  const setGames = useSetAllGames();
 
   const handleChange = (event) => {
     const { name, value, type, checked } = event.target;
@@ -102,7 +104,8 @@ function AddGameModal({ show, onHide }) {
     formData.append("image", imageInput.current);
 
     try {
-      await axiosReq.post("/games/", formData);
+      const { data } = await axiosReq.post("/games/", formData);
+      setGames((prevGames) => [data, ...prevGames]);
       onHide();
     } catch (err) {
       if (err.response?.status !== 401) {
