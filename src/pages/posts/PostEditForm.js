@@ -95,7 +95,6 @@ function PostEditForm() {
         ...prevPostData,
         image: URL.createObjectURL(event.target.files[0]),
       }));
-      imageInput.current = event.target.files[0];
     }
   };
 

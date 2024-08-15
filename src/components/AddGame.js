@@ -181,7 +181,7 @@ function AddGameModal({ show, onHide }) {
           <Form.Group controlId="formGameReleaseYear">
             <Form.Label className={styles.LabelStyle}>Release Year</Form.Label>
             <Form.Control
-              type="text"
+              type="number"
               placeholder="Year"
               name="release_year"
               value={gameData.release_year}
