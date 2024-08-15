@@ -16,7 +16,7 @@ export const AllGamesProvider = ({ children }) => {
   const handleMount = async () => {
     try {
       const { data } = await axiosReq.get("/games/");
-      setGames(data.results);
+      setGames(data);
     } catch (err) {
       console.log(err);
     }

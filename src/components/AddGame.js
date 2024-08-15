@@ -61,7 +61,7 @@ function AddGameModal({ show, onHide }) {
       const fetchGenres = async () => {
         try {
           const { data } = await axiosReq.get("/genres/");
-          setGenres(data.results);
+          setGenres(data);
         } catch (err) {
           console.log(err);
         }
@@ -70,7 +70,7 @@ function AddGameModal({ show, onHide }) {
       const fetchPlatforms = async () => {
         try {
           const { data } = await axiosReq.get("/platforms/");
-          setPlatforms(data.results);
+          setPlatforms(data);
         } catch (err) {
           console.log(err);
         }
@@ -93,7 +93,7 @@ function AddGameModal({ show, onHide }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const formData = new FormData();
+    const formData = new FormData(); 
 
     formData.append("title", gameData.title);
     formData.append("game_developer", gameData.developer);
