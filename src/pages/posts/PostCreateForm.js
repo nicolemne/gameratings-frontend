@@ -144,7 +144,6 @@ function PostCreateForm() {
               <span className={styles.UploadText}>
                 <Asset message="Click to upload image" />
               </span>
-              <hr className={styles.CustomHrPost} />
             </span>
           </Form.Label>
         )}
@@ -154,6 +153,7 @@ function PostCreateForm() {
           ref={imageInput}
           onChange={handleChangeImage}
         />
+        <hr className={styles.CustomHrPost} />
       </Form.Group>
       {errors?.image?.map((message, idx) => (
         <Alert variant="warning" key={idx}>

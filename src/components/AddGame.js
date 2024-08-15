@@ -23,10 +23,12 @@ function AddGameModal({ show, onHide }) {
     multiplayer: false,
     gameImage: "",
   });
-  const [errors, setErrors] = useState({});
 
+  const [errors, setErrors] = useState({});
   const [genres, setGenres] = useState([]);
   const [platforms, setPlatforms] = useState([]);
+  const [searchGenreQuery, setSearchGenreQuery] = useState("");
+  const [searchPlatformQuery, setSearchPlatformQuery] = useState("");
   const imageInput = useRef(null);
 
   const handleChange = (event) => {
@@ -102,6 +104,22 @@ function AddGameModal({ show, onHide }) {
       }
     }
   };
+
+  const handleSearchGenre = (event) => {
+    setSearchGenreQuery(event.target.value);
+  };
+
+  const handleSearchPlatform = (event) => {
+    setSearchPlatformQuery(event.target.value);
+  };
+
+  const filteredGenres = genres.filter((genre) =>
+    genre.name.toLowerCase().includes(searchGenreQuery.toLowerCase())
+  );
+
+  const filteredPlatforms = platforms.filter((platform) =>
+    platform.name.toLowerCase().includes(searchPlatformQuery.toLowerCase())
+  );
 
   return (
     <Modal
@@ -185,8 +203,15 @@ function AddGameModal({ show, onHide }) {
               }
               variant="info"
             >
+              <Form.Control
+                type="text"
+                placeholder="Search Genres"
+                value={searchGenreQuery}
+                onChange={handleSearchGenre}
+                className={`${styles.DropdownSearch}`}
+              />
               <div style={{ maxHeight: "150px", overflowY: "auto" }}>
-                {genres.map((genre) => (
+                {filteredGenres.map((genre) => (
                   <Dropdown.Item
                     key={genre.id}
                     onClick={() => handleSelectGenre(genre.id)}
@@ -216,8 +241,15 @@ function AddGameModal({ show, onHide }) {
               }
               variant="info"
             >
+              <Form.Control
+                type="text"
+                placeholder="Search Platforms"
+                value={searchPlatformQuery}
+                onChange={handleSearchPlatform}
+                className={`${styles.DropdownSearch}`}
+              />
               <div style={{ maxHeight: "150px", overflowY: "auto" }}>
-                {platforms.map((platform) => (
+                {filteredPlatforms.map((platform) => (
                   <Dropdown.Item
                     key={platform.id}
                     onClick={() => handleSelectPlatform(platform.id)}
