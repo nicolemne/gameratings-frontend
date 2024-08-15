@@ -5,13 +5,15 @@ import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
+import { Image } from "react-bootstrap";
 
 import styles from "../styles/AddGame.module.css";
 import btnStyles from "../styles/Button.module.css";
 import Asset from "../components/Asset";
 
+import useSearch from "../hooks/useSearch";
+
 import { axiosReq } from "../api/axiosDefaults";
-import { Image } from "react-bootstrap";
 
 function AddGameModal({ show, onHide }) {
   const [gameData, setGameData] = useState({
@@ -25,10 +27,12 @@ function AddGameModal({ show, onHide }) {
   });
 
   const [errors, setErrors] = useState({});
+
   const [genres, setGenres] = useState([]);
   const [platforms, setPlatforms] = useState([]);
-  const [searchGenreQuery, setSearchGenreQuery] = useState("");
-  const [searchPlatformQuery, setSearchPlatformQuery] = useState("");
+  const genreDropdown = useSearch();
+  const platformDropdown = useSearch();
+
   const imageInput = useRef(null);
 
   const handleChange = (event) => {
@@ -77,10 +81,12 @@ function AddGameModal({ show, onHide }) {
 
   const handleSelectGenre = (genreId) => {
     setGameData({ ...gameData, genre: genreId });
+    genreDropdown.setSearchQuery("");
   };
 
   const handleSelectPlatform = (platformId) => {
     setGameData({ ...gameData, platform: platformId });
+    platformDropdown.setSearchQuery("");
   };
 
   const handleSubmit = async (event) => {
@@ -105,20 +111,14 @@ function AddGameModal({ show, onHide }) {
     }
   };
 
-  const handleSearchGenre = (event) => {
-    setSearchGenreQuery(event.target.value);
-  };
-
-  const handleSearchPlatform = (event) => {
-    setSearchPlatformQuery(event.target.value);
-  };
-
   const filteredGenres = genres.filter((genre) =>
-    genre.name.toLowerCase().includes(searchGenreQuery.toLowerCase())
+    genre.name.toLowerCase().includes(genreDropdown.searchQuery.toLowerCase())
   );
 
   const filteredPlatforms = platforms.filter((platform) =>
-    platform.name.toLowerCase().includes(searchPlatformQuery.toLowerCase())
+    platform.name
+      .toLowerCase()
+      .includes(platformDropdown.searchQuery.toLowerCase())
   );
 
   return (
@@ -206,8 +206,8 @@ function AddGameModal({ show, onHide }) {
               <Form.Control
                 type="text"
                 placeholder="Search Genres"
-                value={searchGenreQuery}
-                onChange={handleSearchGenre}
+                value={genreDropdown.searchQuery}
+                onChange={(e) => genreDropdown.setSearchQuery(e.target.value)}
                 className={`${styles.DropdownSearch}`}
               />
               <div style={{ maxHeight: "150px", overflowY: "auto" }}>
@@ -244,8 +244,10 @@ function AddGameModal({ show, onHide }) {
               <Form.Control
                 type="text"
                 placeholder="Search Platforms"
-                value={searchPlatformQuery}
-                onChange={handleSearchPlatform}
+                value={platformDropdown.searchQuery}
+                onChange={(e) =>
+                  platformDropdown.setSearchQuery(e.target.value)
+                }
                 className={`${styles.DropdownSearch}`}
               />
               <div style={{ maxHeight: "150px", overflowY: "auto" }}>
