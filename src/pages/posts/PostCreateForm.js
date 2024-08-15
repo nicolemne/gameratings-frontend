@@ -24,6 +24,7 @@ import { axiosReq } from "../../api/axiosDefaults";
 
 import { useAllGames } from "../../contexts/AllGamesContext";
 import { useSelectGame } from "../../hooks/useSelectedGame";
+import useSearch from "../../hooks/useSearch";
 
 function PostCreateForm() {
   const games = useAllGames();
@@ -43,7 +44,7 @@ function PostCreateForm() {
   const imageInput = useRef(null);
   const history = useHistory();
 
-  const [searchQuery, setSearchQuery] = useState("");
+  const gameSearch = useSearch();
   const [modalShow, setModalShow] = useState(false);
 
   const handleStarRating = (event) => {
@@ -51,6 +52,11 @@ function PostCreateForm() {
       ...postData,
       [event.target.name]: parseInt(event.target.value),
     });
+  };
+
+  const handleGameSelect  = (gameId) => {
+    handleSelectGame(gameId); 
+    gameSearch.setSearchQuery("");
   };
 
   const handleChange = (event) => {
@@ -108,12 +114,8 @@ function PostCreateForm() {
     }
   };
 
-  const handleSearch = (event) => {
-    setSearchQuery(event.target.value);
-  };
-
   const filteredGames = games.filter((game) =>
-    game.title.toLowerCase().includes(searchQuery.toLowerCase())
+    game.title.toLowerCase().includes(gameSearch.searchQuery.toLowerCase())
   );
 
   const textFields = (
@@ -174,15 +176,15 @@ function PostCreateForm() {
           <Form.Control
             type="text"
             placeholder="Search"
-            value={searchQuery}
-            onChange={handleSearch}
+            value={gameSearch.searchQuery}
+            onChange={(e) => gameSearch.setSearchQuery(e.target.value)}
             className={`${styles.DropdownSearch}`}
           />
           <div style={{ maxHeight: "150px", overflowY: "auto" }}>
             {filteredGames.map((game) => (
               <Dropdown.Item
                 key={game.id}
-                onClick={() => handleSelectGame(game.id)}
+                onClick={() => handleGameSelect(game.id)}
               >
                 {game.title} ({game.platform.name})
               </Dropdown.Item>
