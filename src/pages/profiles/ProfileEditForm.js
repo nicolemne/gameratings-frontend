@@ -9,6 +9,8 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 
+import styles from "../../styles/PostCreateEditForm.module.css"
+
 import { axiosReq } from "../../api/axiosDefaults";
 import {
   useCurrentUser,
@@ -101,14 +103,14 @@ const ProfileEditForm = () => {
           {message}
         </Alert>
       ))}
+      <Button className={`${btnStyles.Button} ${btnStyles.CreateBtn}`} type="submit">
+        Save
+      </Button>
       <Button
-        className={`${btnStyles.Button} ${btnStyles.Blue}`}
+        className={`${btnStyles.Button} ${btnStyles.CancelBtn}`}
         onClick={() => history.goBack()}
       >
-        cancel
-      </Button>
-      <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-        save
+        Cancel
       </Button>
     </>
   );
@@ -134,7 +136,7 @@ const ProfileEditForm = () => {
                   className={`${btnStyles.Button} ${btnStyles.Blue} btn my-auto`}
                   htmlFor="image-upload"
                 >
-                  Change the image
+                  <span className={styles.ImageText}>Change Image</span>
                 </Form.Label>
               </div>
               <Form.File

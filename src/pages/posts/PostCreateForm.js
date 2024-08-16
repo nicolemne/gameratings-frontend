@@ -128,10 +128,10 @@ function PostCreateForm() {
             </figure>
             <div>
               <Form.Label
-                className={`${btnStyles.Button} ${btnStyles.Blue} ${styles.ChangeImageText} btn`}
+                className={`${btnStyles.Button} ${btnStyles.Blue} ${styles.ImageText} btn`}
                 htmlFor="image-upload"
               >
-                Change image
+                Change Image
               </Form.Label>
             </div>
           </>
@@ -142,7 +142,7 @@ function PostCreateForm() {
           >
             <span className={styles.UploadImage}>
               <i className="fa-regular fa-image"></i>
-              <span className={styles.UploadText}>
+              <span className={styles.ImageText}>
                 <Asset message="Click to upload image" />
               </span>
             </span>

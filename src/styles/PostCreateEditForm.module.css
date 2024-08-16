@@ -20,27 +20,15 @@
   -webkit-background-clip: text;
 }
 
-.UploadText {
-  font-family: "Roboto", sans-serif;
-  font-size: 15px;
+.ImageText {
+  font-family: "Kalam", sans;
+  font-size: 17px;
   font-weight: 300;
+  color: #d2b5aa;
+}
+
+.ImageText:hover {
   color: #ffffff;
-}
-
-.UploadText:hover {
-  color: #64b5f8;
-}
-
-/* Change image text */
-
-.ChangeImageText {
-  font-size: 18px;
-  font-weight: 400;
-  color: #ffffff;
-}
-
-.ChangeImageText:hover {
-  color: #ffa750;
 }
 
 .PostLabel {

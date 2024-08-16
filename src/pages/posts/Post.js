@@ -10,6 +10,11 @@ import GameInfo from "../../components/GameInfo";
 import { MoreDropdown } from "../../components/MoreDropdown";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
+import star from "../../assets/star.png";
+import comment_img from "../../assets/comment_img.png";
+import heart from "../../assets/heart.png";
+import heart_empty from "../../assets/heart_empty.png";
+
 const Post = (props) => {
   const {
     id,
@@ -95,7 +100,7 @@ const Post = (props) => {
             <span className={styles.OwnerName}>{owner}</span>
           </Link>
           <div className="d-flex align-items-center">
-            <span>{updated_at}</span>
+            <span className={styles.UpdatedAt}>{updated_at}</span>
             {is_owner && postPage && (
               <MoreDropdown
                 handleEdit={handleEdit}
@@ -127,11 +132,25 @@ const Post = (props) => {
         <div className={styles.PostBar}>
           {like_id ? (
             <span onClick={handleUnlike}>
-              <i className={`fas fa-heart ${styles.Heart}`} />
+              <Link to={``}>
+                <img
+                  src={heart}
+                  height={25}
+                  className={styles.Heart}
+                  alt="heart/like"
+                />
+              </Link>
             </span>
           ) : currentUser ? (
             <span onClick={handleLike}>
-              <i className={`far fa-heart ${styles.HeartOutline}`} />
+              <Link to={``}>
+                <img
+                  src={heart_empty}
+                  height={25}
+                  className={styles.HeartOutline}
+                  alt="heart/unlike"
+                />
+              </Link>
             </span>
           ) : (
             <OverlayTrigger
@@ -143,10 +162,15 @@ const Post = (props) => {
           )}
           <span className={styles.LikeCommentText}>{likes_count}</span>
           <Link to={`/posts/${id}`}>
-            <i className={`far fa-comments ${styles.CommentIcon}`} />
+            <img
+              src={comment_img}
+              height={25}
+              className={styles.CommentIcon}
+              alt="comment"
+            />
           </Link>
           <span className={styles.LikeCommentText}>{comments_count}</span>
-          <i className={`fa-solid fa-star ${styles.StarIcon}`} />
+          <img src={star} height={25} className={styles.StarIcon} alt="star" />
           <span className={styles.LikeCommentText}>{star_rating}</span>
         </div>
       </Card.Body>

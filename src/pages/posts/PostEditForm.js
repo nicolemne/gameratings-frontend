@@ -272,6 +272,9 @@ function PostEditForm() {
       <Button className={btnStyles.CreateBtn} type="submit">
         Save
       </Button>
+      <Button className={btnStyles.CancelBtn} onClick={() => history.goBack()}>
+        Cancel
+      </Button>
     </div>
   );
 

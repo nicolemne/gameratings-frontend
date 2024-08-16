@@ -1,12 +1,24 @@
 .DropdownItem {
-  display: inline-block;
-  max-width: 50%;
-  padding: 0px;
-  color: #5041c1 !important;
+  display: flex;
+  align-items: center;
+  justify-content: left;
 }
 
-.DropdownItem:hover {
-  background-color: #ffffff;
+.DropdownIcon {
+  display: inline-block;
+  align-items: center;
+  padding: 0px;
+  margin-right: 8px;
+  background: linear-gradient(70deg, #cd006a, #2e241a);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+.DropdownItemText {
+  font-family: "Roboto", sans;
+  font-weight: 500;
+  font-size: 14px;
+  color: #000000 !important;
 }
 
 .Absolute {

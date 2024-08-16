@@ -1,11 +1,11 @@
 .Post {
   font-family: "Roboto", sans-serif;
-  background-color: #ffffff;
+  background-color: #efefef;
   border: 1px solid #dadadf;
   border-radius: 2px;
   margin-bottom: 16px;
   text-align: center;
-  color: #000000;
+  color: #261b7a;
 }
 
 .Post a {
@@ -26,41 +26,31 @@ h5 {
 /* Like & Comment text */
 
 .LikeCommentText {
-  font-family: "Roboto", sans;
-  font-size: 1rem;
-  font-weight: 500;
+  font-family: "Patrick Hand", sans;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-left: 3px;
+  color: #3e30a9;
 }
 
 /* Like & Comment icons */
 
 .Heart {
-  color: #f85032;
   font-size: 1.5rem;
   margin-right: 1px;
-}
-
-.Heart:hover {
-  color: #8a4af3;
 }
 
 .HeartOutline {
-  color: #f85032;
   font-size: 1.5rem;
   margin-right: 1px;
 }
 
-.HeartOutline:hover {
-  color: #f85032;
-}
-
 .CommentIcon {
-  color: #8a4af3;
   margin-left: 10px;
   margin-right: 1px;
 }
 
 .StarIcon {
-  color: #ffa750;
   margin-left: 10px;
   margin-right: 1px;
 }
@@ -70,4 +60,10 @@ h5 {
 .PostImage {
   border: 8px solid black;
   border-radius: 5px 5px 0 0;
+}
+
+/* Updated at */
+
+.UpdatedAt {
+  margin-right: 15px;
 }

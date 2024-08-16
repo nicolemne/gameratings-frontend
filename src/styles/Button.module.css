@@ -18,10 +18,6 @@
   cursor: pointer;
 }
 
-/* .Button:hover:active {
-  background-color: #8a4af3 !important;
-} */
-
 .Button:active {
   background-color: #8a4af3 !important;
 }
@@ -159,11 +155,28 @@
   border: none;
   border-radius: 30px;
   width: 6rem;
+  margin: 5px;
+}
+
+.CancelBtn {
+  font-size: 15px;
+  font-weight: 500;
+  background-color: #6d6c6b;
+  color: #ffffff;
+  border: none;
+  border-radius: 30px;
+  width: 6rem;
+  margin: 5px;
 }
 
 .CreateBtn:hover {
   background-color: #ffffff;
   color: #8a4af3;
+}
+
+.CancelBtn:hover {
+  background-color: #7a2020;
+  color: #ffffff;
 }
 
 .CreateBtn:focus {

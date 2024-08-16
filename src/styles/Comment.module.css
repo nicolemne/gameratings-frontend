@@ -9,3 +9,10 @@
   font-weight: 400;
   color: #c1c1c5;
 }
+
+.CommentsContent {
+  background-color: #181435;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #dadadf;
+}
