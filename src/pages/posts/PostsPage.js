@@ -80,7 +80,7 @@ function PostsPage({ message, filter = "" }) {
               >
                 <Asset message={message} />
                 <i
-                  className={`fa-solid fa-magnifying-glass ${styles.NoResultsIcon}`}
+                  className={`fa-solid fa-magnifying-glass ${appStyles.NoResultsIcon}`}
                 ></i>
               </Container>
             )}

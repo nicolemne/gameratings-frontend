@@ -28,13 +28,3 @@
   justify-content: center;
   align-items: center;
 }
-
-/* NoResultsIcon */
-
-.NoResultsIcon {
-  font-size: 5rem;
-  margin-bottom: 18px;
-  background: linear-gradient(70deg, #8a4af3, #ffa750);
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
-}

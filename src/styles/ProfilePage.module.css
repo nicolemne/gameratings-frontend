@@ -13,6 +13,10 @@
   border: 1px solid #ffffff;
 }
 
+.SearchIcon {
+  margin-left: 45%;
+}
+
 .ProfileOwner {
   background: linear-gradient(70deg, #8a40f3, #ffa750, #8a40f3);
   -webkit-text-fill-color: transparent;

@@ -18,9 +18,9 @@
   cursor: pointer;
 }
 
-.Button:hover:active {
+/* .Button:hover:active {
   background-color: #8a4af3 !important;
-}
+} */
 
 .Button:active {
   background-color: #8a4af3 !important;
