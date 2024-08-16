@@ -1,96 +1,107 @@
 /* General button styling */
 
 .Button {
-    font-size: 1rem;
-    font-weight: 500;
-    align-self: center;
-    border-radius: 100px;
-    border-color: transparent;
-    padding: 4px 10px;
-    margin-left: 2px;
-    margin-right: 2px;
-    min-width: 75px;
-  }
-  
-  .Button:hover {
-    opacity: 0.8;
-    border-color: transparent;
-    cursor: pointer;
-  }
-  
-  .Button:hover:active {
-    background-color: #8a4af3 !important;
-  }
-  
-  .Button:active {
-    background-color: #8a4af3 !important;
-  }
-  
-  .Button:focus {
-    background-color: #8a4af3;
-  }
-  
-  .Wide {
-    padding: 10px 50px;
-    width: 100%;
-  }
-  
-  .Purple,
-  .PurpleOutline:hover,
-  .Bright:hover {
-    background-color: #8a4af3;
-    color: #ffffff;
-  }
-  
-  .PurpleOutline,
-  .Purple:hover {
-    background-color: #ffffff;
-    color: #8a4af3;
-  }
-  
-  .Black,
-  .BlackOutline:hover {
-    background-color: #242a3d;
-    color: aliceblue;
-  }
-  
-  .Black:hover,
-  .BlackOutline {
-    background-color: aliceblue;
-    color: #242a3d;
-  }
-  
-  .Bright {
-    background-color: #8a4af3;
-    color: #ffffff;
-  }
+  font-size: 1rem;
+  font-weight: 500;
+  align-self: center;
+  border-radius: 100px;
+  border-color: transparent;
+  padding: 4px 10px;
+  margin-left: 2px;
+  margin-right: 2px;
+  min-width: 75px;
+}
 
-  /* Navbar.js */
+.Button:hover {
+  opacity: 0.8;
+  border-color: transparent;
+  cursor: pointer;
+}
 
-  /* Search */
+.Button:hover:active {
+  background-color: #8a4af3 !important;
+}
 
-  .BtnSearch {
-    background-color: #1e1e1e;
-    border: 1px solid #ffffff;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-  
-  .BtnSearch:hover {
-    background-color: #fafdff;
-  }
-  
-  .BtnSearch i {
-    color: #000000;
-  }
-  
-  .BtnSearch:hover i {
-    color: #ffa750;
-    border-color: #ffa750;
-  }
-  
+.Button:active {
+  background-color: #8a4af3 !important;
+}
 
-  /* Authentication buttons */
+.Button:focus {
+  background-color: #8a4af3;
+}
+
+.Wide {
+  padding: 10px 50px;
+  width: 100%;
+}
+
+.Purple,
+.PurpleOutline:hover,
+.Bright:hover {
+  background-color: #8a4af3;
+  color: #ffffff;
+}
+
+.PurpleOutline,
+.Purple:hover {
+  background-color: #ffffff;
+  color: #8a4af3;
+}
+
+.Black,
+.BlackOutline:hover {
+  background-color: #242a3d;
+  color: aliceblue;
+}
+
+.Black:hover,
+.BlackOutline {
+  background-color: aliceblue;
+  color: #242a3d;
+}
+
+.Bright {
+  background-color: #8a4af3;
+  color: #ffffff;
+}
+
+.BtnFollow,
+.BtnFollowOutline:hover {
+  background-color: #8a4af3;
+  color: aliceblue;
+}
+
+.BtnFollow:hover,
+.BtnFollowOutline {
+  background-color: aliceblue;
+  color: #242a3d;
+}
+
+/* Navbar.js */
+
+/* Search */
+
+.BtnSearch {
+  background-color: #1e1e1e;
+  border: 1px solid #ffffff;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.BtnSearch:hover {
+  background-color: #fafdff;
+}
+
+.BtnSearch i {
+  color: #000000;
+}
+
+.BtnSearch:hover i {
+  color: #ffa750;
+  border-color: #ffa750;
+}
+
+/* Authentication buttons */
 
 .BtnLoginOut {
   font-family: "Roboto", sans-serif !important;
@@ -147,7 +158,7 @@
   color: #ffffff;
   border: none;
   border-radius: 30px;
-  width: 6rem; 
+  width: 6rem;
 }
 
 .CreateBtn:hover {
@@ -160,14 +171,11 @@
   color: #ffffff;
 }
 
-
 /* Media queries */
 
 /* 767px */
 @media (max-width: 767px) {
-
   .BtnSignUp {
     margin-top: 5px;
   }
-
 }

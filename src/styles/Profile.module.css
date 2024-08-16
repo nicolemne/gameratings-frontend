@@ -5,15 +5,3 @@
 .Usernames {
   color: #ffa750;
 }
-
-.BtnFollow,
-.BtnFollowOutline:hover {
-  background-color: #5a22b5;
-  color: aliceblue;
-}
-
-.BtnFollow:hover,
-.BtnFollowOutline {
-  background-color: aliceblue;
-  color: #242a3d;
-}

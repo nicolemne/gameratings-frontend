@@ -12,6 +12,7 @@ import PostPage from "./pages/posts/PostPage";
 import PostsPage from "./pages/posts/PostsPage";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 import PostEditForm from "./pages/posts/PostEditForm";
+import ProfilePage from "./pages/profiles/ProfilePage";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -62,7 +63,7 @@ function App() {
             />
             <Route exact path="/posts/:id" render={() => <PostPage />} />
             <Route exact path="/mygames" render={() => <h1>My Games</h1>} />
-            <Route exact path="/profile" render={() => <h1>Profile</h1>} />
+            <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
             <Route exact path="/signup" render={() => <SignUpForm />} />
             <Route exact path="/login" render={() => <SignInForm />} />
             <Route render={() => <h1>404 page not found</h1>} />
