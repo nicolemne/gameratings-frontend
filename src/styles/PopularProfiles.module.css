@@ -1,0 +1,13 @@
+.Content {
+  background-color: #000000;
+  padding: 5px;
+}
+
+.FollowedProfiles {
+  font-size: 25px;
+  font-family: "Pixelify Sans", sans;
+  background: linear-gradient(70deg, #ffa750, #8a40f3);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  margin-bottom: 9px;
+}

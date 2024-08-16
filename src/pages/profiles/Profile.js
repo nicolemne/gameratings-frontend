@@ -22,7 +22,7 @@ const Profile = (props) => {
           <Avatar src={image} height={imageSize} />
         </Link>
       </div>
-      <div className={`mx-2 ${styles.WordBreak}`}>
+      <div className={`mx-2 ${styles.WordBreak} ${styles.Usernames}`}>
         <strong>{owner}</strong>
       </div>
       <div className={`text-right ${!mobile && "ml-auto"}`}>
@@ -31,14 +31,14 @@ const Profile = (props) => {
           !is_owner &&
           (following_id ? (
             <Button
-              className={`${btnStyles.Button} ${btnStyles.BlackOutline}`}
+              className={`${btnStyles.Button} ${styles.BtnFollowOutline}`}
               onClick={() => {}}
             >
               unfollow
             </Button>
           ) : (
             <Button
-              className={`${btnStyles.Button} ${btnStyles.Black}`}
+              className={`${btnStyles.Button} ${styles.BtnFollow}`}
               onClick={() => {}}
             >
               follow
