@@ -13,6 +13,9 @@ import PostsPage from "./pages/posts/PostsPage";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 import PostEditForm from "./pages/posts/PostEditForm";
 import ProfilePage from "./pages/profiles/ProfilePage";
+import UsernameForm from "./pages/profiles/UsernameForm";
+import UserPasswordForm from "./pages/profiles/UserPasswordForm";
+import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -51,6 +54,8 @@ function App() {
                 />
               )}
             />
+            <Route exact path="/signup" render={() => <SignUpForm />} />
+            <Route exact path="/login" render={() => <SignInForm />} />
             <Route
               exact
               path="/posts/create"
@@ -64,8 +69,21 @@ function App() {
             <Route exact path="/posts/:id" render={() => <PostPage />} />
             <Route exact path="/mygames" render={() => <h1>My Games</h1>} />
             <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
-            <Route exact path="/signup" render={() => <SignUpForm />} />
-            <Route exact path="/login" render={() => <SignInForm />} />
+            <Route
+              exact
+              path="/profiles/:id/edit/username"
+              render={() => <UsernameForm />}
+            />
+            <Route
+              exact
+              path="/profiles/:id/edit/password"
+              render={() => <UserPasswordForm />}
+            />
+            <Route
+              exact
+              path="/profiles/:id/edit"
+              render={() => <ProfileEditForm />}
+            />
             <Route render={() => <h1>404 page not found</h1>} />
           </Switch>
         </Container>
