@@ -25,9 +25,11 @@ import { axiosReq } from "../../api/axiosDefaults";
 import { useAllGames } from "../../contexts/AllGamesContext";
 import { useSelectGame } from "../../hooks/useSelectedGame";
 import useSearch from "../../hooks/useSearch";
+import { useRedirect } from "../../hooks/useRedirect";
 
 function PostCreateForm() {
   const games = useAllGames();
+  useRedirect("loggedOut");
 
   const sortedGames = games.sort((a, b) => {
     return a.title.localeCompare(b.title);
@@ -54,8 +56,8 @@ function PostCreateForm() {
     });
   };
 
-  const handleGameSelect  = (gameId) => {
-    handleSelectGame(gameId); 
+  const handleGameSelect = (gameId) => {
+    handleSelectGame(gameId);
     gameSearch.setSearchQuery("");
   };
 
