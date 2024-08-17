@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -7,14 +7,13 @@ import { Dropdown } from "react-bootstrap";
 import { axiosRes } from "../../api/axiosDefaults";
 
 const SavedGames = ({ savedGames, setSavedGames }) => {
-  const [selectedStatus, setSelectedStatus] = useState(null);
-
-  const handleChange = async (status, id) => {
+  const handleChange = async (status, id, game_id) => {
     try {
       const { data } = await axiosRes.put(`/saved_games/${id}/`, {
         status: status,
+        game_id: game_id,
       });
-      setSelectedStatus(data.status);
+
       setSavedGames((prevGames) => ({
         ...prevGames,
         results: prevGames.results.map((game) =>
@@ -53,14 +52,16 @@ const SavedGames = ({ savedGames, setSavedGames }) => {
                     {myGame.game_title}
                   </h5>
                   <Dropdown
-                    onSelect={(status) => handleChange(status, myGame.id)}
+                    onSelect={(status) =>
+                      handleChange(status, myGame.id, myGame.game_id)
+                    }
                   >
                     <Dropdown.Toggle
                       as={CustomToggle}
                       id={`dropdown-status-${myGame.id}`}
-                      status={myGame.status || selectedStatus}
+                      status={myGame.status}
                     >
-                      {myGame.status || selectedStatus}
+                      {myGame.status}
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
