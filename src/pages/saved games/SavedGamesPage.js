@@ -69,7 +69,10 @@ function SavedGamesPage({ message, filter = "" }) {
                   hasMore={!!savedGames.next}
                   loader={<Asset spinner />}
                 >
-                  <SavedGames savedGames={savedGames.results} />
+                  <SavedGames
+                    savedGames={savedGames.results}
+                    setSavedGames={setSavedGames}
+                  />
                 </InfiniteScroll>
               ) : (
                 <Container className={`${styles.NoResultsContainer}`}>

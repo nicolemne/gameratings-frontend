@@ -1,24 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import styles from "../../styles/SavedGames.module.css";
 import { Dropdown } from "react-bootstrap";
+import { axiosRes } from "../../api/axiosDefaults";
 
-const CustomToggle = React.forwardRef(({ children, onClick, status }, ref) => (
-  <button
-    ref={ref}
-    className={`${styles.DropdownToggle} ${styles[status]}`}
-    onClick={(e) => {
-      e.preventDefault();
-      onClick(e);
-    }}
-  >
-    {children} &#x25BE;
-  </button>
-));
+const SavedGames = ({ savedGames, setSavedGames }) => {
+  const [selectedStatus, setSelectedStatus] = useState(null);
 
-const SavedGames = ({ savedGames }) => {
+  const handleChange = async (status, id) => {
+    try {
+      const { data } = await axiosRes.put(`/saved_games/${id}/`, {
+        status: status,
+      });
+      setSelectedStatus(data.status);
+      setSavedGames((prevGames) => ({
+        ...prevGames,
+        results: prevGames.results.map((game) =>
+          game.id === id ? { ...game, status: data.status } : game
+        ),
+      }));
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const CustomToggle = React.forwardRef(
+    ({ children, onClick, status }, ref) => (
+      <button
+        ref={ref}
+        className={`${styles.DropdownToggle} ${styles[status]}`}
+        onClick={(e) => {
+          e.preventDefault();
+          onClick(e);
+        }}
+      >
+        {children} &#x25BE;
+      </button>
+    )
+  );
+
   return (
     <Container className={`${styles.Container}`}>
       <Row className="justify-content-center">
@@ -30,13 +52,15 @@ const SavedGames = ({ savedGames }) => {
                   <h5 className={`mb-2 ${styles.Title}`}>
                     {myGame.game_title}
                   </h5>
-                  <Dropdown>
+                  <Dropdown
+                    onSelect={(status) => handleChange(status, myGame.id)}
+                  >
                     <Dropdown.Toggle
                       as={CustomToggle}
                       id={`dropdown-status-${myGame.id}`}
-                      status={myGame.status}
+                      status={myGame.status || selectedStatus}
                     >
-                      {myGame.status}
+                      {myGame.status || selectedStatus}
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
