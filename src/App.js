@@ -16,6 +16,7 @@ import ProfilePage from "./pages/profiles/ProfilePage";
 import UsernameForm from "./pages/profiles/UsernameForm";
 import UserPasswordForm from "./pages/profiles/UserPasswordForm";
 import ProfileEditForm from "./pages/profiles/ProfileEditForm";
+import SavedGames from "./pages/saved games/SavedGames";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -67,7 +68,7 @@ function App() {
               render={() => <PostEditForm />}
             />
             <Route exact path="/posts/:id" render={() => <PostPage />} />
-            <Route exact path="/mygames" render={() => <h1>My Games</h1>} />
+            <Route exact path="/mygames" render={() => <SavedGames />} />
             <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
             <Route
               exact
