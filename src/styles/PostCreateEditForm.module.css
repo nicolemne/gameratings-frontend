@@ -42,7 +42,7 @@
 .CustomHrPost {
   border: none;
   height: 2px;
-  width: 20rem;
+  max-width: 50%;
   background: linear-gradient(70deg, #8a4af3, #ffa750);
   margin-bottom: 10px;
 }
