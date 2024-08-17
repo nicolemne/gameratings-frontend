@@ -38,11 +38,13 @@ h5 {
 .Heart {
   font-size: 1.5rem;
   margin-right: 1px;
+  cursor: pointer;
 }
 
 .HeartOutline {
   font-size: 1.5rem;
   margin-right: 1px;
+  cursor: pointer;
 }
 
 .CommentIcon {

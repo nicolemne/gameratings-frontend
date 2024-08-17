@@ -3,6 +3,20 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import styles from "../../styles/SavedGames.module.css";
+import { Dropdown } from "react-bootstrap";
+
+const CustomToggle = React.forwardRef(({ children, onClick, status }, ref) => (
+  <button
+    ref={ref}
+    className={`${styles.DropdownToggle} ${styles[status]}`}
+    onClick={(e) => {
+      e.preventDefault();
+      onClick(e);
+    }}
+  >
+    {children} &#x25BE;
+  </button>
+));
 
 const SavedGames = ({ savedGames }) => {
   return (
@@ -16,7 +30,27 @@ const SavedGames = ({ savedGames }) => {
                   <h5 className={`mb-2 ${styles.Title}`}>
                     {myGame.game_title}
                   </h5>
-                  <span>{myGame.status}</span>
+                  <Dropdown>
+                    <Dropdown.Toggle
+                      as={CustomToggle}
+                      id={`dropdown-status-${myGame.id}`}
+                      status={myGame.status}
+                    >
+                      {myGame.status}
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                      <Dropdown.Item eventKey="completed">
+                        Completed
+                      </Dropdown.Item>
+                      <Dropdown.Item eventKey="wishlist">
+                        Wishlist
+                      </Dropdown.Item>
+                      <Dropdown.Item eventKey="in_progress">
+                        In Progress
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
                 </div>
                 <div className="d-flex align-items-center justify-content-center">
                   <div className={styles.ImageBox}>

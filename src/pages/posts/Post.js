@@ -132,25 +132,21 @@ const Post = (props) => {
         <div className={styles.PostBar}>
           {like_id ? (
             <span onClick={handleUnlike}>
-              <Link to={``}>
-                <img
-                  src={heart}
-                  height={25}
-                  className={styles.Heart}
-                  alt="heart/like"
-                />
-              </Link>
+              <img
+                src={heart}
+                height={25}
+                className={styles.Heart}
+                alt="heart/like"
+              />
             </span>
           ) : currentUser ? (
             <span onClick={handleLike}>
-              <Link to={``}>
-                <img
-                  src={heart_empty}
-                  height={25}
-                  className={styles.HeartOutline}
-                  alt="heart/unlike"
-                />
-              </Link>
+              <img
+                src={heart_empty}
+                height={25}
+                className={styles.HeartOutline}
+                alt="heart/unlike"
+              />
             </span>
           ) : (
             <OverlayTrigger
