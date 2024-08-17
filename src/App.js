@@ -68,7 +68,13 @@ function App() {
               render={() => <PostEditForm />}
             />
             <Route exact path="/posts/:id" render={() => <PostPage />} />
-            <Route exact path="/mygames" render={() => <SavedGamesPage />} />
+            <Route
+              exact
+              path="/mygames"
+              render={() => (
+                <SavedGamesPage message="No results found. Try adding a game first." />
+              )}
+            />
             <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
             <Route
               exact

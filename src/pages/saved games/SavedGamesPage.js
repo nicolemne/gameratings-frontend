@@ -8,8 +8,10 @@ import { axiosReq } from "../../api/axiosDefaults";
 import SavedGames from "./SavedGames";
 import styles from "../../styles/PostsPage.module.css";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { fetchMoreData } from "../../utils/utils";
 
-function SavedGamesPage(filter = "") {
+function SavedGamesPage({ message, filter = "" }) {
   const [savedGames, setSavedGames] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const [query, setQuery] = useState("");
@@ -59,9 +61,26 @@ function SavedGamesPage(filter = "") {
           </Form>
 
           {hasLoaded ? (
-            <SavedGames savedGames={savedGames.results} />
+            <>
+              {savedGames.results.length ? (
+                <InfiniteScroll
+                  dataLength={savedGames.results.length}
+                  next={() => fetchMoreData(savedGames, setSavedGames)}
+                  hasMore={!!savedGames.next}
+                  loader={<Asset spinner />}
+                >
+                  <SavedGames savedGames={savedGames.results} />
+                </InfiniteScroll>
+              ) : (
+                <Container className={`${styles.NoResultsContainer}`}>
+                  <Asset message={message} />
+                </Container>
+              )}
+            </>
           ) : (
-            <Asset spinner />
+            <Container>
+              <Asset spinner />
+            </Container>
           )}
         </Col>
       </Row>
