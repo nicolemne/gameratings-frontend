@@ -10,7 +10,7 @@ import styles from "../../styles/SavedGamesPage.module.css";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
-import { Dropdown, DropdownButton } from "react-bootstrap";
+import { Alert, Dropdown, DropdownButton } from "react-bootstrap";
 import { useAllGames } from "../../contexts/AllGamesContext";
 
 function SavedGamesPage({ message, filter = "" }) {
@@ -18,6 +18,7 @@ function SavedGamesPage({ message, filter = "" }) {
   const [hasLoaded, setHasLoaded] = useState(false);
   const [query, setQuery] = useState("");
   const [dropdownSearchQuery, setDropdownSearchQuery] = useState("");
+  const [errors, setErrors] = useState({});
   const { pathname } = useLocation();
   const games = useAllGames();
 
@@ -53,8 +54,13 @@ function SavedGamesPage({ message, filter = "" }) {
         ...prevSavedGames,
         results: [data, ...prevSavedGames.results],
       }));
+      setErrors({});
     } catch (err) {
-      console.error(err);
+      if (err.response?.status === 400) {
+        setErrors(err.response?.data);
+      } else {
+        console.error(err);
+      }
     }
   };
 
@@ -81,6 +87,11 @@ function SavedGamesPage({ message, filter = "" }) {
               placeholder="Search"
             />
           </Form>
+          {errors?.non_field_errors?.map((message, idx) => (
+            <Alert variant="warning" key={idx}>
+              {message}
+            </Alert>
+          ))}
 
           <div className="text-center">
             <DropdownButton

@@ -85,7 +85,7 @@ const SavedGames = ({ savedGames, setSavedGames }) => {
                       </Dropdown.Menu>
                     </Dropdown>
                     <Button variant="primary" className={btnStyles.SavedGame}>
-                      <i class="fa-solid fa-xmark"></i>
+                      <i className="fa-solid fa-xmark"></i>
                     </Button>
                   </div>
                 </div>
