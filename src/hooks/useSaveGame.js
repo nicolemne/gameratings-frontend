@@ -3,6 +3,7 @@ import { axiosRes } from "../api/axiosDefaults";
 
 export const useSaveGame = () => {
   const [errors, setErrors] = useState({});
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handleSaveGame = async (id, setSavedGames) => {
     try {
@@ -16,6 +17,7 @@ export const useSaveGame = () => {
         }));
       }
       setErrors({});
+      setSuccessMessage(`Game "${data.game_title}" added to your saved games!`);
     } catch (err) {
       if (err.response?.status === 400) {
         setErrors(err.response?.data);
@@ -25,5 +27,5 @@ export const useSaveGame = () => {
     }
   };
 
-  return { handleSaveGame, errors };
+  return { handleSaveGame, errors, successMessage };
 };

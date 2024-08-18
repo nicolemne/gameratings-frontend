@@ -1,7 +1,12 @@
 import React from "react";
 import styles from "../styles/SharedBoxStyles.module.css";
+import btnStyles from "../styles/Button.module.css";
+import { Button, Alert } from "react-bootstrap";
+import { useSaveGame } from "../hooks/useSaveGame";
 
 const GameInfo = ({ game }) => {
+  const { handleSaveGame, errors, successMessage } = useSaveGame();
+
   return (
     <div className={styles.Box}>
       <h5 className="text-center">{game?.game_title || game?.title || ""}</h5>
@@ -35,6 +40,23 @@ const GameInfo = ({ game }) => {
             className={styles.Image}
           />
         </div>
+        <Button
+          variant="primary"
+          className={btnStyles.SaveGameBtn}
+          onClick={() => handleSaveGame(game.id)}
+        >
+          <i className={`fa-regular fa-bookmark ${btnStyles.SaveGameBtn}`}></i>
+        </Button>
+        {errors?.non_field_errors?.map((message, idx) => (
+          <Alert variant="danger" key={idx} className="mt-2">
+            {message}
+          </Alert>
+        ))}
+        {successMessage && (
+          <Alert variant="success" className="mt-2">
+            {successMessage}
+          </Alert>
+        )}
       </div>
     </div>
   );

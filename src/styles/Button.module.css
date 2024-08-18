@@ -203,6 +203,22 @@
   -webkit-background-clip: text;
 }
 
+.SaveGameBtn {
+  background-color: #181435;
+  border: none;
+}
+
+.SaveGameBtn:hover {
+  background-color: #ffffff;
+  border: none;
+}
+
+.SaveGameBtn i {
+  background: linear-gradient(70deg, #8a4af3, #2cc6de);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
 /* Media queries */
 
 /* 767px */

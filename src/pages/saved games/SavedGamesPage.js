@@ -4,7 +4,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Asset from "../../components/Asset";
-import { axiosReq, axiosRes } from "../../api/axiosDefaults";
+import { axiosReq } from "../../api/axiosDefaults";
 import SavedGames from "./SavedGames";
 import styles from "../../styles/SavedGamesPage.module.css";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
