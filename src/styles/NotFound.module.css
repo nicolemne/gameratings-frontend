@@ -1,0 +1,27 @@
+.Margin {
+    margin-top: 5vh;
+}
+
+.ImageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.ImageContainer img {
+    max-width: 50%;
+    min-width: 300px;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.Message {
+    font-family: "Patrick Hand", sans;
+    font-size: 1.5rem;
+    color: #d7d7d7;
+    text-align: center; 
+    margin-top: 25px;
+    line-height: 1.5; 
+}
