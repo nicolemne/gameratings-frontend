@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  Navbar,
-  Container,
-  Nav,
-  Button,
-} from "react-bootstrap";
+import { Navbar, Container, Nav, Button } from "react-bootstrap";
 import logoMain from "../assets/logo_main.png";
 import logoSmall from "../assets/logo_small.png";
 import styles from "../styles/NavBar.module.css";
@@ -18,6 +13,7 @@ import {
 import Avatar from "./Avatar";
 import axios from "axios";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
+import { removeTokenTimestamp } from "../utils/utils";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
@@ -29,6 +25,7 @@ const NavBar = () => {
     try {
       await axios.post("dj-rest-auth/logout/");
       setCurrentUser(null);
+      removeTokenTimestamp();
     } catch (err) {
       console.log(err);
     }
@@ -83,7 +80,11 @@ const NavBar = () => {
       </NavLink>
       {/* logout */}
       <NavLink to="/" className={styles.NavLink} onClick={handleSignOut}>
-        <Button className={btnStyles.BtnLoginOut} variant="outline-dark" size="sm">
+        <Button
+          className={btnStyles.BtnLoginOut}
+          variant="outline-dark"
+          size="sm"
+        >
           Log Out
         </Button>
       </NavLink>
@@ -97,7 +98,11 @@ const NavBar = () => {
         </Button>
       </NavLink>
       <NavLink to="/login" className={styles.NavLink}>
-        <Button className={btnStyles.BtnLoginOut} variant="outline-dark" size="sm">
+        <Button
+          className={btnStyles.BtnLoginOut}
+          variant="outline-dark"
+          size="sm"
+        >
           Log In
         </Button>
       </NavLink>
@@ -136,11 +141,7 @@ const NavBar = () => {
             </div>
             <Nav>
               {/* discover */}
-              <NavLink
-                exact
-                to="/"
-                className={`${styles.NavLink}`}
-              >
+              <NavLink exact to="/" className={`${styles.NavLink}`}>
                 <i
                   className={`fa-regular fa-compass ${styles.DiscoverIcon}`}
                 ></i>
