@@ -26,6 +26,18 @@ const SavedGames = ({ savedGames, setSavedGames }) => {
     }
   };
 
+  const handleDelete = async (id) => {
+    try {
+      await axiosRes.delete(`/saved_games/${id}/`);
+      setSavedGames((prevGames) => ({
+        ...prevGames,
+        results: prevGames.results.filter((game) => game.id !== id),
+      }));
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   const CustomToggle = React.forwardRef(
     ({ children, onClick, status }, ref) => (
       <button
@@ -84,7 +96,11 @@ const SavedGames = ({ savedGames, setSavedGames }) => {
                         </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>
-                    <Button variant="primary" className={btnStyles.SavedGame}>
+                    <Button
+                      variant="primary"
+                      className={btnStyles.SavedGame}
+                      onClick={() => handleDelete(myGame.id)}
+                    >
                       <i className="fa-solid fa-xmark"></i>
                     </Button>
                   </div>
