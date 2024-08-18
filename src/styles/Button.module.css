@@ -73,6 +73,22 @@
   color: #242a3d;
 }
 
+.BtnFollowOutline:focus {
+  background-color: aliceblue;
+  color: #242a3d;
+  border: none;
+  box-shadow: none;
+  outline: none;
+}
+
+.BtnFollow:focus {
+  background-color: 8a4af3;
+  color: aliceblue;
+  border: none;
+  box-shadow: none;
+  outline: none;
+}
+
 /* Navbar.js */
 
 /* Search */
@@ -186,6 +202,7 @@
 
 /* Saved Games */
 
+/* SavedGamesPage.js */
 .SavedGame {
   padding: 3px 7px;
   border-radius: 5px;
@@ -203,6 +220,7 @@
   -webkit-background-clip: text;
 }
 
+/* GameInfo.js */
 .SaveGameBtn {
   background-color: #181435;
   border: none;
@@ -211,6 +229,12 @@
 .SaveGameBtn:hover {
   background-color: #ffffff;
   border: none;
+}
+
+.SaveGameBtn:focus {
+  background-color: #181435;
+  box-shadow: none;
+  outline: none;
 }
 
 .SaveGameBtn i {

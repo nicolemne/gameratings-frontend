@@ -346,7 +346,7 @@ function AddGameModal({ show, onHide }) {
 
           <Modal.Footer>
             <Button type="submit" className={btnStyles.AddGameBtn}>
-              Add Game
+              Add New Game
             </Button>
           </Modal.Footer>
         </Form>

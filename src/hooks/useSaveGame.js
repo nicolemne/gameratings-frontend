@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { axiosRes } from "../api/axiosDefaults";
 
 export const useSaveGame = () => {
@@ -17,7 +17,7 @@ export const useSaveGame = () => {
         }));
       }
       setErrors({});
-      setSuccessMessage(`Game "${data.game_title}" added to your saved games!`);
+      setSuccessMessage(`${data.game_title} was added to your saved games.`);
     } catch (err) {
       if (err.response?.status === 400) {
         setErrors(err.response?.data);
@@ -26,6 +26,15 @@ export const useSaveGame = () => {
       }
     }
   };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setSuccessMessage("");
+      setErrors({});
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, [successMessage, errors]);
 
   return { handleSaveGame, errors, successMessage };
 };

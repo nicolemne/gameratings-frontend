@@ -197,7 +197,7 @@ function PostCreateForm() {
             type="button"
             onClick={() => setModalShow(true)}
           >
-            Add Game
+            New Game
           </Button>
         </DropdownButton>
         <hr className={styles.CustomHrPost} />

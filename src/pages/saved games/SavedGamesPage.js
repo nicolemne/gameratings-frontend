@@ -21,7 +21,7 @@ function SavedGamesPage({ message, filter = "" }) {
   const [dropdownSearchQuery, setDropdownSearchQuery] = useState("");
   const { pathname } = useLocation();
   const games = useAllGames();
-  const { handleSaveGame, errors } = useSaveGame();
+  const { handleSaveGame, errors, successMessage } = useSaveGame();
 
   useEffect(() => {
     const fetchSavedGames = async () => {
@@ -74,6 +74,11 @@ function SavedGamesPage({ message, filter = "" }) {
               {message}
             </Alert>
           ))}
+          {successMessage && (
+            <Alert variant="success" className="mt-2">
+              {successMessage}
+            </Alert>
+          )}
 
           <div className="text-center">
             <DropdownButton
