@@ -3,7 +3,8 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import styles from "../../styles/SavedGames.module.css";
-import { Dropdown } from "react-bootstrap";
+import btnStyles from "../../styles/Button.module.css";
+import { Button, Dropdown } from "react-bootstrap";
 import { axiosRes } from "../../api/axiosDefaults";
 
 const SavedGames = ({ savedGames, setSavedGames }) => {
@@ -40,6 +41,12 @@ const SavedGames = ({ savedGames, setSavedGames }) => {
     )
   );
 
+  const statusText = {
+    completed: "Completed",
+    wishlist: "Wishlist",
+    in_progress: "In Progress",
+  };
+
   return (
     <Container className={`${styles.Container}`}>
       <Row className="justify-content-center">
@@ -51,31 +58,36 @@ const SavedGames = ({ savedGames, setSavedGames }) => {
                   <h5 className={`mb-2 ${styles.Title}`}>
                     {myGame.game_title}
                   </h5>
-                  <Dropdown
-                    onSelect={(status) =>
-                      handleChange(status, myGame.id, myGame.game_id)
-                    }
-                  >
-                    <Dropdown.Toggle
-                      as={CustomToggle}
-                      id={`dropdown-status-${myGame.id}`}
-                      status={myGame.status}
+                  <div className="d-flex align-items-center justify-content-center">
+                    <Dropdown
+                      onSelect={(status) =>
+                        handleChange(status, myGame.id, myGame.game_id)
+                      }
                     >
-                      {myGame.status}
-                    </Dropdown.Toggle>
+                      <Dropdown.Toggle
+                        as={CustomToggle}
+                        id={`dropdown-status-${myGame.id}`}
+                        status={myGame.status}
+                      >
+                        {statusText[myGame.status]}
+                      </Dropdown.Toggle>
 
-                    <Dropdown.Menu>
-                      <Dropdown.Item eventKey="completed">
-                        Completed
-                      </Dropdown.Item>
-                      <Dropdown.Item eventKey="wishlist">
-                        Wishlist
-                      </Dropdown.Item>
-                      <Dropdown.Item eventKey="in_progress">
-                        In Progress
-                      </Dropdown.Item>
-                    </Dropdown.Menu>
-                  </Dropdown>
+                      <Dropdown.Menu>
+                        <Dropdown.Item eventKey="completed">
+                          Completed
+                        </Dropdown.Item>
+                        <Dropdown.Item eventKey="wishlist">
+                          Wishlist
+                        </Dropdown.Item>
+                        <Dropdown.Item eventKey="in_progress">
+                          In Progress
+                        </Dropdown.Item>
+                      </Dropdown.Menu>
+                    </Dropdown>
+                    <Button variant="primary" className={btnStyles.SavedGame}>
+                      <i class="fa-solid fa-xmark"></i>
+                    </Button>
+                  </div>
                 </div>
                 <div className="d-flex align-items-center justify-content-center">
                   <div className={styles.ImageBox}>

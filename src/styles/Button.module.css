@@ -184,6 +184,25 @@
   color: #ffffff;
 }
 
+/* Saved Games */
+
+.SavedGame {
+  padding: 3px 7px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  margin-top: 0.9rem;
+  margin-left: 5px;
+  background: linear-gradient(70deg, #8a4af3, #2cc6de);
+}
+
+.SavedGame:hover {
+  background: #ffffff;
+  background: linear-gradient(70deg, #8a4af3, #2cc6de);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
 /* Media queries */
 
 /* 767px */
