@@ -23,6 +23,26 @@
   -webkit-background-clip: text;
 }
 
+.ProfileBiography {
+  font-family: "Roboto", sans;
+  font-size: 1.1rem;
+  word-wrap: break-word;
+  margin-top: 6px;
+  background: linear-gradient(70deg, #4cb0d2, #9549ff);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+.PlaceholderText {
+  font-style: italic;
+}
+
+.ProfileDetailText {
+  background: linear-gradient(70deg, #9549ff, #ffa750);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
 @media screen and (max-width: 991px) {
   .ProfileImage {
     width: 250px;
