@@ -11,12 +11,14 @@ import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 import { Dropdown, DropdownButton } from "react-bootstrap";
+import { useAllGames } from "../../contexts/AllGamesContext";
 
 function SavedGamesPage({ message, filter = "" }) {
   const [savedGames, setSavedGames] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const [query, setQuery] = useState("");
   const { pathname } = useLocation();
+  const games = useAllGames();
 
   useEffect(() => {
     const fetchSavedGames = async () => {
@@ -67,9 +69,13 @@ function SavedGamesPage({ message, filter = "" }) {
               variant="info"
               title="Add Game"
             >
-              <Dropdown.Item>Game 1</Dropdown.Item>
-              <Dropdown.Item>Game 2</Dropdown.Item>
-              <Dropdown.Item>Game 3</Dropdown.Item>
+              <div style={{ maxHeight: "150px", overflowY: "auto" }}>
+                {games.map((game) => (
+                  <Dropdown.Item key={game.id}>
+                    {game.title} ({game.platform.name})
+                  </Dropdown.Item>
+                ))}
+              </div>
             </DropdownButton>
           </div>
 
