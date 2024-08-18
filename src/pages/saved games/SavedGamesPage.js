@@ -12,15 +12,16 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 import { Alert, Dropdown, DropdownButton } from "react-bootstrap";
 import { useAllGames } from "../../contexts/AllGamesContext";
+import { useSaveGame } from "../../hooks/useSaveGame";
 
 function SavedGamesPage({ message, filter = "" }) {
   const [savedGames, setSavedGames] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const [query, setQuery] = useState("");
   const [dropdownSearchQuery, setDropdownSearchQuery] = useState("");
-  const [errors, setErrors] = useState({});
   const { pathname } = useLocation();
   const games = useAllGames();
+  const { handleSaveGame, errors } = useSaveGame();
 
   useEffect(() => {
     const fetchSavedGames = async () => {
@@ -44,25 +45,6 @@ function SavedGamesPage({ message, filter = "" }) {
       clearTimeout(timer);
     };
   }, [filter, query, pathname]);
-
-  const handleGameSelect = async (id) => {
-    try {
-      const { data } = await axiosRes.post("/saved_games/", {
-        game_id: id,
-      });
-      setSavedGames((prevSavedGames) => ({
-        ...prevSavedGames,
-        results: [data, ...prevSavedGames.results],
-      }));
-      setErrors({});
-    } catch (err) {
-      if (err.response?.status === 400) {
-        setErrors(err.response?.data);
-      } else {
-        console.error(err);
-      }
-    }
-  };
 
   const filteredGames = games.filter((game) =>
     game.title.toLowerCase().includes(dropdownSearchQuery.toLowerCase())
@@ -110,7 +92,7 @@ function SavedGamesPage({ message, filter = "" }) {
                 {filteredGames.map((game) => (
                   <Dropdown.Item
                     key={game.id}
-                    onClick={() => handleGameSelect(game.id)}
+                    onClick={() => handleSaveGame(game.id, setSavedGames)}
                   >
                     {game.title} ({game.platform.name})
                   </Dropdown.Item>
