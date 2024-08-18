@@ -6,7 +6,7 @@ import Container from "react-bootstrap/Container";
 import Asset from "../../components/Asset";
 import { axiosReq } from "../../api/axiosDefaults";
 import SavedGames from "./SavedGames";
-import styles from "../../styles/PostsPage.module.css";
+import styles from "../../styles/SavedGamesPage.module.css"
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
@@ -17,6 +17,7 @@ function SavedGamesPage({ message, filter = "" }) {
   const [savedGames, setSavedGames] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const [query, setQuery] = useState("");
+  const [dropdownSearchQuery, setDropdownSearchQuery] = useState("");
   const { pathname } = useLocation();
   const games = useAllGames();
 
@@ -42,6 +43,10 @@ function SavedGamesPage({ message, filter = "" }) {
       clearTimeout(timer);
     };
   }, [filter, query, pathname]);
+
+  const filteredGames = games.filter((game) =>
+    game.title.toLowerCase().includes(dropdownSearchQuery.toLowerCase())
+  );
 
   return (
     <Container>
@@ -69,8 +74,15 @@ function SavedGamesPage({ message, filter = "" }) {
               variant="info"
               title="Add Game"
             >
+              <Form.Control
+                type="text"
+                placeholder="Search games..."
+                value={dropdownSearchQuery}
+                onChange={(e) => setDropdownSearchQuery(e.target.value)}
+                className={`${styles.DropdownSearch}`}
+              />
               <div style={{ maxHeight: "150px", overflowY: "auto" }}>
-                {games.map((game) => (
+                {filteredGames.map((game) => (
                   <Dropdown.Item key={game.id}>
                     {game.title} ({game.platform.name})
                   </Dropdown.Item>
