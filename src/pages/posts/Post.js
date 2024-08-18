@@ -151,9 +151,16 @@ const Post = (props) => {
           ) : (
             <OverlayTrigger
               placement="top"
-              overlay={<Tooltip>Log In to like</Tooltip>}
+              overlay={<Tooltip>Log In to like this post</Tooltip>}
             >
-              <i className="far fa-heart" />
+              <span>
+                <img
+                  src={heart_empty}
+                  height={25}
+                  className={styles.HeartOutline}
+                  alt="heart/unlike"
+                />
+              </span>
             </OverlayTrigger>
           )}
           <span className={styles.LikeCommentText}>{likes_count}</span>

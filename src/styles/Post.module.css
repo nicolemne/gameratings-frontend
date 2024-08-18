@@ -69,3 +69,9 @@ h5 {
 .UpdatedAt {
   margin-right: 15px;
 }
+
+/* Username */
+
+.OwnerName {
+  color: #a54812;
+}
