@@ -4,9 +4,9 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Asset from "../../components/Asset";
-import { axiosReq } from "../../api/axiosDefaults";
+import { axiosReq, axiosRes } from "../../api/axiosDefaults";
 import SavedGames from "./SavedGames";
-import styles from "../../styles/SavedGamesPage.module.css"
+import styles from "../../styles/SavedGamesPage.module.css";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
@@ -43,6 +43,20 @@ function SavedGamesPage({ message, filter = "" }) {
       clearTimeout(timer);
     };
   }, [filter, query, pathname]);
+
+  const handleGameSelect = async (id) => {
+    try {
+      const { data } = await axiosRes.post("/saved_games/", {
+        game_id: id,
+      });
+      setSavedGames((prevSavedGames) => ({
+        ...prevSavedGames,
+        results: [data, ...prevSavedGames.results],
+      }));
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   const filteredGames = games.filter((game) =>
     game.title.toLowerCase().includes(dropdownSearchQuery.toLowerCase())
@@ -83,7 +97,10 @@ function SavedGamesPage({ message, filter = "" }) {
               />
               <div style={{ maxHeight: "150px", overflowY: "auto" }}>
                 {filteredGames.map((game) => (
-                  <Dropdown.Item key={game.id}>
+                  <Dropdown.Item
+                    key={game.id}
+                    onClick={() => handleGameSelect(game.id)}
+                  >
                     {game.title} ({game.platform.name})
                   </Dropdown.Item>
                 ))}
