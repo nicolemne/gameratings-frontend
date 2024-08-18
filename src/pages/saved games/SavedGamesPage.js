@@ -10,6 +10,7 @@ import styles from "../../styles/PostsPage.module.css";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
+import { Dropdown, DropdownButton } from "react-bootstrap";
 
 function SavedGamesPage({ message, filter = "" }) {
   const [savedGames, setSavedGames] = useState({ results: [] });
@@ -59,6 +60,18 @@ function SavedGamesPage({ message, filter = "" }) {
               placeholder="Search"
             />
           </Form>
+
+          <div className="text-center">
+            <DropdownButton
+              id="dropdown-game-select"
+              variant="info"
+              title="Add Game"
+            >
+              <Dropdown.Item>Game 1</Dropdown.Item>
+              <Dropdown.Item>Game 2</Dropdown.Item>
+              <Dropdown.Item>Game 3</Dropdown.Item>
+            </DropdownButton>
+          </div>
 
           {hasLoaded ? (
             <>
