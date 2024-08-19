@@ -103,10 +103,21 @@ function AddGameModal({ show, onHide }) {
         game.platform.id === parseInt(gameData.platform)
     );
 
+    const newErrors = {};
+    if (!gameData.genre) newErrors.genre = ["Please select a genre."];
+    if (!gameData.platform) newErrors.platform = ["Please select a platform."];
+    if (!gameData.release_year)
+      newErrors.release_year = ["Date has the wrong format. Please use YYYY."];
+
     if (duplicateGame) {
       setErrors({
         title: ["A game with this title and platform already exists."],
       });
+      return;
+    }
+
+    if (Object.keys(newErrors).length) {
+      setErrors(newErrors);
       return;
     }
 
