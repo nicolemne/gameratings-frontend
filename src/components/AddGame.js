@@ -314,10 +314,13 @@ function AddGameModal({ show, onHide }) {
                 </figure>
                 <div>
                   <Form.Label
-                    className={`${styles.UploadText} btn`}
+                    className={`${styles.ImageText} btn`}
                     htmlFor="game-image-upload"
                   >
                     Change image
+                    <span>
+                      <p className={styles.MaxSize}>Max size of 2 mb</p>
+                    </span>
                   </Form.Label>
                 </div>
               </>
@@ -325,8 +328,11 @@ function AddGameModal({ show, onHide }) {
               <Form.Label htmlFor="game-image-upload">
                 <span className={styles.UploadImage}>
                   <i className="fa-regular fa-image"></i>
-                  <span className={styles.UploadText}>
+                  <span className={styles.ImageText}>
                     <Asset message="Click to upload image" />
+                    <span>
+                      <p className={styles.MaxSize}>Max size of 2 mb</p>
+                    </span>
                   </span>
                 </span>
               </Form.Label>

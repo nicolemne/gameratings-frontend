@@ -146,6 +146,9 @@ function PostCreateForm() {
               <i className="fa-regular fa-image"></i>
               <span className={styles.ImageText}>
                 <Asset message="Click to upload image" />
+                <span>
+                  <p className={styles.MaxSize}>Max size of 2 mb</p>
+                </span>
               </span>
             </span>
           </Form.Label>

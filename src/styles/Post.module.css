@@ -74,4 +74,9 @@ h5 {
 
 .OwnerName {
   color: #a54812;
+  overflow: hidden;
+  width: 100px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }

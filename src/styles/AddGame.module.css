@@ -9,21 +9,29 @@
 .UploadImage i {
   margin-top: 10px;
   font-size: 7rem;
-  margin-left: 10px;
+  margin-left: 19px;
   background: linear-gradient(70deg, #8a4af3, #ffa750);
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
 }
 
-.UploadText {
-  font-family: "Roboto", sans-serif;
-  font-size: 15px;
+.ImageText {
+  font-family: "Kalam", sans;
+  font-size: 19px;
   font-weight: 300;
+  color: #d2b5aa;
+}
+
+.ImageText:hover {
   color: #ffffff;
 }
 
-.UploadText:hover {
-  color: #ffa750;
+.MaxSize {
+  font-family:'Courier New', Courier, monospace;
+  font-style: italic;
+  font-size: 15px;
+  color: aliceblue;
+  margin-left: 7px;
 }
 
 /* Modal  */

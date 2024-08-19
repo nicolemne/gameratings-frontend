@@ -22,13 +22,20 @@
 
 .ImageText {
   font-family: "Kalam", sans;
-  font-size: 17px;
+  font-size: 19px;
   font-weight: 300;
   color: #d2b5aa;
 }
 
 .ImageText:hover {
   color: #ffffff;
+}
+
+.MaxSize {
+  font-family:'Courier New', Courier, monospace;
+  font-style: italic;
+  font-size: 15px;
+  color: aliceblue;
 }
 
 .PostLabel {

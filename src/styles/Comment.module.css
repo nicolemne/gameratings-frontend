@@ -2,6 +2,11 @@
   font-weight: bold;
   color: #ffa750;
   margin-right: 8px;
+  overflow: hidden;
+  width: 100px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
 .Date {
@@ -15,4 +20,21 @@
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #dadadf;
+}
+
+.CommentsContent p {
+  max-width: 500px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Media queries */
+
+/* 767px */
+@media (max-width: 767px) {
+  .CommentsContent p {
+    max-width: 400px;
+  }
 }
