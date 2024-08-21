@@ -9,6 +9,7 @@ import btnStyles from "../styles/Button.module.css";
 
 // Components, contexts, hooks, assets & utils imports
 import { useSaveGame } from "../hooks/useSaveGame";
+import { useCurrentUser } from "../contexts/CurrentUserContext";
 
 // This component renders the same layout for all game fields for
 // when creating a post, the Posts page and the Post detail page.
@@ -16,6 +17,7 @@ import { useSaveGame } from "../hooks/useSaveGame";
 const GameInfo = ({ game }) => {
   // Calls the SaveGame hook to handle saving games and displaying error and success messages.
   const { handleSaveGame, errors, successMessage } = useSaveGame();
+  const currentUser = useCurrentUser();
 
   return (
     // Uses optional chaining to access the game properties and
@@ -52,14 +54,19 @@ const GameInfo = ({ game }) => {
             className={styles.Image}
           />
         </div>
-        <Button
-          variant="primary"
-          className={btnStyles.SaveGameBtn}
-          // Calls the handleSaveGame hook to save the game to the users 'My Games'.
-          onClick={() => handleSaveGame(game.id)}
-        >
-          <i className={`fa-regular fa-bookmark ${btnStyles.SaveGameBtn}`}></i>
-        </Button>
+        {/* Conditionally render the save game button if the user is logged in or not */}
+        {currentUser && (
+          <Button
+            variant="primary"
+            className={btnStyles.SaveGameBtn}
+            // Calls the handleSaveGame hook to save the game to the users 'My Games'.
+            onClick={() => handleSaveGame(game.id)}
+          >
+            <i
+              className={`fa-regular fa-bookmark ${btnStyles.SaveGameBtn}`}
+            ></i>
+          </Button>
+        )}
         {/* Displays an error message if the Game is already saved*/}
         {errors?.non_field_errors?.map((message, idx) => (
           <Alert variant="danger" key={idx} className="mt-2">
