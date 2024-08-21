@@ -1,13 +1,22 @@
+// React imports
 import { useState } from "react";
 
+// useSelectGame is a custom hook that handles when a user selects a game 
+// from the dropdown.
+// Used in: PostCreateForm.js & PostEditForm.js
+
 export const useSelectGame = (games = []) => {
+  // State hook for storing the currently selected game
   const [selectedGame, setSelectedGame] = useState(null);
 
-  const handleSelectGame = (gameId) => {
-    const game = games.find((g) => g.id === gameId);
+  // Function to select a game by its ID and update the selected game state
+  const handleSelectGame = (id) => {
+    const game = games.find((g) => g.id === id);
     setSelectedGame(game);
   };
 
+  // Conditionally display information about a game if a game has been selected.
+  // Returns empty values if no game has been selected yet.
   const gameInfo = selectedGame
     ? {
         image: selectedGame.image || "",

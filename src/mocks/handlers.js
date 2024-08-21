@@ -1,3 +1,4 @@
+// React imports
 import { rest } from "msw";
 
 const baseURL = "https://gameratings-api-d04888e8239b.herokuapp.com/";

@@ -1,8 +1,13 @@
+// React imports
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { useHistory } from "react-router-dom";
+
+// Components, contexts, hooks, assets & utils imports
+import { removeTokenTimestamp, shouldRefreshToken } from "../utils/utils";
+
+// Axios imports
 import axios from "axios";
 import { axiosReq, axiosRes } from "../api/axiosDefaults";
-import { useHistory } from "react-router-dom";
-import { removeTokenTimestamp, shouldRefreshToken } from "../utils/utils";
 
 export const CurrentUserContext = createContext();
 export const SetCurrentUserContext = createContext();
@@ -19,7 +24,7 @@ export const CurrentUserProvider = ({ children }) => {
       const { data } = await axiosRes.get("dj-rest-auth/user/");
       setCurrentUser(data);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 

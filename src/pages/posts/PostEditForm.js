@@ -1,5 +1,9 @@
+// React imports
 import React, { useEffect, useRef, useState } from "react";
-
+import {
+  useHistory,
+  useParams,
+} from "react-router-dom/cjs/react-router-dom.min";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
@@ -8,35 +12,36 @@ import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
+import { Image } from "react-bootstrap";
 
+// CSS Styling imports
 import styles from "../../styles/PostCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import sharedStyles from "../../styles/SharedBoxStyles.module.css";
 
+// Components, contexts, hooks, assets & utils imports
 import GameInfo from "../../components/GameInfo";
 import AddGameModal from "../../components/AddGame";
-
-import { Image } from "react-bootstrap";
-import {
-  useHistory,
-  useParams,
-} from "react-router-dom/cjs/react-router-dom.min";
-import { axiosReq } from "../../api/axiosDefaults";
-
 import { useAllGames } from "../../contexts/AllGamesContext";
 import { useSelectGame } from "../../hooks/useSelectedGame";
 import useSearch from "../../hooks/useSearch";
+import { useRedirect } from "../../hooks/useRedirect";
+
+// Axios imports
+import { axiosReq } from "../../api/axiosDefaults";
+
+// No comments in this page as it is similar logic in PostCreateForm.js and explained there.
 
 function PostEditForm() {
+  const [errors, setErrors] = useState({});
   const games = useAllGames();
+  useRedirect("loggedOut");
 
   const sortedGames = games.sort((a, b) => {
     return a.title.localeCompare(b.title);
   });
   const { selectedGame, handleSelectGame } = useSelectGame(sortedGames);
-
-  const [errors, setErrors] = useState({});
 
   const [postData, setPostData] = useState({
     title: "",
@@ -63,7 +68,7 @@ function PostEditForm() {
           ? setPostData({ title, content, image, star_rating })
           : history.push("/");
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
     handleMount();
@@ -131,7 +136,7 @@ function PostEditForm() {
       await axiosReq.put(`/posts/${id}/`, formData);
       history.push(`/posts/${id}`);
     } catch (err) {
-      console.log(err.response?.data);
+      // console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }

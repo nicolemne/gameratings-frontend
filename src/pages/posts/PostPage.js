@@ -1,22 +1,25 @@
+// React imports
 import React, { useEffect, useState } from "react";
-
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
-
-import styles from "../../styles/Comment.module.css";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
-import { axiosReq } from "../../api/axiosDefaults";
+
+// CSS Styling imports
+import styles from "../../styles/Comment.module.css";
+
+// Components, contexts, hooks, assets & utils imports
 import Post from "./Post";
 import Comment from "../comments/Comment";
-
 import CommentCreateForm from "../comments/CommentCreateForm";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-
 import InfiniteScroll from "react-infinite-scroll-component";
 import Asset from "../../components/Asset";
 import { fetchMoreData } from "../../utils/utils";
 import PopularProfiles from "../profiles/PopularProfiles";
+
+// Axios imports
+import { axiosReq } from "../../api/axiosDefaults";
 
 function PostPage() {
   const { id } = useParams();
@@ -36,7 +39,7 @@ function PostPage() {
         setPost({ results: [post] });
         setComments(comments);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
 

@@ -1,5 +1,8 @@
+// React imports
 import React from "react";
 import { Spinner } from "react-bootstrap";
+
+// CSS Styling imports
 import styles from "../styles/Asset.module.css";
 
 const Asset = ({ spinner, src, message }) => {

@@ -1,11 +1,16 @@
+// React imports
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 
+// CSS Styling imports
 import styles from "../../styles/CommentCreateEditForm.module.css";
+
+// Components, contexts, hooks, assets & utils imports
 import Avatar from "../../components/Avatar";
+
+// Axios imports
 import { axiosRes } from "../../api/axiosDefaults";
 
 function CommentCreateForm(props) {
@@ -37,7 +42,7 @@ function CommentCreateForm(props) {
       }));
       setContent("");
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 

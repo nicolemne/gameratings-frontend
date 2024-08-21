@@ -4,9 +4,4 @@
 
 .Usernames {
   color: #ffa750;
-  overflow: hidden;
-  width: 100px;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
 }

@@ -1,10 +1,19 @@
+// React imports
 import { useEffect, useState } from "react";
+
+// Axios imports
 import { axiosRes } from "../api/axiosDefaults";
 
+// This is a custom hook for saving a game to the 'My Games' page,
+// and for managing success and/or error messages.
+// Used in: GameInfo.js & SavedGamesPage.js
+
 export const useSaveGame = () => {
+  // State hooks for error/success messages
   const [errors, setErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState("");
 
+  // Logic to save and update a game by its ID to the user's Saved Games
   const handleSaveGame = async (id, setSavedGames) => {
     try {
       const { data } = await axiosRes.post("/saved_games/", {
@@ -22,11 +31,12 @@ export const useSaveGame = () => {
       if (err.response?.status === 400) {
         setErrors(err.response?.data);
       } else {
-        console.error(err);
+        // console.log(err);
       }
     }
   };
 
+  // Clear messages after 3 seconds
   useEffect(() => {
     const timer = setTimeout(() => {
       setSuccessMessage("");

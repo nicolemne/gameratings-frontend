@@ -1,22 +1,24 @@
+// React imports
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Image from "react-bootstrap/Image";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
+import Alert from "react-bootstrap/Alert";
 
+// CSS Styling imports
 import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 
-import {
-  Form,
-  Button,
-  Image,
-  Col,
-  Row,
-  Container,
-  Alert,
-} from "react-bootstrap";
-
-import axios from "axios";
+// Components, contexts, hooks, assets & utils imports
 import { useRedirect } from "../../hooks/useRedirect";
+
+// Axios imports
+import axios from "axios";
 
 const SignUpForm = () => {
   useRedirect("loggedIn");

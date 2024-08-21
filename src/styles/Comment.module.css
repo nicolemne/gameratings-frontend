@@ -3,10 +3,8 @@
   color: #ffa750;
   margin-right: 8px;
   overflow: hidden;
-  width: 100px;
+  width: 200px;
   display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
 }
 
 .Date {

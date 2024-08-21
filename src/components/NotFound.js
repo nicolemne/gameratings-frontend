@@ -1,7 +1,12 @@
+// React imports
 import React from "react";
-import NoResults from "../assets/no-results.png";
-import styles from "../styles/NotFound.module.css";
 import { Link } from "react-router-dom";
+
+// CSS Styling imports
+import styles from "../styles/NotFound.module.css";
+
+// Components, contexts, hooks, assets & utils imports
+import NoResults from "../assets/no-results.png";
 
 const NotFound = () => {
   return (

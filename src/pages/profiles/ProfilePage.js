@@ -1,28 +1,32 @@
+// React imports
 import React, { useEffect, useState } from "react";
-
+import InfiniteScroll from "react-infinite-scroll-component";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
+import { Image } from "react-bootstrap";
 
-import Asset from "../../components/Asset";
-
+// CSS Styling imports
 import styles from "../../styles/ProfilePage.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 
+// Components, contexts, hooks, assets & utils imports
 import PopularProfiles from "./PopularProfiles";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
-import { axiosReq } from "../../api/axiosDefaults";
 import {
   useProfileData,
   useSetProfileData,
 } from "../../contexts/ProfileDataContext";
-import { Button, Image } from "react-bootstrap";
-import InfiniteScroll from "react-infinite-scroll-component";
 import { ProfileEditDropdown } from "../../components/MoreDropdown";
 import Post from "../posts/Post";
 import { fetchMoreData } from "../../utils/utils";
+import Asset from "../../components/Asset";
+
+// Axios imports
+import { axiosReq } from "../../api/axiosDefaults";
 
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -52,7 +56,7 @@ function ProfilePage() {
         setProfilePosts(profilePosts);
         setHasLoaded(true);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
     fetchData();
@@ -81,7 +85,7 @@ function ProfilePage() {
               <div className={styles.ProfileDetailText}>followers</div>
             </Col>
             <Col xs={3} className="my-2">
-              <div >{profile?.following_count}</div>
+              <div>{profile?.following_count}</div>
               <div className={styles.ProfileDetailText}>following</div>
             </Col>
           </Row>
@@ -112,7 +116,7 @@ function ProfilePage() {
         ) : (
           <Col className={`p-3 ${styles.ProfileBiography}`}>
             <div className={styles.PlaceholderText}>
-            {profile?.owner} is on a side quest. Stay tuned!
+              {profile?.owner} is on a side quest. Stay tuned!
             </div>
           </Col>
         )}

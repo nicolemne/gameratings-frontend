@@ -1,19 +1,28 @@
+// React imports
 import React from "react";
-import { Navbar, Container, Nav, Button } from "react-bootstrap";
-import logoMain from "../assets/logo_main.png";
-import logoSmall from "../assets/logo_small.png";
+import { NavLink } from "react-router-dom";
+import Navbar from "react-bootstrap/Navbar";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Button from "react-bootstrap/Button";
+
+// CSS Styling imports
 import styles from "../styles/NavBar.module.css";
 import btnStyles from "../styles/Button.module.css";
 
-import { NavLink } from "react-router-dom";
+// Components, contexts, hooks, assets & utils imports
 import {
   useCurrentUser,
   useSetCurrentUser,
 } from "../contexts/CurrentUserContext";
 import Avatar from "./Avatar";
-import axios from "axios";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 import { removeTokenTimestamp } from "../utils/utils";
+import logoMain from "../assets/logo_main.png";
+import logoSmall from "../assets/logo_small.png";
+
+// Axios imports
+import axios from "axios";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
@@ -27,7 +36,7 @@ const NavBar = () => {
       setCurrentUser(null);
       removeTokenTimestamp();
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
@@ -132,12 +141,14 @@ const NavBar = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <div className={styles.NavBackground}>
             <div className={styles.SearchContainer}>
-              <img
-                src={logoSmall}
-                alt="logo"
-                height="40px"
-                className={styles.LogoSmall}
-              />
+              <NavLink exact to="/">
+                <img
+                  src={logoSmall}
+                  alt="logo"
+                  height="40px"
+                  className={styles.LogoSmall}
+                />
+              </NavLink>
             </div>
             <Nav>
               {/* discover */}

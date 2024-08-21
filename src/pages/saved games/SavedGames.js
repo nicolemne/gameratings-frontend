@@ -1,12 +1,20 @@
+// React imports
 import React from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+import Dropdown from "react-bootstrap/Dropdown";
+
+// CSS Styling imports
 import styles from "../../styles/SavedGames.module.css";
 import btnStyles from "../../styles/Button.module.css";
-import { Button, Dropdown } from "react-bootstrap";
+
+// Axios imports
 import { axiosRes } from "../../api/axiosDefaults";
 
+// This page renders the Game the user has saved to their 'My Games' page.
+// Much like Posts and Profiles, this is the page that renders the Game by ID.
 const SavedGames = ({ savedGames, setSavedGames }) => {
   const handleChange = async (status, id, game_id) => {
     try {
@@ -26,6 +34,7 @@ const SavedGames = ({ savedGames, setSavedGames }) => {
     }
   };
 
+  // Deletes a Saved Game by its ID
   const handleDelete = async (id) => {
     try {
       await axiosRes.delete(`/saved_games/${id}/`);
@@ -38,6 +47,7 @@ const SavedGames = ({ savedGames, setSavedGames }) => {
     }
   };
 
+  // Bootstrap toggle button for custom styling
   const CustomToggle = React.forwardRef(
     ({ children, onClick, status }, ref) => (
       <button
@@ -53,6 +63,7 @@ const SavedGames = ({ savedGames, setSavedGames }) => {
     )
   );
 
+  // Formatted status text instead of displaying 'in_progress'
   const statusText = {
     completed: "Completed",
     wishlist: "Wishlist",
@@ -64,6 +75,7 @@ const SavedGames = ({ savedGames, setSavedGames }) => {
       <Row className="justify-content-center">
         <Col className="py-2 p-0 p-lg-2">
           <div>
+            {/* Render the users Saved Games by ID */}
             {savedGames.map((myGame) => (
               <div key={myGame.id} className={`p-3 mb-4 ${styles.GameCard}`}>
                 <div className="text-center mb-4">
@@ -71,7 +83,9 @@ const SavedGames = ({ savedGames, setSavedGames }) => {
                     {myGame.game_title}
                   </h5>
                   <div className="d-flex align-items-center justify-content-center">
+                    {/* Dropdown for selecting game status */}
                     <Dropdown
+                      // Calls the handleChange function to update the status of a saved game 
                       onSelect={(status) =>
                         handleChange(status, myGame.id, myGame.game_id)
                       }
@@ -96,9 +110,12 @@ const SavedGames = ({ savedGames, setSavedGames }) => {
                         </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>
+                    {/* Button to delete the saved game */}
                     <Button
                       variant="primary"
                       className={btnStyles.SavedGame}
+                      // Calls the handleDelete function to delete a saved game
+                      // by its ID from the list
                       onClick={() => handleDelete(myGame.id)}
                     >
                       <i className="fa-solid fa-xmark"></i>

@@ -1,6 +1,9 @@
-import axios from "axios";
+// React imports
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+
+// Axios imports
+import axios from "axios";
 
 export const useRedirect = (userAuthStatus) => {
   const history = useHistory();

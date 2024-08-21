@@ -1,6 +1,6 @@
+// React imports
 import React, { useState, useEffect, useRef } from "react";
 import { useHistory, useParams } from "react-router-dom";
-
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
@@ -9,16 +9,19 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 
+// CSS Styling imports
+import btnStyles from "../../styles/Button.module.css";
+import appStyles from "../../App.module.css";
 import styles from "../../styles/PostCreateEditForm.module.css"
 
-import { axiosReq } from "../../api/axiosDefaults";
+// Components, contexts, hooks, assets & utils imports
 import {
   useCurrentUser,
   useSetCurrentUser,
 } from "../../contexts/CurrentUserContext";
 
-import btnStyles from "../../styles/Button.module.css";
-import appStyles from "../../App.module.css";
+// Axios imports
+import { axiosReq } from "../../api/axiosDefaults";
 
 const ProfileEditForm = () => {
   const currentUser = useCurrentUser();
@@ -44,7 +47,7 @@ const ProfileEditForm = () => {
           const { name, content, image } = data;
           setProfileData({ name, content, image });
         } catch (err) {
-          console.log(err);
+          // console.log(err);
           history.push("/");
         }
       } else {
@@ -80,7 +83,7 @@ const ProfileEditForm = () => {
       }));
       history.goBack();
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       setErrors(err.response?.data);
     }
   };

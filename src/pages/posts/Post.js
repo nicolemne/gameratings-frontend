@@ -1,19 +1,27 @@
+// React imports
 import React from "react";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { Link } from "react-router-dom";
+import Card from "react-bootstrap/Card";
+import Media from "react-bootstrap/Media";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
+
+// CSS Styling imports
 import styles from "../../styles/Post.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { axiosRes } from "../../api/axiosDefaults";
 
+// Components, contexts, hooks, assets & utils imports
 import Avatar from "../../components/Avatar";
 import GameInfo from "../../components/GameInfo";
 import { MoreDropdown } from "../../components/MoreDropdown";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-
 import star from "../../assets/star.png";
 import comment_img from "../../assets/comment_img.png";
 import heart from "../../assets/heart.png";
 import heart_empty from "../../assets/heart_empty.png";
+
+// Axios imports
+import { axiosRes } from "../../api/axiosDefaults";
 
 const Post = (props) => {
   const {
@@ -46,19 +54,22 @@ const Post = (props) => {
   const is_owner = currentUser?.username === owner;
   const history = useHistory();
 
+  // Handle edit post
   const handleEdit = () => {
     history.push(`/posts/${id}/edit`);
   };
 
+  // Handle delete post
   const handleDelete = async () => {
     try {
       await axiosRes.delete(`/posts/${id}/`);
       history.goBack();
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
+  // Handle liking post
   const handleLike = async () => {
     try {
       const { data } = await axiosRes.post("/likes/", { post: id });
@@ -71,10 +82,11 @@ const Post = (props) => {
         }),
       }));
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
+  // Handle unliking post
   const handleUnlike = async () => {
     try {
       await axiosRes.delete(`/likes/${like_id}/`);
@@ -87,7 +99,7 @@ const Post = (props) => {
         }),
       }));
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
@@ -102,6 +114,7 @@ const Post = (props) => {
           <div className="d-flex align-items-center">
             <span className={styles.UpdatedAt}>{updated_at}</span>
             {is_owner && postPage && (
+              // Handles editing and deleting the post
               <MoreDropdown
                 handleEdit={handleEdit}
                 handleDelete={handleDelete}
@@ -113,6 +126,8 @@ const Post = (props) => {
       <Link to={`/posts/${id}`}>
         <Card.Img src={image} alt={title} className={styles.PostImage} />
       </Link>
+
+      {/* Calls the GameInfo component to render game details */}
       <GameInfo
         game={{
           id: game_id,
@@ -131,6 +146,7 @@ const Post = (props) => {
         {content && <Card.Text>{content}</Card.Text>}
         <div className={styles.PostBar}>
           {like_id ? (
+            // Handles unliking the post
             <span onClick={handleUnlike}>
               <img
                 src={heart}
@@ -140,6 +156,7 @@ const Post = (props) => {
               />
             </span>
           ) : currentUser ? (
+            // Handles liking the post
             <span onClick={handleLike}>
               <img
                 src={heart_empty}
@@ -149,6 +166,7 @@ const Post = (props) => {
               />
             </span>
           ) : (
+            // Shows an overlay to logged out users
             <OverlayTrigger
               placement="top"
               overlay={<Tooltip>Log In to like this post</Tooltip>}

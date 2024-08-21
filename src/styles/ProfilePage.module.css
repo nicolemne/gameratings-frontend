@@ -5,6 +5,14 @@
   border: 3px solid #ffffff;
 }
 
+/* No posts result */
+
+.SearchIcon {
+  margin-left: 45%;
+}
+
+/* Profile owner */
+
 .ProfileImage {
   object-fit: cover;
   height: 120px;
@@ -13,16 +21,14 @@
   border: 1px solid #ffffff;
 }
 
-.SearchIcon {
-  margin-left: 45%;
-}
-
 .ProfileOwner {
   word-wrap: break-word;
   background: linear-gradient(70deg, #ff6b6b, #7a2de6);
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
 }
+
+/* Biography */
 
 .ProfileBiography {
   font-family: "Roboto", sans;
