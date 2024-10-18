@@ -41,6 +41,7 @@ View live site:
 
 * [BUGS](#bugs)
   * [Known Bugs](#known-bugs)
+  * [Future Fixes](#future-fixes)
   * [Fixed Bugs](#fixed-bugs)
 
 ---
@@ -473,12 +474,21 @@ All tests performed has been tested on desktop, tablet and mobile view.
 
 # BUGS
 
-## Known Bugs & Future implementations
+## Known Bugs 
+
+There are currently no known bugs that affect the main features or usability of the site.
+
+## Future fixes
+
+These are minor issues that does not impact the core functionality of the website but are areas for improvement to enhance the user experience:
 
 1. When selecting a game in the 'New Post' page, the release year is displayed as XXXX-XX-XXX instead of just YYYY. Future fix.
 2. When adding a new game through the 'New Game' modal, no error message is displayed when leaving the 'game developer' field blank, but does not allow the form to send without filling in that field. Future fix.
 3. After adding a new game to the game list in the 'New Post' page, the newly added game does not automatically populate the post as its selected game. Future implementation.
 4. After adding a new game to the game list in the 'New Post' page, the newly added game details does not automatically clear from the 'New Game' modal. Future implementation.
+5. The profile avatar and username are slightly misaligned in the mobile view. Future fix.
+6. Character number limitations to comments and profile biography. Future fix.
+7. Alphabetical ordering to newly added genres & platforms
 
 ## Fixed Bugs
 
