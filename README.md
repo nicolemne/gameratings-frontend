@@ -439,30 +439,32 @@ In the Profile Page users can view their username and biography, the number of p
 # Technologies and Credits
 
 ## Languages
-- HTML
-- CSS
-- JavaScript
-- JSX
-- Git
+- HTML - Content and structure
+- CSS - Styling
+- JavaScript - Interactive elements
+- JSX - HTML-like syntax for React components
+- Git - Version control
 
 ## Frameworks
-- React
-- React Bootstrap
-- Node.js
+- React - Frontend components
+- React Bootstrap - CSS framework for responsive design
+- Node.js - Backend runtime environment for JavaScript
 
 ## Programs, Platforms, and Services
-- Cloudinary
-- Heroku
-- PostgreSQL from Code Institute
-- Canva
-- Balsamiq
+- Cloudinary - Image hosting
+- Heroku - Cloud application platform for deployment
+- GitHub - Version control and collaboration platform
+- PostgreSQL from Code Institute - Database management system
+- Canva - Design tool for graphics and social media
+- Balsamiq - Wireframes tool for UI design
+- Favicon - Small icon for the website
+- Coolors - Color palette generator
 
 ## Libraries and Dependencies
-For a full list of requirements, please see: [requirements.txt](requirements.txt)
 
-- Axios
-- npm
-- jwt-decode
+- Axios - HTTP client for API requests
+- npm - Package manager for JavaScript libraries
+- jwt-decode - Library for decoding JSON Web Tokens
 
 
 # Testing
