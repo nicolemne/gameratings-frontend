@@ -170,6 +170,10 @@ Here are some of the features I would like to add in the future to increase the 
 - Image caching
 - Character number limitations to comments and profile biography. 
 - Tags
+- Quick view status, for users to see if a game is already saved to their 'My Games' and what status it currently has
+- Game Detail page
+- See top 3 most liked posts on a user's profile
+- Access the Django admin page from the frontend
 
 ## Custom Reusable React Components 
 
