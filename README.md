@@ -21,44 +21,46 @@ I hope you enjoy the website!
 
 ## **CONTENTS**
 * [Project management](#project-management)
-  * [Objective](#objective)
-    * [Site user goal](#site-user-goal)
-    * [Site owner goal](#site-owner-goal)
-  * [Agile Methodology](#agile-methodology)
-  * [User Stories](#user-stories)
-  * [Future Implementations](#future-implementations)
-  * [Design](#design)
-    * [Wire Frames](#wire-frames)
-    * [Colour Scheme](#colour-scheme)
-    * [Imagery](#imagery)
-    * [Typography](#typography)
+  * [Objective](#objective)
+    * [Site user goal](#site-user-goal)
+    * [Site owner goal](#site-owner-goal)
+  * [Agile Methodology](#agile-methodology)
+  * [User Stories](#user-stories)
+  * [Future Implementations](#future-implementations)
+  * [Design](#design)
+    * [Wire Frames](#wire-frames)
+    * [Colour Scheme](#colour-scheme)
+    * [Imagery](#imagery)
+    * [Typography](#typography)
 
 * [Features of the GG Ratings Frontend](#features-of-the-gg-ratings-frontend-website)
-   * [Admin Access](#admin-access)
-   * [User Access](#user-access)
+  * [Admin Access](#admin-access)
+  * [User Access](#user-access)
 
 * [Technologies](#technologies)
-  * [Languages](#languages)
-  * [Frameworks](#frameworks)
-  * [Programs, Platforms, and Services](#programs-platforms-and-services)
-  * [Libraries and Dependencies](#libraries-and-dependencies)
+  * [Languages](#languages)
+  * [Frameworks](#frameworks)
+  * [Programs, Platforms, and Services](#programs-platforms-and-services)
+  * [Libraries and Dependencies](#libraries-and-dependencies)
 
 * [Testing](#testing)
 
 * [Deployment & Local Development](#deployment--local-development)
-  * [Local Development](#local-development)
-    * [GitHub and Gitpod](#github-and-gitpod)
-    * [How to Fork](#how-to-fork)
-    * [How to Clone](#how-to-fork)
-  * [Create a Django REST Framework project](#create-a-django-rest-framework-project)
-  * [PostgreSQL Code Institute](#postgres-code-institute)
-  * [Setting up Environment Variables](#setting-up-environment-variables)
-  * [Heroku](#heroku)
+  * [Local Development](#local-development)
+    * [GitHub and Gitpod](#github-and-gitpod)
+    * [How to Fork](#how-to-fork)
+    * [How to Clone](#how-to-fork)
+  * [Create a Django REST Framework project](#create-a-django-rest-framework-project)
+  * [PostgreSQL Code Institute](#postgres-code-institute)
+  * [Setting up Environment Variables](#setting-up-environment-variables)
+  * [Heroku](#heroku)
 
 * [Credits](#credits)
-  * [References and Resources](#references-and-resources)
-  * [Content](#content)
-  * [Acknowledgments](#acknowledgments)
+  * [References and Resources](#references-and-resources)
+  * [Content](#content)
+  * [Acknowledgments](#acknowledgments)
+
+---
 
 # Project management
 
@@ -573,3 +575,4 @@ I would like to thank and acknowledge the following people, who have shown inval
 - Antonio Rodriquez, my new mentor at Code Institute. Antonio has been incredibly helpful, showing great patience and providing informative guidance throughout the project. His expertise and support have made a significant impact on my learning and development.
 - Joseph Doble has offered valuable assistance with sourcing relevant information and explaining the intricacies of various concepts. His help has been greatly appreciated.
 - Tutor Support, their patience, and willingness to address my endless questions have been instrumental in my learning process and growth.
+- Student Care, for their understanding and help.
