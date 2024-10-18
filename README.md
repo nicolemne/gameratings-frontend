@@ -434,7 +434,17 @@ In the Profile Page users can view their username and biography, the number of p
 
 ![Profile Dropdown](/src/assets/profile-edit-dropdown.png)
 
+## Edit Profile
+
+When a user navigates to the Edit Profile page, all fields will be pre-populated with their existing information. This allows users to easily update only the sections they wish to change without needing to re-enter all their details.
+
 ![Profile Edit](/src/assets/edit-profile.jpg)
+
+## 404 Page
+
+If a user tries to access a page that doesn't exist, they will encounter a 404 Error Page.
+
+![404 Page](/src/assets/404-page.png)
 
 # Technologies and Credits
 
