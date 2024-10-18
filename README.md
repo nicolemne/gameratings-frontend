@@ -27,6 +27,7 @@ I hope you enjoy the website!
   * [Agile Methodology](#agile-methodology)
   * [User Stories](#user-stories)
   * [Future Implementations](#future-implementations)
+  * [Custom Reusable React Components](#custom-reusable-react-components)
   * [Design](#design)
     * [Wire Frames](#wire-frames)
     * [Colour Scheme](#colour-scheme)
@@ -34,8 +35,6 @@ I hope you enjoy the website!
     * [Typography](#typography)
 
 * [Features of the GG Ratings Frontend](#features-of-the-gg-ratings-frontend-website)
-  * [Admin Access](#admin-access)
-  * [User Access](#user-access)
 
 * [Technologies](#technologies)
   * [Languages](#languages)
@@ -172,6 +171,45 @@ Here are some of the features I would like to add in the future to increase the 
 - Character number limitations to comments and profile biography. 
 - Tags
 
+## Custom Reusable React Components 
+
+Each code file includes in-depth comments explaining the structure, functionality, and usage of the components. 
+
+### Hooks
+
+**[useSaveGame](/src/hooks/useSaveGame.js)**
+
+- The useSaveGame hook manages the functionality of saving a game to the 'My Games' page. It handles the API request to store the game data, allowing users to keep track of their gaming progress.
+
+**[useSearch](/src/hooks/useSearch.js)**
+
+- The useSearch hook enables users to search for specific items within a dropdown menu. This functionality enhances user experience by allowing quick access to games or other objects without scrolling through long lists.
+
+**[useSelectedGame](/src/hooks/useSelectedGame.js)**
+
+- The useSelectedGame hook lets you select a game from a list and display its details. When you call the handleSelectGame function with a game ID, it finds the game in the provided list and sets it as the currently selected game. It then organizes the game’s information, like title, platform, and developer, into an easy-to-use format.
+
+---
+
+### Contexts
+
+**[AllGamesContext](/src/contexts/AllGamesContext.js)**
+
+- The AllGamesContext provides a global state for managing and accessing the list of all games in the application. It fetches data from an API endpoint and makes it available to various components.
+
+---
+
+### Components
+
+**[AddGame](/src/components/AddGame.js)**
+
+- The AddGame component is a modal that appears when users want to add a new game while creating a post. It provides input fields for entering game details and handles the submission process to save the new game to the database.
+
+**[GameInfo](/src/components/GameInfo.js)**
+
+- The GameInfo component displays detailed information about a specific game. It showcases various fields like title, platform, developer, genre, release year, multiplayer option, average rating, and the game cover image.
+
+
 ## Design
 
 The design part of this project has been super fun and I especially love the moments when I can be creative and design something visually appealing for my projects. 
@@ -217,6 +255,7 @@ The fonts used in this project are Roboto, Pixelify Sans, Patrick Hand, and Kala
 
 ![Kalam](/src/assets/kalam.png)
 
+---
 
 # Features of the GG Ratings Frontend Website
 

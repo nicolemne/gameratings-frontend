@@ -469,8 +469,10 @@ All tests performed has been tested on desktop, tablet and mobile view.
 ### AddGame component
 - The AddGame component successfully opens up a modal when adding a new game while creating a post.
 
----
+### GameInfo component
+- The GameInfo correctly displays all game details and successfully handles saving the game to a user’s "My Games" list.
 
+---
 
 # BUGS
 
