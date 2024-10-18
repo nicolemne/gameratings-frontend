@@ -482,15 +482,17 @@ There are currently no known bugs that affect the main features or usability of 
 
 ## Future fixes
 
-These are minor issues that does not impact the core functionality of the website but are areas for improvement to enhance the user experience:
+These are minor issues that does not impact the core functionality of the website but are areas for improvement in the future to enhance the user experience and visual design:
 
-1. When selecting a game in the 'New Post' page, the release year is displayed as XXXX-XX-XXX instead of just YYYY. Future fix.
-2. When adding a new game through the 'New Game' modal, no error message is displayed when leaving the 'game developer' field blank, but does not allow the form to send without filling in that field. Future fix.
-3. After adding a new game to the game list in the 'New Post' page, the newly added game does not automatically populate the post as its selected game. Future implementation.
-4. After adding a new game to the game list in the 'New Post' page, the newly added game details does not automatically clear from the 'New Game' modal. Future implementation.
-5. The profile avatar and username are slightly misaligned in the mobile view. Future fix.
-6. Character number limitations to comments and profile biography. Future fix.
-7. Alphabetical ordering to newly added genres & platforms
+1. When selecting a game in the 'New Post' page, the release year is displayed as XXXX-XX-XXX instead of just YYYY.
+2. When adding a new game through the 'New Game' modal, no error message is displayed when leaving the 'game developer' field blank, but does not allow the form to send without filling in that field.
+3. After adding a new game to the game list in the 'New Post' page, the newly added game does not automatically populate the post as its selected game.
+4. After adding a new game to the game list in the 'New Post' page, the newly added game details does not automatically clear from the 'New Game' modal.
+5. Fix the graphic issue where the game fields moves out of position when the alert message is shown after a player saves a game from a post. 
+6. The profile avatar and username are slightly misaligned in the mobile view.
+7. Character number limitations to comments and profile biography.
+8. Alphabetical ordering to newly added genres & platforms
+9. Clear the search field in dropdowns when a user clicks outside of the dropdown.
 
 ## Fixed Bugs
 

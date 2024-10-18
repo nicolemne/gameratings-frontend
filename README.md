@@ -29,7 +29,7 @@ I hope you enjoy the website!
   * [Future Implementations](#future-implementations)
   * [Custom Reusable React Components](#custom-reusable-react-components)
   * [Design](#design)
-    * [Wire Frames](#wire-frames)
+    * [Wireframes](#wireframes)
     * [Colour Scheme](#colour-scheme)
     * [Imagery](#imagery)
     * [Typography](#typography)
@@ -174,10 +174,12 @@ Here are some of the features I would like to add in the future to increase the 
 - Game Detail page
 - See top 3 most liked posts on a user's profile
 - Access the Django admin page from the frontend
+- Access for admins to remove posts and comments directly from the frontend
+- More statuses for saved games in 'My Games'
 
 ## Custom Reusable React Components 
 
-Each code file includes in-depth comments explaining the structure, functionality, and usage of the components. 
+Each code file includes in-depth comments explaining the structure, functionality, and usage of the components. I have only commented on and mentioned the Hooks, Contexts and Components that are not included in the walkthrough project 'Moments'.
 
 ### Hooks
 
@@ -193,15 +195,11 @@ Each code file includes in-depth comments explaining the structure, functionalit
 
 - The useSelectedGame hook lets you select a game from a list and display its details. When you call the handleSelectGame function with a game ID, it finds the game in the provided list and sets it as the currently selected game. It then organizes the game’s information, like title, platform, and developer, into an easy-to-use format.
 
----
-
 ### Contexts
 
 **[AllGamesContext](/src/contexts/AllGamesContext.js)**
 
 - The AllGamesContext provides a global state for managing and accessing the list of all games in the application. It fetches data from an API endpoint and makes it available to various components.
-
----
 
 ### Components
 
@@ -381,7 +379,7 @@ If a user wants to review a game that is not yet in the database, they can click
 
 ![Add Game Modal](/src/assets/add-game-modal.png)
 
-Error handling is in place to prevent form submission if the user has not selected an image, if the image has an incorrect file type or size, or if required fields like game title, genre, platform, or release year are missing or incorrectly formatted.
+Error handling is in place to prevent form submission if the user has not selected an image, if the image has an incorrect file type or size, or if required fields like game title, genre, platform, or release year are missing or incorrectly formatted. There is also error handling in place in case a user tries to add a game that already exists with the same platform. New games with a unique platform can be added.
 
 ![Add Game Modal - Error Handling](/src/assets/add-game-modal-error-handling.png)
 
@@ -455,7 +453,7 @@ In the above image, we can see that the owner of this review has given this game
 
 ## My Games
 
-The 'My Games' page allows logged in users to save and track their favorite games. Users can view game details and set the progress status of each game to 'Completed', 'In Progress', or 'Wishlist'. They can also remove games from their saved list if they no longer wish to track them. Additionally, there is an Add Game button with a search functionality that allows users to quickly find and add new games to their saved list.
+The 'My Games' page allows logged in users to save and track their favorite games. Users can view game details and set the progress status of each game to 'Completed', 'In Progress', or 'Wishlist'. They can also remove games from their saved list if they no longer wish to track them. Additionally, there is an Add Game button with a search functionality that allows users to quickly find and add new games to their saved list. An error message will be displayed if the user already has saved a specific game to their 'My Games' library, and a success message will be displayed after a user has added a new game.
 
 ![My Games](/src/assets/my-games.png)
 
